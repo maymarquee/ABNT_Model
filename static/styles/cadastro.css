@@ -1,0 +1,73 @@
+
+/* falta alterar as fontes e design de inputs */
+
+:root{
+    --cor-fundo: #879BAF;
+    --cor-forma: #EDF0F3;
+}
+
+.container{
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+}
+.cadastrar{
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    /* background: red; */
+    padding: 20px;
+}
+.textos{
+    display: flex;
+    flex-direction: column;
+    /* background: green; */
+}
+.container-inputs{
+    /* background: yellow; */
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.nome-sobrenome{
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+}
+.nome, .sobrenome, .senha, .confirmar-senha{
+    display: flex;
+    flex-direction: column;
+}
+.email{
+    display: flex;
+    flex-direction: column;
+}
+.container-senhas{
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+}
+.inputs{
+    border-radius: 8px;
+    border: 1px solid #3C3C3C;
+    background: #FFF;
+    padding: 10px;
+}
+.botao-cadastrar{
+    padding: 10px;
+    border: none;
+    border-radius: 10px;
+    background: var(--cor-fundo) ;
+    color: var(--cor-forma);
+    font-size: 17px;
+}
+.botao-cadastrar:hover{
+    cursor: pointer;
+    background: #6d859d;
+}
+.rota-login{
+    color: #879BAF;
+}
+.label{
+    font-size: 17px;
+}

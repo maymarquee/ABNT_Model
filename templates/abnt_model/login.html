@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+{%load static%}
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ABNT Model</title>
+    <link rel="shortcut icon" href="{% static '../static/img/ICONS_OO-removebg-preview.webp' %}" type="image/x-icon">
+    <link rel="stylesheet" href="{% static '../static/styles/login.css' %}">
+    <link rel="stylesheet" href="{% static '../static/styles/cadastro.css' %}">
+</head>
+<body>
+    <div class="fundo-login">
+        <div class="forma-login">
+            {% block content %}
+            <div class="container-textos-botoes">
+                <div class="menor-container-textos-botoes">
+                    <div class="container-organizacao-textos">
+                        <div class="container-texto-bem-vindo">
+                            <p class="texto-bem-vindo">Bem-vindo de volta!</p>
+                        </div>
+                        <div class="container-segundo-texto">
+                            <div class="textos-segundo-texto">
+                                <p class="texto-nao-possui-conta">Não possui conta? <a class="rota-cadastro" href="{% url 'cadastro' %}">Cadastre-se aqui</a></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="container-botoes-login">
+                        <div class="container-escrita-email">
+                            <p class="texto-email">Email:</p>
+                        </div>
+                        <div class="container-botao-email">
+                            <div class="container-borda-botao-email">
+                                <input type="email" class="botao-email"> 
+                            </div>
+                            <div class="container-imagem-email">
+                                <div class="imagem-email"></div>
+                                <img style="width: 30px;" src="{% static '../static/img/email.png' %}" alt="">
+                            </div>
+                        </div> 
+                    
+                    <div class="container-texto-senha">
+                        <div class="container-escrita-senha">
+                            <p class="texto-senha">Senha:</p>
+                        </div>
+                    </div>
+                    <div class="container-botao-senha">
+                        <div class="container-borda-botao-senha">
+                            <div class="container-localizacao-botao-senha">
+                                <input type="password" class="botao-senha">
+                            </div>
+                        </div>
+                        <div class="container-imagem-senha">
+                            <div class="imagem-senha"></div>
+                            <img style="width: 30px;" src="{% static '../static/img/cadeado.png' %}" alt="">
+                        </div>
+                    </div>
+                    <div class="container-texto-esqueceu">
+                        <p class="texto-esqueceu"> <a class="texto-esqueceu" href="#">Esqueceu a senha?</a></p>
+                    </div>
+                </div>
+                <input class="botao-entrar" type="button" value="ENTRAR">
+                </div>
+            </div>
+            <div class="container-imagens">
+                <div class="container-logo">
+                    <a href="{% url 'index' %}"><img style="width: 80px;" src="{% static '../static/img/ICONS_OO-removebg-preview.webp' %}" alt=""></a>
+                </div>
+                <img style="width: 450px;" src="{% static '../static/img/homem computador claro.png' %}" alt="">
+            </div>
+            {% endblock%}
+        </div>
+    </div> 
+</body>
+</html>
+
+<!-- sugestão nomear inputs com uma so classe e padronizar, assim gastando menos linha de css e linkando no cadastro -->

@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+{%load static%} 
+<!-- isso aqui em cima é obrigatorio em todo arquivo html dentro do django -->
+<!-- toda vez q for chamar algum arquivo estatico (img, js, css) usa {% static '' %} -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="shortcut icon" href="{% static '../static/img/ICONS_OO-removebg-preview.webp' %}" type="image/x-icon">
+    <link rel="stylesheet" href="{% static '../static/styles/index.css' %}">
+    <script src="index.js"></script>
+    <title>ABNT Model</title>
+
+</head>
+<header>
+    <div class="forma-topbar">
+        <div class="forma-componentes-topbar">
+            <img style="width: 40px;" src="{% static '../static/img/icon-site.webp' %}" alt="dia/noite">
+            <div class="titulo-forma">
+                <h1 class="titulo">ABNT model</h1>
+            </div>
+
+            <a href="{% url 'login' %}">
+                <div class="login-forma">
+                    <div class="login-content">
+                        <img style="width: 40px;" src="{% static '../static/img/perfil-de-usuario.png' %}" alt="perfil default">
+                        <p class="text-login">ENTRAR</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div >
+            <nav class="catalogo">
+            <a onclick="scrollToSection(1)" class="options-nav" href="#">Objetivo</a>
+            <a onclick="scrollToSection(2)" class="options-nav" href="#">Modelos</a>
+            <a onclick="scrollToSection(3)" class="options-nav" href="#">Quem somos?</a>
+            <a onclick="scrollToSection(4)" class="options-nav" href="#">Dúvidas</a>
+            </nav>
+        </div>
+    </div>
+</header>
+<body>
+    <div id="forma-p1">
+        <div>
+            <h2 class="subtitulo-1">Comece por aqui</h2>
+            <p class="text-1">seja mais produtivo com seu textos.
+                O <b>ABNT model</b> é a solução definitiva para quem busca
+                <b>rapidez</b> e <b>precisão</b> na formatação de documentos acadêmicos
+                e profissionais. Com nossa ferramenta, você insere seu conteúdo e
+                automaticamente ele é formatado de acordo com as <b>normas da ABNT</b>. Economize tempo e evite erros com nossa plataforma intuitiva e eficiente.
+                Deixe a formatação conosco e concentre-se no que realmente importa – seu conteúdo.</p>
+        </div>
+        <div class="apresentation">
+            <img class="foto-1" src="{% static '../static/img/foto(processamento).png' %}" alt="">
+        </div>
+    </div>
+    <div id="forma-p2">
+        <div class="modelos-texto">
+            <div class="modelo-ft"><img class="foto-modelo" src="{% static '../static/img/modelo(processamento).png' %}" alt=""></div>
+            <div class="modelo-ft"><img class="foto-modelo" src="{% static '../static/img/modelo(processamento).png' %}" alt=""></div>
+            <div class="modelo-ft"><img class="foto-modelo" src="{% static '../static/img/modelo(processamento).png' %}" alt=""></div>
+        </div>
+
+        <div class="text-forma-p2">
+            <div class="text1-forma-p2">
+                    <div class="texto-frase-de-efeito">
+                        <p><b>"Sua Formatação ABNT, Rápida e Sem Complicação. Apenas Digite e Pronto!"</b></p>
+                    </div>
+                    <div class="complemento-frase">
+                        <p>produza trabalhos acadêmicos de forma rápida e dinâmica</p>
+                    </div>
+            </div>
+            <div class="text2-forma-p2">
+                <h2 class="subtitulo-2">Opniões</h1>
+                <p class="text-1">Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis possimus
+                    , consectetur consequatur delectus maiores magnam provident consequuntur eligendi eos ut 
+                    distinctio quos exercitationem? Consequatur repudiandae ullam aperiam, deserunt quos accusantium.
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi illum sint voluptatum,
+                    exercitationem sequi quos numquam dolor cum. Temporibus sunt excepturi, natus expedita esse maxime aperiam maiores sed 
+                    obcaecati quidem! Lorem ipsum, dolor sit amet consectetur adipisicing elit. Labore, animi laboriosam 
+                    recusandae ipsa accusantium laborum sit? Earum cumque odio explicabo iusto? Eveniet distinctio itaque est cumque ab amet a facere.</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="forma-p3">
+        <h2 class="subtitulo-3">Quem somos?</h2>
+        <div class="perfis">
+            <div class="perfil">
+                <div class="img-perfil"><img class="img-devs" src="{% static '../static/img/perfil_Caio.jpeg' %}" alt="foto_Caio"></div>
+                <dir class="nome-perfil"><h3 class="nome-devs">Caio Duarte</h3></dir>
+                <div class="texto-perfil"><p class="texto-devs">graduando de engenharia de software do terceiro semestre pela Universidade de Brasília</p></div>
+                <div class="btns-social">
+                    <a href="https://github.com/CaioDuart3" target="_blank">
+                    <button class="githubButton">
+                        <img src="{% static '../static/img/icon-github.png' %}" alt="GitHub" class="button-icon">
+                        <b>Github</b>
+                    </button>
+                    </a>
+                    <a href="https://www.linkedin.com/in/caio-duarte-919481297/" target="_blank">
+                    <button class="linkedinButton">
+                        <img src="{% static '../static/img/icon-linkedin.png' %}" alt="LinkedIn" class="button-icon">
+                        <b>Linkedin</b>
+                    </button>
+                    </a>
+                </div>
+            </div>
+            <div class="perfil">
+                <div class="img-perfil"><img class="img-devs" src="{% static '../static/img/perfil_Mayara.jpeg' %}" alt="foto_Mayara"></div>
+                <dir class="nome-perfil"><h3 class="nome-devs">Mayara Marques</h3></dir>
+                <div class="texto-perfil"><p class="texto-devs">graduanda de engenharia de software do terceiro semestre pela Universidade de Brasília</p></div>
+                <div class="btns-social">
+                    <a href="https://github.com/maymarquee" target="_blank">
+                    <button class="githubButton">
+                        <img src="{% static '../static/img/icon-github.png' %}" alt="GitHub" class="button-icon">
+                        <b>Github</b>
+                    </button>
+                    </a>
+                    <a href="https://www.linkedin.com/in/mayara-marques-90189230b" target="_blank">
+                    <button class="linkedinButton">
+                        <img src="{% static '../static/img/icon-linkedin.png' %}" alt="LinkedIn" class="button-icon">
+                        <b>Linkedin</b>
+                    </button>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="forma-p4">
+        <h2 class="subtitulo-4">Dúvidas</h2>
+        <p class="text-forma-p4">Trabalho desenvolvido na disciplinha de <b>orientação a objetos da Universidade de Brasília</b>.
+            O ABNT model tem como objetivo principal ser um auxiliador na produção de trabalhos acadêmicos no formato das normas
+            da ABNT (Associação Brasileira de Normas Técnicas). 
+            <br><br>
+            <b>OBSERVAÇÕES:</b> o presente website em sua atual versão
+            não possui recursos suficientes para trabalhos complexos, em virtude disso indicamos ao caro usúario
+            usar além do ABNT model outras ferramentas para auxiliar (Google Docs, Microsoft Word), pois o presente site possui suporte a criação 
+            de trabalhos acadêmicos nos formatos: <b>pdf, docx e odt</b>.
+        </p>
+    </div>
+</body>
+<footer>
+
+</footer>
+
+
+<script>
+    // codigo gerado com gpt preciso entender
+    document.querySelectorAll('.options-nav').forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            const section = this.getAttribute('data-section');
+            scrollToSection(parseInt(section));
+        });
+    });
+
+    function scrollToSection(section) {
+        if (section === 1) {
+            document.getElementById('forma-p1').scrollIntoView({ behavior: 'smooth' });
+        } else if (section === 2) {
+            document.getElementById('forma-p2').scrollIntoView({ behavior: 'smooth' });
+        } else if (section === 3) {
+            document.getElementById('forma-p3').scrollIntoView({ behavior: 'smooth' });
+        } else if (section === 4) {
+            document.getElementById('forma-p4').scrollIntoView({ behavior: 'smooth' });
+        }
+    }
+</script>
+
+</html>

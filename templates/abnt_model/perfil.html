@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+{% load static%}
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../../static/styles/perfil.css" />
+    <title>ABNT model</title>
+  </head>
+  <body>
+    <div id="forma">
+      <div id="componentes">
+        <div id="componentes-sup">
+              <a id="subtitulo-voltar" href="{% url 'index' %}" 
+                ><img
+                  style="width: 30px"
+                  src="../../static/img/icon-voltar.png"
+                  alt="icone-voltar"/>
+                  <p>Voltar para o menu</p>
+              </a>
+          <div id="edit-icon">
+            <img
+              style="width: 30px"
+              src="../../static/img/edit-icon.png"
+              alt="icone-edit"
+            />
+          </div>
+        </div>
+
+        <div id="componentes-inf">
+          <div id="perfil-id">
+            <div class="foto-user">
+              <img
+                style="width: 160px"
+                src="../../static/img/perfil-user.png"
+                alt=""
+              />
+            </div>
+            <div class="id-forma">
+              <p class="id-text">21304027409829837470983243</p>
+            </div>
+          </div>
+          <div class="dados-pessoais-view">
+            <div>
+              <label class="label" for="name">Nome:</label>
+              <p class="infos">lorem</p>
+            </div>
+            <div>
+              <label class="label" for="Sobrenome">Sobrenome:</label>
+              <p class="infos">lore</p>
+            </div>
+            <div>
+              <label class="label" for="Email">Email:</label>
+              <p class="infos">jalimrabeh71@gmail.com</p>
+            </div>
+            <div>
+              <label class="label" for="Senha">Senha:</label>
+              <p class="infos">********</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

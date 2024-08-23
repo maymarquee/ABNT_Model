@@ -1,0 +1,234 @@
+:root{
+    --cor-fundo: #879BAF;
+    --cor-forma: #EDF0F3;
+}
+*{
+    padding: 0px;
+    margin: 0px;
+}
+body{
+    background-color: var(--cor-fundo);
+    padding: 32px 0px 0px 0px;
+}
+ .fundo-login{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--cor-fundo);
+}
+.forma-login{
+    display: flex;
+    padding: 20px;
+    align-items: center;
+    gap: 75.112px;
+    flex-shrink: 0;
+    border-radius: 50px;
+    background-color: var(--cor-forma);
+    box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.25);
+}
+.container-textos-botoes{
+    display: flex;
+    width: 489.795px;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    flex-shrink: 0;
+}
+.menor-container-textos-botoes{
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+.container-organizacao-textos{
+    display: flex;
+    padding: 8px;
+    justify-content: left;
+    flex-direction: column;
+    align-items: left;
+    gap: 8px;
+    align-self: stretch;
+}
+.container-texto-bem-vindo{
+    display: flex;
+    justify-content: left;
+    align-items: left;
+    gap: 8px;
+}
+.texto-bem-vindo{
+    color: #222;
+    font-family: "Crimson Text";
+    font-size: 50px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+} 
+.container-segundo-texto{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 7.824px;
+}
+.textos-segundo-texto{
+    display: flex;
+    padding: 0px;
+    justify-content: left;
+    align-items: left;
+    gap: 7.824px;
+}
+.texto-nao-possui-conta{
+    color: #222;
+    font-family: "Crimson Text";
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+.rota-cadastro{
+    color: #879BAF;
+    font-family: "Crimson Text";
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+.container-botoes-login{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+.container-escrita-email{
+    display: flex;
+    justify-content: left;
+    align-items: left;
+}
+.texto-email{
+    color: #222;
+    font-family: "Crimson Text";
+    font-size: 30px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+.container-borda-botao-email {
+    width: 100%; 
+    height: auto;
+}
+.botao-email{
+    width: 100%; /* dá a largura total do container pro botão*/
+    height: 40px; /* define a altura do botão */
+    padding: 10px;
+    padding-right: 45px;
+    border-radius: 15px;
+    background-size: 49px 49px;
+    border: 0.742px solid #3C3C3C; 
+    background-color: #FFF; 
+    font-size: 20px;
+}
+.container-botao-email{
+    width: 100%;
+    height: auto; 
+    display: flex;
+    align-items: center;
+}
+.container-imagem-email{
+    display: flex;
+    width: 50px;
+    height: auto;
+    padding: 7px; 
+    align-items: left;
+    gap: 7.824px;
+}
+.container-texto-senha{
+    display: flex;
+    width: 127px;
+    padding: 2px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 7.824px;
+}
+.container-escrita-senha{
+    display: flex;
+    align-items: center;
+    gap: 7.824px;
+    align-self: stretch;
+}
+.texto-senha{
+    color: #222;
+    font-family: "Crimson Text";
+    font-size: 30px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+.container-botao-senha{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    flex: 1 0 0;
+}
+.container-borda-botao-senha{
+    width: 100%;
+    height: auto; 
+    display: flex;
+    align-items: center;
+}
+.container-localizacao-botao-senha{
+    width: 100%; 
+    height: auto;
+}
+.botao-senha{
+    width: 100%; /* dá a largura total do container pro botão*/
+    height: 40px; /* define a altura do botão */
+    padding: 10px;
+    padding-right: 45px;
+    border-radius: 15px;
+    background-size: 49px 49px;
+    border: 0.742px solid #3C3C3C; 
+    background-color: #FFF; 
+    font-size: 20px;
+}
+.container-imagem-senha{
+    display: flex;
+    width: 50px;
+    height: auto;
+    padding: 7px; 
+    align-items: left;
+    gap: 7.824px;
+}
+.container-texto-esqueceu{
+    display: flex;
+    justify-content: right;
+    align-items: right;
+    gap: 7.824px; 
+}
+.texto-esqueceu{
+    color: var(--cor-fundo);
+    font-family: "Crimson Text";
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+.botao-entrar{
+    display: flex;
+    height: 66px;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    align-self: stretch;
+    border-radius: 15px;
+    background: var(--cor-fundo);
+    border: none;
+    color: #FFF;
+    font-size: 30px;
+    font-family: "Crimson Text";
+}
+.botao-entrar:hover{
+    cursor: pointer;
+    background: #6d859d;
+}
+.container-logo{
+    display: flex;
+    flex-direction: row-reverse;
+}

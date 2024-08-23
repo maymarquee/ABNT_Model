@@ -1,0 +1,417 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display+SC:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=Playfair+Display+SC:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=Playfair+Display+SC:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
+*{
+    padding: 0px;
+    margin: 0px;
+}
+
+:root {
+    --cor-topbar: #879BAF;
+    --cor-fundo: #EDF0F3;
+    --cor-fundo-escuro: #C7C7CA;
+    --cor-catalogo: #213A5C;
+    --texto: #2c2c2c;
+}
+body{
+    background-color: var(--cor-fundo);
+}
+.titulo-forma{
+    display: flex;
+    padding: 10px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+.titulo{
+    color: #FFF;
+    font-family: "Playfair Display SC", serif;
+font-size: 37px;
+font-style: normal;
+font-weight: 700;
+line-height: normal;
+}
+.forma-topbar{
+    display: flex;
+    height: 120px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    align-self: stretch;
+    background: var(--cor-topbar);
+}
+.forma-componentes-topbar{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 350px;
+    align-self: stretch;
+}
+
+.login-forma{
+    display: flex;
+    width: 145px;
+    height: 35px;
+    padding: 7px;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 10px;
+    background: var(--cor-fundo) ;
+    box-shadow: 0px 3px 3px 0px rgba(0, 0, 0, 0.25);
+}
+.login-forma:hover{
+    background: #d1d4d6;
+    box-shadow: none;
+    cursor: pointer;
+}
+.login-content{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+.text-login{
+    color: var(--texto);
+    text-align: right;
+    font-family: "Raleway", sans-serif;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+.catalogo{
+    display: flex;
+    align-items: center;
+    gap: 130px;
+    flex-shrink: 0;
+}
+nav{
+    color: var(--cor-catalogo);
+font-family: "Crimson Text", serif;
+font-size: 43px;
+font-style: normal;
+font-weight: 700;
+line-height: normal;
+}
+.options-nav{
+    color: var(--cor-catalogo);
+font-family: "Crimson Text", serif;
+font-size: 25px;
+font-style: normal;
+line-height: normal;
+text-decoration: none;
+}
+.options-nav:hover{
+    text-decoration: bold;
+    color: var(--cor-fundo);
+}
+
+/* ! corpo */
+
+#forma-p1{
+    display: flex;
+padding: 16px 32px;
+justify-content: space-between;
+align-self: stretch;
+gap: 32px;
+}
+.subtitulo-1{
+    color: var(--cor-catalogo);
+text-align: left;
+font-family: "Crimson Text", serif;
+font-size: 35px;
+font-style: normal;
+font-weight: 700;
+line-height: normal;
+}
+.text-1{
+
+    color: var(--cor-catalogo);
+text-align: justify;
+font-family: "Raleway", sans-serif;
+font-size: 20px;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
+}
+.apresentation{
+display: flex;
+flex-direction: row;
+align-items: flex-start;
+} 
+.foto-1{
+    width: 500px;
+height: 320px;
+flex-shrink: 0;
+border-radius: 10px;
+} 
+
+#forma-p2{
+    background-color: var(--cor-fundo-escuro);
+    display: flex;
+padding: 64px 128px;
+flex-direction: column;
+align-items: center;
+gap: 64px;
+align-self: stretch;
+}
+.modelos-texto{
+    display: flex;
+width: 1184px;
+justify-content: space-between;
+align-items: center;
+align-content: space-between;
+}
+.modelo-ft{
+    display: flex;
+width: 290px;
+height: 290px;
+justify-content: center;
+align-items: center;
+flex-shrink: 0;
+}
+.foto-modelo {
+    width: 290px;
+    height: 290px;
+    flex-shrink: 0;
+    box-shadow: 0px 3px 3px 0px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+    transition: filter 0.3s, transform 0.3s; /* Ajusta transição para o filtro e transformação */
+    object-fit: cover; /* Garante que a imagem se ajuste ao contêiner */
+}
+
+.foto-modelo:hover {
+    filter:  brightness(0.6) sepia(0.5) hue-rotate(120deg); /* Aplica um filtro na imagem no hover */
+    transform: scale(1.05); /* Aumenta o tamanho da imagem levemente */
+    cursor: pointer; /* Muda o cursor para indicar que a imagem é clicável */
+}
+
+.text-forma-p2{
+    display: flex;
+justify-content: center;
+align-items: center;
+gap: 80px;
+align-self: stretch; 
+}
+
+.text1-forma-p2{
+    display: flex;
+height: 220px;
+width: 300px;
+flex-direction: column;
+align-items: center;
+gap: 10px;
+}
+/* .frase-de-efeito{
+    display: flex;
+justify-content: center;
+align-items: center;
+gap: -10px;
+} */
+.texto-frase-de-efeito{
+    color: var(--texto);
+    font-weight: 700;
+text-align: left;
+font-family: "Crimson Text", serif;
+font-size: 35px;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
+}
+.complemento-frase{
+
+    color: var(--texto);
+    font-family: "Raleway", sans-serif;
+font-size: 14px;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
+}
+.text2-forma-p2{
+    display: flex;
+flex-direction: column;
+align-items: flex-end;
+flex: 1 0 0;
+align-self: stretch;
+}
+.subtitulo-2{
+    color: var(--cor-catalogo);
+text-align: right;
+font-family: "Crimson Text", serif;
+font-size: 45px;
+font-style: normal;
+font-weight: 700;
+line-height: normal;
+}
+
+/* ! parte-3 */
+#forma-p3{
+display: flex;
+justify-content: center;
+align-items: center;
+align-content: center;
+gap: 20px;
+align-self: stretch;
+flex-wrap: wrap;
+flex-direction: column;
+}
+.subtitulo-3{
+color: var(--texto);
+padding: 10px 0px 0px 0px;
+text-align: center;
+font-family: "Crimson Text", serif;
+font-size: 45px;
+font-style: normal;
+font-weight: 700;
+line-height: normal;
+}
+.perfis{
+display: flex;
+justify-content: center;
+align-items: center;
+gap: 160px;
+}
+.perfil{
+    display: flex;
+    width: 350px;
+    height: 475px;
+    flex-direction: column;
+    align-items: center;
+    gap: 7px;
+    flex-shrink: 0;
+}
+.img-perfil{
+    display: flex;
+    padding: 7px;
+    align-items: center;
+    gap: 7px;
+}
+.img-devs {
+    width: 165px; /* Largura do círculo */
+    height: 165px; /* Altura do círculo */
+    border-radius: 50%; /* Torna a imagem circular */
+    object-fit: cover; /* Faz com que a imagem cubra o círculo sem distorção */
+    display: block; /* Garante que não haja espaçamento indesejado ao redor da imagem */
+    overflow: hidden; /* Garante que a imagem não ultrapasse o círculo */
+}
+
+.nome-perfil{
+    display: flex;
+    padding: 7px;
+    justify-content: center;
+    align-items: center;
+    gap: 7px;
+}
+.nome-devs{
+    color: var(--texto);
+    font-family: "Crimson Text", serif;
+font-size: 32px;
+font-style: normal;
+font-weight: 600;
+line-height: normal;
+}
+.texto-perfil{
+    display: flex;
+    width: 260px;
+    padding: 7px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 7px;
+}
+.texto-devs{
+    color: var(--texto);
+text-align: justify;
+font-family: "Raleway", sans-serif;
+font-size: 20px;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
+}
+
+.btns-social{
+    display: flex;
+justify-content: space-between;
+align-items: center;
+align-content: space-between;
+gap:10px
+}
+/* Estilo para o botão LinkedIn */
+.linkedinButton {
+    display: flex; /* Usa flexbox para alinhar o conteúdo do botão */
+    align-items: center; /* Alinha o conteúdo verticalmente no centro */
+    background-color: #0077b5; /* Cor de fundo do botão (cor do LinkedIn) */
+    border: none; /* Remove a borda padrão do botão */
+    color: white; /* Cor do texto */
+    padding: 10px 20px; /* Espaçamento interno do botão */
+    font-size: 16px; /* Tamanho da fonte do texto */
+    font-family: "Raleway", sans-serif;
+    cursor: pointer; /* Muda o cursor para indicar que é clicável */
+    border-radius: 5px; /* Adiciona bordas arredondadas */
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.linkedinButton .button-icon {
+    width: 24px; /* Largura da imagem */
+    height: 24px; /* Altura da imagem */
+    margin-right: 8px; /* Espaço entre a imagem e o texto */
+}
+
+.linkedinButton:hover {
+    background-color: #005582; /* Cor de fundo do botão ao passar o mouse */
+    transform: scale(1.05);
+}
+/* Estilo para o botão GitHub */
+.githubButton {
+    display: flex; /* Usa flexbox para alinhar o conteúdo do botão */
+    align-items: center; /* Alinha o conteúdo verticalmente no centro */
+    background-color: #333; /* Cor de fundo do botão (preto GitHub) */
+    border: none; /* Remove a borda padrão do botão */
+    color: white; /* Cor do texto */
+    padding: 10px 20px; /* Espaçamento interno do botão */
+    font-size: 16px; /* Tamanho da fonte do texto */
+    font-family: "Raleway", sans-serif;
+    cursor: pointer; /* Muda o cursor para indicar que é clicável */
+    border-radius: 5px; /* Adiciona bordas arredondadas */
+    transition: background-color 0.3s, transform 0.3s; /* Transições suaves para cor e transformação */
+}
+
+.githubButton .button-icon {
+    width: 24px; /* Largura da imagem */
+    height: 24px; /* Altura da imagem */
+    margin-right: 8px; /* Espaço entre a imagem e o texto */
+}
+
+.githubButton:hover {
+    background-color: #555; /* Cor de fundo do botão ao passar o mouse (cinza claro) */
+    transform: scale(1.05); /* Aumenta levemente o botão ao passar o mouse */
+}
+a{
+    text-decoration: none;
+    color: white;
+}
+
+#forma-p4{
+    background: var(--cor-catalogo);
+    padding: 40px;
+    display: flex;
+justify-content: center;
+align-items: left;
+gap: -10px;
+flex-direction: column;
+} 
+.text-forma-p4{
+    color: var(--cor-fundo);
+    font-size: 15px;
+    font-family: "Raleway", sans-serif;
+}
+.subtitulo-4{
+    color: var(--cor-fundo);
+    text-align: left;
+    font-family: "Crimson Text", serif;
+    font-size: 35px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
