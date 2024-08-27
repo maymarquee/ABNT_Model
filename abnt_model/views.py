@@ -1,6 +1,7 @@
 from pyexpat.errors import messages
 from django.shortcuts import redirect, render
 from django.http import HttpResponse
+from django.contrib.auth import authenticate, login as auth_login
 from django.contrib import messages
 from .models import Usuario
 
@@ -11,9 +12,16 @@ def perfil(request):
     return render(request, 'abnt_model/perfil.html')
 
 def login(request):
+    if request.method == "POST":
+        email = request.POST.get("email")
+        senha = request.POST.get("senha")  # Corrigido para pegar a senha
+        user = Usuario.objects.get(email=email, senha=senha) #caça na tabela usuarios o email e a senha
+        # Verificar se o usuário existe e a senha está correta
+        if user is not None: #se ele achar fica não nulo.
+            return redirect('index')
+        elif Usuario.DoesNotExist:
+            return render(request, 'abnt_model/login.html', {'message': 'E-mail ou senha inválidos.'})
     return render(request, 'abnt_model/login.html')
-
-
 
 def cadastro(request):
     if request.method == "POST":
@@ -24,7 +32,7 @@ def cadastro(request):
         novo_usuario.senha = request.POST.get("senha")
         novo_usuario.confirmar_senha = request.POST.get("confirmar_senha")
 
-        if Usuario.senha != Usuario.confirmar_senha:
+        if novo_usuario.senha != novo_usuario.confirmar_senha:
             messages.error(request,'ás senhas não coincidem.')
             print('ás senhas não coincidem.')
             return redirect('cadastro')
@@ -35,3 +43,6 @@ def cadastro(request):
             return redirect('index')
 
     return render(request, 'abnt_model/cadastro.html')
+
+
+

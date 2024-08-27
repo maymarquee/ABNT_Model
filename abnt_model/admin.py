@@ -9,3 +9,4 @@ class UsuarioAdmin(admin.ModelAdmin):
     list_display = ('id_usuario', 'nome', 'sobrenome', 'email')
     search_fields = ('nome', 'email')
 
+# todo entender como isso funciona
