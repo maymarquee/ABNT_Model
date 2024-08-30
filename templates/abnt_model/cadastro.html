@@ -1,57 +1,64 @@
-{% extends "abnt_model/login.html" %}
+<!DOCTYPE html>
 {% load static %}
-{% block content %}
-<form action="{% url 'cadastro' %}" method="post">
-    {% csrf_token %} 
-<!-- obrigatorio de ter em toda tag form -->
-    <div class="container">
-        <div class="cadastrar">
-            
-            <div class="textos">
-                <h1>Bem vindo!</h1>
-                <p>Já possui uma conta? <a class="rota-login" href="{% url 'login' %}">Faça login</a></p>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ABNT model</title>
+    <link rel="shortcut icon" href="{% static '../static/img/ICONS_OO-removebg-preview.webp' %}" type="image/x-icon">
+    <link rel="stylesheet" href="{% static '../static/styles/login.css' %}">
+    <link rel="stylesheet" href="{% static '../static/styles/cadastro.css' %}">
+</head>
+<body>
+    <form action="{% url 'cadastro' %}" method="POST">
+        {% csrf_token %} 
+    <!-- obrigatorio de ter em toda tag form -->
+        <div class="fundo-login">
+            <div class="forma-login">
+                <div class="container">
+                    <div class="cadastrar">
+                
+                        <div class="textos">
+                            <h1>Bem vindo!</h1>
+                            <p>Já possui uma conta? <a class="rota-login" href="{% url 'login' %}">Faça login</a></p>
+                        </div>
+                        <div class="container-inputs">
+                            <div class="nome-sobrenome">
+                                <div class="nome">
+                                    <p class="label">Nome:</p>
+                                    <input name="nome" type="text" class="inputs">
+                                </div>
+                                <div class="sobrenome">
+                                    <p class="label">Sobrenome:</p>
+                                    <input name="sobrenome" type="text" class="inputs">
+                                </div>
+                            </div>
+                            <div class="email">
+                                <p class="label">Email:</p>
+                                <input name="email" type="text" class="inputs">
+                            </div>
+                            <div class="container-senhas">
+                                <div class="senha">
+                                    <p class="label">Senha:</p>
+                                    <input name="senha" type="password" class="inputs">
+                                </div>
+                                <div class="confirmar-senha">
+                                    <p class="label">Confirmar senha:</p>
+                                    <input name="confirmar_senha" type="password" class="inputs">
+                                </div>
+                            </div>
+                        </div>
+                        <input class="botao-cadastrar" type="submit" value="CADASTRAR">
+                    </div>
+                    <div class="container-imagens">
+                        <div class="container-logo">
+                            <a href="{% url 'index' %}"><img style="width: 80px;" src="{% static '../static/img/ICONS_OO-removebg-preview.webp' %}" alt=""></a>
+                        </div>
+                        <img style="width: 320px;" src="{% static '../static/img/computador.png' %}" alt="">
+                    </div>
+                </div>
             </div>
-
-            <div class="container-inputs">
-
-                <div class="nome-sobrenome">
-                    <div class="nome">
-                        <p class="label">Nome:</p>
-                        <input name="nome" type="text" class="inputs">
-                    </div>
-                    <div class="sobrenome">
-                        <p class="label">Sobrenome:</p>
-                        <input name="sobrenome" type="text" class="inputs">
-                    </div>
-                </div>
-
-                <div class="email">
-                    <p class="label">Email:</p>
-                    <input name="email" type="text" class="inputs">
-                </div>
-
-                <div class="container-senhas">
-                    <div class="senha">
-                        <p class="label">Senha:</p>
-                        <input name="senha" type="password" class="inputs">
-                    </div>
-                    <div class="confirmar-senha">
-                        <p class="label">Confirmar senha:</p>
-                        <input name="confirmar_senha" type="password" class="inputs">
-                    </div>
-                </div>
-
-            </div>
-
-            <input class="botao-cadastrar" type="submit" value="CADASTRAR">
-
         </div>
-        <div class="container-imagens">
-            <div class="container-logo">
-                <a href="{% url 'index' %}"><img style="width: 80px;" src="{% static '../static/img/ICONS_OO-removebg-preview.webp' %}" alt=""></a>
-            </div>
-            <img style="width: 320px;" src="{% static '../static/img/computador.png' %}" alt="">
-        </div>
-    </div>
-</form>
-{% endblock %}
+    </form>
+</body>
+</html>

@@ -17,12 +17,13 @@
 body{
     background-color: var(--cor-fundo);
 }
-.titulo-forma{
+.titulo_forma{
     display: flex;
     padding: 10px;
     justify-content: center;
     align-items: center;
     gap: 10px;
+    
 }
 .titulo{
     color: #FFF;
@@ -32,7 +33,7 @@ body{
     font-weight: 700;
     line-height: normal;
 }
-.forma-topbar{
+.forma_topbar{
     display: flex;
     height: 120px;
     flex-direction: column;
@@ -41,44 +42,91 @@ body{
     align-self: stretch;
     background: var(--cor-topbar);
 }
-.forma-componentes-topbar{
+.forma_componentes_topbar{
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 350px;
     align-self: stretch;
 }
+/* Estilos gerais do dropdown */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
 
-.login-forma{
-    display: flex;
-    width: 145px;
-    height: 35px;
-    padding: 7px;
-    justify-content: space-between;
-    align-items: center;
-    border-radius: 10px;
-    background: var(--cor-fundo) ;
-    box-shadow: 0px 3px 3px 0px rgba(0, 0, 0, 0.25);
-}
-.login-forma:hover{
-    background: #d1d4d6;
-    box-shadow: none;
+/* Estilo do botão do dropdown */
+.dropdown-button {
+    background-color: var(--cor-fundo);
+    color: var(--texto);
+    border: none;
+    padding: 10px 20px;
+    font-family: "Raleway", sans-serif;
+    font-size: 16px;
+    border-radius: 5px;
     cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: background-color 0.3s, box-shadow 0.3s;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
-.login-content{
+
+/* Estilo para o ícone da seta no botão */
+.arrow-down {
+    font-size: 14px;
+}
+
+/* Estilo para o botão ao passar o mouse */
+.dropdown-button:hover {
+    background-color: var(--cor-fundo-escuro); 
+    box-shadow: none;
+}
+
+/* Estilo para o conteúdo do dropdown */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    top: 48px;
+    right: 0;
+    background-color: var(--cor-fundo);
+    min-width: 182px;
+    border-radius: 0px 0px 5px 5px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    transition: opacity 0.3s, visibility 0.3s;
+    opacity: 0;
+    visibility: hidden;
+}
+
+/* Exibe o conteúdo do dropdown quando o botão é clicado */
+.dropdown:hover .dropdown-content {
+    display: block;
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Estilo para cada item do dropdown */
+.dropdown-content a {
+    color: #333;
+    padding: 12px 16px;
+    text-decoration: none;
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 10px;
+    transition: background-color 0.3s, color 0.3s;
+    border-bottom: 1px solid #ddd;
 }
-.text-login{
-    color: var(--texto);
-    text-align: right;
-    font-family: "Raleway", sans-serif;
-    font-size: 20px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
+
+/* Remove a borda inferior do último item */
+.dropdown-content a:last-child {
+    border-bottom: none;
+}
+
+/* Muda a cor de fundo e o texto quando o usuário passa o mouse sobre um item do dropdown */
+.dropdown-content a:hover {
+    background-color: var(--cor-fundo-escuro);
+    color: #000;
 }
 .catalogo{
     display: flex;
@@ -94,7 +142,7 @@ nav{
     font-weight: 700;
     line-height: normal;
 }
-.options-nav{
+.options_nav{
     color: var(--cor-catalogo);
     font-family: "Crimson Text", serif;
     font-size: 25px;
@@ -102,21 +150,21 @@ nav{
     line-height: normal;
     text-decoration: none;
 }
-.options-nav:hover{
+.options_nav:hover{
     text-decoration: bold;
     color: var(--cor-fundo);
 }
 
 /* ! corpo */
 
-#forma-p1{
+#forma_p1{
     display: flex;
     padding: 16px 32px;
     justify-content: space-between;
     align-self: stretch;
     gap: 32px;
 }
-.subtitulo-1{
+.subtitulo_1{
     color: var(--cor-catalogo);
     text-align: left;
     font-family: "Crimson Text", serif;
@@ -125,7 +173,7 @@ nav{
     font-weight: 700;
     line-height: normal;
 }
-.text-1{
+.text_1{
 
     color: var(--cor-catalogo);
     text-align: justify;
@@ -140,30 +188,37 @@ nav{
     flex-direction: row;
     align-items: flex-start;
 } 
-.foto-1{
+.foto_1{
     width: 500px;
     height: 320px;
     flex-shrink: 0;
     border-radius: 10px;
 } 
 
-#forma-p2{
-    background-color: var(--cor-fundo-escuro);
+#forma_p2{
+    background: var(--cor-fundo-escuro);
     display: flex;
     padding: 64px 128px;
     flex-direction: column;
     align-items: center;
-    gap: 64px;
     align-self: stretch;
 }
-.modelos-texto{
+.conteudo_p2{
+    
     display: flex;
-    width: 1184px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+}
+.modelos_texto{
+    display: flex;
+    gap: 80px;
     justify-content: space-between;
     align-items: center;
     align-content: space-between;
 }
-.modelo-ft{
+.modelo_ft{
     display: flex;
     width: 290px;
     height: 290px;
@@ -171,7 +226,7 @@ nav{
     align-items: center;
     flex-shrink: 0;
 }
-.foto-modelo{
+.foto_modelo{
     width: 290px;
     height: 290px;
     flex-shrink: 0;
@@ -181,45 +236,37 @@ nav{
     object-fit: cover; /* Garante que a imagem se ajuste ao contêiner */
 }
 
-.foto-modelo:hover{
+.foto_modelo:hover{
     filter:  brightness(0.6) sepia(0.5) hue-rotate(120deg); /* Aplica um filtro na imagem no hover */
     transform: scale(1.05); /* Aumenta o tamanho da imagem levemente */
     cursor: pointer; /* Muda o cursor para indicar que a imagem é clicável */
 }
 
-.text-forma-p2{
+.text_forma_p2{
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 80px;
-    align-self: stretch; 
+    gap: 60px;
+}
+.text_forma_p2 div{
+    flex: 1;
 }
 
-.text1-forma-p2{
+.text1_forma_p2{
     display: flex;
-    height: 220px;
-    width: 300px;
     flex-direction: column;
     align-items: center;
     gap: 10px;
 }
-/* .frase-de-efeito{
-    display: flex;
-justify-content: center;
-align-items: center;
-gap: -10px;
-} */
-.texto-frase-de-efeito{
+
+.texto_frase_de_efeito{
     color: var(--texto);
     font-weight: 700;
     text-align: left;
     font-family: "Crimson Text", serif;
-    font-size: 35px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
+    font-size: 30px;
 }
-.complemento-frase{
+.complemento_frase{
 
     color: var(--texto);
     font-family: "Raleway", sans-serif;
@@ -228,14 +275,13 @@ gap: -10px;
     font-weight: 400;
     line-height: normal;
 }
-.text2-forma-p2{
+.text2_forma_p2{
     display: flex;
     flex-direction: column;
     align-items: flex-end;
-    flex: 1 0 0;
     align-self: stretch;
 }
-.subtitulo-2{
+.subtitulo_2{
     color: var(--cor-catalogo);
     text-align: right;
     font-family: "Crimson Text", serif;
@@ -246,7 +292,7 @@ gap: -10px;
 }
 
 /* ! parte-3 */
-#forma-p3{
+#forma_p3{
     display: flex;
     justify-content: center;
     align-items: center;
@@ -256,7 +302,7 @@ gap: -10px;
     flex-wrap: wrap;
     flex-direction: column;
 }
-.subtitulo-3{
+.subtitulo_3{
     color: var(--texto);
     padding: 10px 0px 0px 0px;
     text-align: center;
@@ -281,13 +327,13 @@ gap: -10px;
     gap: 7px;
     flex-shrink: 0;
 }
-.img-perfil{
+.img_perfil{
     display: flex;
     padding: 7px;
     align-items: center;
     gap: 7px;
 }
-.img-devs {
+.img_devs {
     width: 165px; /* Largura do círculo */
     height: 165px; /* Altura do círculo */
     border-radius: 50%; /* Torna a imagem circular */
@@ -296,14 +342,14 @@ gap: -10px;
     overflow: hidden; /* Garante que a imagem não ultrapasse o círculo */
 }
 
-.nome-perfil{
+.nome_perfil{
     display: flex;
     padding: 7px;
     justify-content: center;
     align-items: center;
     gap: 7px;
 }
-.nome-devs{
+.nome_devs{
     color: var(--texto);
     font-family: "Crimson Text", serif;
     font-size: 32px;
@@ -311,7 +357,7 @@ gap: -10px;
     font-weight: 600;
     line-height: normal;
 }
-.texto-perfil{
+.texto_perfil{
     display: flex;
     width: 260px;
     padding: 7px;
@@ -320,7 +366,7 @@ gap: -10px;
     align-items: center;
     gap: 7px;
 }
-.texto-devs{
+.texto_devs{
     color: var(--texto);
     text-align: justify;
     font-family: "Raleway", sans-serif;
@@ -330,7 +376,7 @@ gap: -10px;
     line-height: normal;
 }
 
-.btns-social{
+.btns_social{
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -352,7 +398,7 @@ gap: -10px;
     transition: background-color 0.3s, transform 0.3s;
 }
 
-.linkedinButton .button-icon {
+.linkedinButton .button_icon {
     width: 24px; /* Largura da imagem */
     height: 24px; /* Altura da imagem */
     margin-right: 8px; /* Espaço entre a imagem e o texto */
@@ -377,7 +423,7 @@ gap: -10px;
     transition: background-color 0.3s, transform 0.3s; /* Transições suaves para cor e transformação */
 }
 
-.githubButton .button-icon {
+.githubButton .button_icon {
     width: 24px; /* Largura da imagem */
     height: 24px; /* Altura da imagem */
     margin-right: 8px; /* Espaço entre a imagem e o texto */
@@ -392,7 +438,7 @@ a{
     color: white;
 }
 
-#forma-p4{
+#forma_p4{
     background: var(--cor-catalogo);
     padding: 0px;
     display: flex;
@@ -403,13 +449,13 @@ a{
     height: 350px;
     /* editar espaçamento das escritas na parte de dúvidas */
 } 
-.text-forma-p4{
+.text-forma_p4{
     color: var(--cor-fundo);
     font-size: 20px;
     font-family: "Raleway", sans-serif;
     height: 100px;
 }
-.subtitulo-4{
+.subtitulo_4{
     color: var(--cor-fundo);
     text-align: left;
     font-family: "Crimson Text", serif;
