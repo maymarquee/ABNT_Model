@@ -120,7 +120,7 @@ body{
 /* Remove a borda inferior do último item */
 .dropdown-content a:last-child {
     border-bottom: none;
-    border-radius: 0px 0px 5px 5px;
+    border-radius: 5px;
 }
 
 /* Muda a cor de fundo e o texto quando o usuário passa o mouse sobre um item do dropdown */
