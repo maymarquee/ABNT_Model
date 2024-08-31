@@ -18,13 +18,15 @@
                   alt="icone-voltar"/>
                   <p>Voltar para o menu</p>
               </a>
-          <div id="edit-icon">
-            <img
-              style="width: 30px"
-              src="../../static/img/edit-icon.png"
-              alt="icone-edit"
-            />
-          </div>
+          <a href="{% url 'perfil_editar' %}">
+            <div id="edit-icon">
+              <img
+                style="width: 30px"
+                src="../../static/img/edit-icon.png"
+                alt="icone-edit"
+              />
+            </div>
+          </a>
         </div>
 
         <div id="componentes-inf">
@@ -35,9 +37,6 @@
                 src="../../static/img/perfil-user.png"
                 alt=""
               />
-            </div>
-            <div class="id-forma">
-              <p class="id-text">{{ id }}</p>
             </div>
           </div>
           <div class="dados-pessoais-view">
@@ -52,10 +51,6 @@
             <div>
               <label class="label" for="Email">Email:</label>
               <p class="infos">{{ email }}</p>
-            </div>
-            <div>
-              <label class="label" for="Senha">Senha:</label>
-              <p class="infos">{{ senha }}</p>
             </div>
           </div>
         </div>

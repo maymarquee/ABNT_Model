@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+{% load static%}
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{% static '../static/styles/perfil.css' %}" />
+    <title>ABNT model</title>
+  </head>
+  <body style="background: #46617c;">
+    <form action="{% url 'perfil_editar' %}" method="POST" >
+        {% csrf_token %} 
+        <div id="forma">
+          <div id="componentes">
+            <div id="componentes-sup">
+                  <a id="subtitulo-voltar" href="{% url 'index' %}"
+                    ><img
+                      style="width: 30px"
+                      src="../../static/img/icon-voltar.png"
+                      alt="icone-voltar"/>
+                      <p>Voltar para o menu</p>
+                  </a>
+                <div id="edit-icon">
+                  <img
+                    style="width: 30px"
+                    src="../../static/img/edit-icon.png"
+                    alt="icone-edit"
+                  />
+                </div>
+            </div>
+            <div id="componentes-inf">
+              <div id="perfil-id">
+                <div class="foto-user">
+                  <img
+                    style="width: 160px"
+                    src="../../static/img/perfil-user.png"
+                    alt=""
+                  />
+                </div>
+              </div>
+              <div class="dados-pessoais-view">
+                <div>
+                  <label class="label" for="name">Nome:</label>
+                  <input name="nome" class="infos" type="text" value="{{ nome }}">
+                </div>
+                <div>
+                  <label class="label" for="Sobrenome">Sobrenome:</label>
+                  <input name="sobrenome" class="infos" type="text" value="{{ sobrenome }}">
+                </div>
+                <div>
+                  <label class="label" for="Email">Email:</label>
+                  <input name="email" class="infos" type="text" value="{{ email }}">
+                </div>
+                <div>
+                  <label class="label" for="Senha">Mudar senha:</label>
+                  <input name="senha" class="infos" type="text" value="{{ senha }}" placeholder="digite aqui caso deseje mudar a senha.">
+                </div>
+              </div>
+            </div>
+            <section class="container_btn_edit">
+                <a class="redirecionamento_edit" href=""><button class="btn_edit_perfil_cancelar">CANCELAR EDIÇÃO</button></a>
+                <button class="btn_edit_perfil_salvar" type="submit">SALVAR EDIÇÃO</button>
+            </section>
+          </div>
+        </div>
+    </form>
+  </body>
+</html>

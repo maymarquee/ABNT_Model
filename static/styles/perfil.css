@@ -3,12 +3,12 @@
     margin: 0px;
 }
 :root{
-    --cor-fundo:#879BAF;
+    --cor-fundo: #879BAF;
     --cor-forma:#EDF0F3;
 }
 body{
 display: flex;
-padding: 74px 64px;
+padding: 64px 32px;
 flex-direction: column;
 justify-content: center;
 align-items: center;
@@ -102,3 +102,46 @@ border: solid 1px black;
 .label{
     font-weight: bold;
 }
+.container_btn_edit{
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    gap: 30px;
+    flex-shrink: 0;
+}
+.btn_edit_perfil_salvar{
+    border-radius: 8px;
+    background: #45DB54;
+    display: flex;
+    padding: 12px;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    border: none;
+    color: #fff;
+    box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.25);
+}
+.btn_edit_perfil_cancelar{
+    border-radius: 8px;
+    background: #DB4545;
+    display: flex;
+    padding: 12px;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    border: none;
+    color: #fff;
+    box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.25);
+}
+.btn_edit_perfil_cancelar:hover{
+    background: #ac3333;
+    box-shadow: none;
+}
+.btn_edit_perfil_salvar:hover{
+    background: #309c3a;
+    box-shadow: none;
+}
+.redirecionamento_edit{
+    text-decoration: none;
+}
+
