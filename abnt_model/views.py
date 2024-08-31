@@ -1,7 +1,7 @@
 from django.shortcuts import redirect, render
 from django.http import HttpResponse
 from django.contrib.auth.models import User
-from django.contrib.auth import authenticate, login,logout
+from django.contrib.auth import authenticate, login,logout,  update_session_auth_hash
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 
@@ -19,26 +19,24 @@ def desconectar(request):
         logout(request)
         return redirect('index')
 
-from django.contrib import messages
-from django.shortcuts import render, redirect
-from django.contrib.auth import update_session_auth_hash
-from django.contrib.auth.models import User
+
 
 def perfil_editar(request):
+    context = {
+        "nome": request.user.first_name,
+        "sobrenome": request.user.last_name,
+        "email": request.user.email
+    }
+
     if request.method == "POST":
         novo_nome = request.POST.get("nome")
         novo_sobrenome = request.POST.get("sobrenome")
         novo_email = request.POST.get("email")
         nova_senha = request.POST.get("senha")
         
-        if not (novo_nome and novo_sobrenome and novo_email):
-            messages.error(request, "Todos os campos obrigatórios devem ser preenchidos.")
-            return render(request, 'abnt_model/perfil_editar.html', context={
-                "nome": request.user.first_name,
-                "sobrenome": request.user.last_name,
-                "email": request.user.email
-            })
 
+        if not (novo_nome and novo_sobrenome and novo_email):
+            return render(request, 'abnt_model/perfil_editar.html', context)
         try:
             user = User.objects.get(email=request.user.email)
             user.first_name = novo_nome
@@ -55,15 +53,8 @@ def perfil_editar(request):
             return redirect('perfil')
 
         except User.DoesNotExist:
-            messages.error(request, "Usuário não encontrado.")
             return redirect('perfil_editar')
-
     else:
-        context = {
-            "nome": request.user.first_name,
-            "sobrenome": request.user.last_name,
-            "email": request.user.email
-        }
         return render(request, 'abnt_model/perfil_editar.html', context)
 
 def perfil(request):
