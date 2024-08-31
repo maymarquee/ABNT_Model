@@ -87,7 +87,7 @@ body{
 .dropdown-content {
     display: none;
     position: absolute;
-    top: 48px;
+    top: 46px;
     right: 0;
     background-color: var(--cor-fundo);
     min-width: 182px;
@@ -98,7 +98,6 @@ body{
     opacity: 0;
     visibility: hidden;
 }
-
 /* Exibe o conteúdo do dropdown quando o botão é clicado */
 .dropdown:hover .dropdown-content {
     display: block;
@@ -121,12 +120,14 @@ body{
 /* Remove a borda inferior do último item */
 .dropdown-content a:last-child {
     border-bottom: none;
+    border-radius: 0px 0px 5px 5px;
 }
 
 /* Muda a cor de fundo e o texto quando o usuário passa o mouse sobre um item do dropdown */
 .dropdown-content a:hover {
     background-color: var(--cor-fundo-escuro);
     color: #000;
+    border-radius: 0px 0px 5px 5px;
 }
 .catalogo{
     display: flex;
