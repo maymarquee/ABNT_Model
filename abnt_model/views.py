@@ -4,10 +4,13 @@ from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login,logout,  update_session_auth_hash
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
+from django.core.mail import send_mail
+from setup import settings
+from django.contrib.auth.tokens import PasswordResetTokenGenerator
+
 
 def index(request):
     autenticado = request.user.is_authenticated
-    print(f'autenticado:{autenticado}')
     context={
         "autenticado":autenticado
     }
@@ -57,6 +60,41 @@ def perfil_editar(request):
     else:
         return render(request, 'abnt_model/perfil_editar.html', context)
 
+
+def recuperar_conta(request):
+
+    # todo: falta colocar um link na mensagem para enviar para uma pagina de redefinir senha.
+    # ! fazer tratamento de erros, em caso do email não existir
+
+    if request.method == "POST":
+        email = request.POST.get("email")
+
+        if User.objects.filter(email__exact=email).exists():
+            gerador_de_token = PasswordResetTokenGenerator()
+            user = User.objects.get(email=email)
+            token = gerador_de_token.make_token(user)
+            username = user.username
+            context = {
+                "status_de_envio": True,
+                "username":username,
+                "token":token
+            }
+
+            send_mail(
+                subject="Redefinição de senha",
+                message="Uma requisição de redefinição de senha foi feita no site MedConnect para a conta vinculada a este email, para prosseguir com a redefinição basta acessar o seguinte. Caso a requisição não tenha sido feita por você por favor ignore este email.",
+                from_email=settings.EMAIL_HOST_USER,
+                recipient_list=[email]
+            )
+
+            return render(request, 'abnt_model/recuperar_conta.html',context)
+        else:
+            return render(request, 'abnt_model/recuperar_conta.html')
+
+    return render(request, 'abnt_model/recuperar_conta.html', context={"status_de_envio": False})
+
+
+
 def perfil(request):
     context = {
         "nome": request.user.first_name,
@@ -67,15 +105,11 @@ def perfil(request):
 
 
 def login_view(request):
-    print('teste')
     if request.method == "POST":
         email = request.POST.get("email")
         senha = request.POST.get("senha")
         user = authenticate(username=email,password=senha)
-        print('O POST FUNCIONOU EM LOGIN')
-        print(user)
         if user is not None:
-            print('logado')
             login(request,user)
             return redirect('index')
         else:

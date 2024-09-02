@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+{% load static%}
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="{% static '../static/img/ICONS_OO-removebg-preview.webp' %}" type="image/x-icon">
+    <link rel="stylesheet" href="../../static/styles/perfil.css" />
+    <title>ABNT Model</title>
+  </head>
+<body>
+
+    <form action="{% url 'recuperar_conta' %}" method="POST">
+        {% csrf_token %} 
+        <div id="forma">
+            <div id="componentes">
+                {% if status_de_envio == False%}
+
+                <h1>Recuperar Conta</h1>
+                <p>digite um email em que você tenha acesso para receber um email de redefinição de senha.</p>
+                <label for="email">Email:</label>
+                <input name="email" type="email" id="email" placeholder="digite aqui.">
+                <button type="submit">Confirmar</button>
+
+                {% else %}
+                <p> o email foi enviado com sucesso para {{ username }}, cheque sua caixa postal.</p>
+
+                {% endif %}
+            </div>
+        </div>
+    </form>
+
+</body>
+</html>
