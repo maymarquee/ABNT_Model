@@ -61,9 +61,31 @@ def perfil_editar(request):
         return render(request, 'abnt_model/perfil_editar.html', context)
 
 
+def redefinir_senha(request, username, token):
+    usuario = User.objects.get(username=username)
+    senha = request.POST.get("senha")
+    confirmar_senha = request.POST.get("confirmar_senha")
+
+    if request.method == "POST":
+        if senha != confirmar_senha:
+            return redirect("redefinir_senha", username, token)
+
+        usuario.set_password(senha)
+        usuario.save(force_update=True)
+
+        return redirect("login")
+
+    gerador = PasswordResetTokenGenerator()
+
+    if gerador.check_token(usuario, token):
+
+        context = {"username":username, "token":token}
+
+        return render(request,'abnt_model/redefinir_senha.html', context)
+
+
 def recuperar_conta(request):
 
-    # todo: falta colocar um link na mensagem para enviar para uma pagina de redefinir senha.
     # ! fazer tratamento de erros, em caso do email não existir
 
     if request.method == "POST":
@@ -82,14 +104,14 @@ def recuperar_conta(request):
 
             send_mail(
                 subject="Redefinição de senha",
-                message="Uma requisição de redefinição de senha foi feita no site MedConnect para a conta vinculada a este email, para prosseguir com a redefinição basta acessar o seguinte. Caso a requisição não tenha sido feita por você por favor ignore este email.",
+                message=f"Uma requisição de redefinição de senha foi feita no site ABNT Model para a conta vinculada a este email, para prosseguir com a redefinição de senha basta acessar o seguinte link: http://127.0.0.1:8000/redefinir_senha/{username}/{token}. Caso a requisição não tenha sido feita por você por favor ignore este email.",
                 from_email=settings.EMAIL_HOST_USER,
                 recipient_list=[email]
             )
 
             return render(request, 'abnt_model/recuperar_conta.html',context)
         else:
-            return render(request, 'abnt_model/recuperar_conta.html')
+            return render(request, 'abnt_model/recuperar_conta.html', context={"status_de_envio": False})
 
     return render(request, 'abnt_model/recuperar_conta.html', context={"status_de_envio": False})
 

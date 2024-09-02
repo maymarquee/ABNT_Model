@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="{% static 'img/ICONS_OO-removebg-preview.webp' %}" type="image/x-icon">
+    <link rel="stylesheet" href="{% static 'styles/perfil.css' %}" />
+    <title>Redefinir Senha - ABNT Model</title>
+</head>
+<body>
+    <form action="{% url 'redefinir_senha' username token %}" method="POST">
+        {% csrf_token %} 
+        <div id="forma">
+            <div id="componentes">
+                <h1>Redefinição de Senha</h1>
+                <p>Digite aqui a sua nova senha.</p>
+                <label for="senha">Senha:</label>
+                <input type="password" name="senha" id="senha" placeholder="Digite aqui sua nova senha" required />
+                <label for="confirmar_senha">Confirmar Senha:</label>
+                <input type="password" name="confirmar_senha" id="confirmar_senha" placeholder="Digite aqui sua nova senha novamente" required />
+                <button type="submit">Confirmar</button>
+            </div>
+        </div>
+    </form>
+</body>
+</html>
+
+<!-- falta deixar essa pagina bonita, ela ta muito feia -->
