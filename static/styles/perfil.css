@@ -7,31 +7,33 @@
     --cor-forma:#EDF0F3;
 }
 body{
-display: flex;
-padding: 64px 32px;
-flex-direction: column;
-justify-content: center;
-align-items: center;
-gap: 8px; 
-background: var(--cor-fundo);
+    display: flex;
+    padding: 64px 32px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 8px; 
+    background: var(--cor-fundo);
+    height: 75vh;
 }
 #forma{
-border-radius: 50px;
-background: var(--cor-forma);
-display: flex;
-flex-direction: column;
-align-items: center;
-gap: 8px;
-flex-shrink: 0;
+    border-radius: 50px;
+    background: var(--cor-forma);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    flex-shrink: 0;
 }
 #componentes{
     /* background: red; */
     display: flex;
-flex-direction: column;
-justify-content: center;
-align-items: center;
-gap: 40px;
-padding: 20px 40px 40px 40px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    padding: 20px 40px 40px 40px;
+    height: 300px;
 }
 #componentes-sup{
     /* background: green; */
@@ -56,48 +58,47 @@ padding: 20px 40px 40px 40px;
 }
 #edit-icon{
     display: flex;
-padding: 8px;
-align-items: center;
-gap: 8px;
+    padding: 8px;
+    align-items: center;
+    gap: 8px;
 }
 #perfil-id{
     /* background: pink; */
     display: flex;
-flex-direction: column;
-align-items: center;
-gap: 24px;
-flex-shrink: 0;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+    flex-shrink: 0;
 }
 #componentes-inf{
     /* background: chocolate; */
     display: flex;
     align-items: center;
     gap: 40px;
-    }
+}
 .id-text::before{
     content: "ID:";
     font-weight: bold;
 }
 .dados-pessoais-view{
-display: flex;
-flex-direction: column;
-justify-content: space-between;
-align-items: flex-start;
-flex-shrink: 0;
-gap:18px
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-shrink: 0;
+    gap:18px
 }
 .infos{
     min-width: 300px;
     min-height: 10px;
     display: flex;
-padding:8px;
-text-decoration: solid 2px;
-align-items: center;
-align-self: stretch;
-border-radius: 8px;
-background: #D3D4E4;
-
-border: solid 1px black;
+    padding:8px;
+    text-decoration: solid 2px;
+    align-items: center;
+    align-self: stretch;
+    border-radius: 8px;
+    background: #D3D4E4;
+    border: solid 1px black;
 }
 .label{
     font-weight: bold;
@@ -111,7 +112,7 @@ border: solid 1px black;
 }
 .btn_edit_perfil_salvar{
     border-radius: 8px;
-    background: #45DB54;
+    background: #40c44d;
     display: flex;
     padding: 12px;
     justify-content: center;
@@ -123,7 +124,7 @@ border: solid 1px black;
 }
 .btn_edit_perfil_cancelar{
     border-radius: 8px;
-    background: #DB4545;
+    background: #dd3d3d;
     display: flex;
     padding: 12px;
     justify-content: center;
@@ -134,11 +135,11 @@ border: solid 1px black;
     box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.25);
 }
 .btn_edit_perfil_cancelar:hover{
-    background: #ac3333;
+    background: #c98181;
     box-shadow: none;
 }
 .btn_edit_perfil_salvar:hover{
-    background: #309c3a;
+    background: #40bc4c;
     box-shadow: none;
 }
 .redirecionamento_edit{

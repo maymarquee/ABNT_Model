@@ -63,7 +63,7 @@ body{
     padding: 10px 20px;
     font-family: "Raleway", sans-serif;
     font-size: 16px;
-    border-radius: 5px;
+    border-radius: 10px;
     cursor: pointer;
     display: flex;
     align-items: center;
@@ -90,8 +90,8 @@ body{
     top: 46px;
     right: 0;
     background-color: var(--cor-fundo);
-    min-width: 182px;
-    border-radius: 0px 0px 5px 5px;
+    min-width: 181px;
+    border-radius: 0px 0px 10px 10px;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
     z-index: 1000;
     transition: opacity 0.3s, visibility 0.3s;
@@ -120,14 +120,14 @@ body{
 /* Remove a borda inferior do último item */
 .dropdown-content a:last-child {
     border-bottom: none;
-    border-radius: 5px;
+    border-radius: 10px;
 }
 
 /* Muda a cor de fundo e o texto quando o usuário passa o mouse sobre um item do dropdown */
 .dropdown-content a:hover {
     background-color: var(--cor-fundo-escuro);
     color: #000;
-    border-radius: 0px 0px 5px 5px;
+    border-radius: 0px 0px 10px 10px;
 }
 .catalogo{
     display: flex;
@@ -443,18 +443,21 @@ a{
     background: var(--cor-catalogo);
     padding: 0px;
     display: flex;
-    justify-content: center;
+    justify-content: right;
     align-items: left;
     gap: 0px;
+    padding: 12px 25px;
     flex-direction: column;
     height: 350px;
     /* editar espaçamento das escritas na parte de dúvidas */
 } 
-.text-forma_p4{
+.text_forma_p4{
     color: var(--cor-fundo);
     font-size: 20px;
     font-family: "Raleway", sans-serif;
     height: 100px;
+    text-align: justify;
+    margin: 10px;
 }
 .subtitulo_4{
     color: var(--cor-fundo);
@@ -464,4 +467,5 @@ a{
     font-style: normal;
     font-weight: 700;
     line-height: normal;
+    margin: 10px;
 }
