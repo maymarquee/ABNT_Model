@@ -5,8 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ABNT Model</title>
-    <link rel="shortcut icon" href="{% static '../static/img/ICONS_OO-removebg-preview.webp' %}" type="image/x-icon">
-    <link rel="stylesheet" href="{% static '../static/styles/login.css' %}">
+
+    <link rel="shortcut icon" href="{% static 'img/ICONS_OO-removebg-preview.webp' %}" type="image/x-icon">
+    <link rel="stylesheet" href="{% static 'styles/login.css' %}">
 </head>
 <body>
     <form action="{% url 'login' %}" method="post">
@@ -59,6 +60,9 @@
                         <p class="texto-esqueceu"> <a class="texto-esqueceu" href="{% url 'recuperar_conta' %}">Esqueceu a senha?</a></p>
                     </div>
                 </div>
+                {% if status_de_erro == true %}
+                <p class="mensagem_de_erro">{{mensagem}}</p>
+                {% endif %}
                 <input class="botao-entrar" type="submit" value="ENTRAR">
                 </div>
             </div>

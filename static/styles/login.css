@@ -232,3 +232,6 @@ body{
     display: flex;
     flex-direction: row-reverse;
 }
+.mensagem_de_erro{
+    color: red;
+}

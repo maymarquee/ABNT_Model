@@ -127,6 +127,10 @@ def perfil(request):
 
 
 def login_view(request):
+    context = {
+        "status_de_envio":False,
+    }
+
     if request.method == "POST":
         email = request.POST.get("email")
         senha = request.POST.get("senha")
@@ -135,9 +139,14 @@ def login_view(request):
             login(request,user)
             return redirect('index')
         else:
-            return render(request, 'abnt_model/login.html')
+            print('erro')
+            context = {
+            "status_de_envio":True,
+            "mensagem": 'senha ou email inválidos, tente novamente. *'
+            }
+            return render(request, 'abnt_model/login.html',context)
         
-    return render(request, 'abnt_model/login.html')
+    return render(request, 'abnt_model/login.html',context)
 
 def cadastro(request):
     context = {
