@@ -3,11 +3,11 @@
     --cor-forma: #EDF0F3;
 }
 *{
-    padding: 0px;
+    padding: 0px ; 
     margin: 0px;
 }
 body{
-    background-color: var(--cor-fundo);
+    background-color: var(--cor-fundo); 
     padding: 32px 0px 0px 0px;
 }
  .fundo-login{
@@ -20,7 +20,7 @@ body{
     display: flex;
     padding: 20px;
     align-items: center;
-    gap: 75.112px;
+    gap: 75px;
     flex-shrink: 0;
     border-radius: 50px;
     background-color: var(--cor-forma);
@@ -28,7 +28,7 @@ body{
 }
 .container-textos-botoes{
     display: flex;
-    width: 489.795px;
+    width: 490px;
     flex-direction: column;
     align-items: center;
     gap: 30px;

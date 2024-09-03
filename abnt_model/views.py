@@ -140,7 +140,12 @@ def login_view(request):
     return render(request, 'abnt_model/login.html')
 
 def cadastro(request):
+    context = {
+        "status_de_erro":False
+    }
+
     if request.method == "POST":
+
         nome = request.POST.get("nome")
         sobrenome = request.POST.get("sobrenome")
         email = request.POST.get("email")
@@ -148,20 +153,41 @@ def cadastro(request):
         confirmar_senha = request.POST.get("confirmar_senha")
 
         if not all([nome,sobrenome,email,senha,confirmar_senha]):
-            # ! tem q ter pop-up de erro pra qnd ja existir email
-            return render(request, 'abnt_model/cadastro.html')
+            context = {
+            "status_de_erro":True,
+            "mensagem": 'Todos os campos devem ser preenchidos.'
+            }
+            return render(request, 'abnt_model/cadastro.html',context)
+        
         if senha != confirmar_senha: #se tiver errada ele recarrega a pagina
-            # ! tem q ter pop-up de erro pra qnd as senhas forem diferentes
-            return render(request, 'abnt_model/cadastro.html')
+            context = {
+            "status_de_erro":True,
+            "mensagem": 'As senhas não são iguais, é necessário que sejam iguais para prosseguir.'
+            }
+            return render(request, 'abnt_model/cadastro.html',context)
+        
         if User.objects.filter(email=email).exists():
-            # ! tem q ter pop-up de erro pra qnd ja existir email
-            return render(request, 'abnt_model/cadastro.html')
+            context = {
+            "status_de_erro":True,
+            "mensagem": 'Este email já está cadastrado.'
+            }
+            return render(request, 'abnt_model/cadastro.html',context)
         try:
             user = User.objects.create_user(username= email, email=email, password=senha, first_name=nome ,last_name=sobrenome)
             user.save()
             return redirect('login')
         except:
-            # ! tem q ter pop-up generico indicando como o usuario deve preencher os campos
-            return render(request, 'abnt_model/cadastro.html')
-        
-    return render(request, 'abnt_model/cadastro.html')
+            context = {
+            "status_de_erro":True,
+            "mensagem": 'Houve um erro no preenchimento dos campos, se atente aos dados solicitados.'
+            }
+            return render(request, 'abnt_model/cadastro.html',context)
+    print(context)
+    return render(request, 'abnt_model/cadastro.html',context)
+
+def deletar_conta(request):
+    if request.method == "POST":
+        pass
+        # todo
+        #perguntar melhor lógica para o professor, pagina direto pedindo senha e que digite uma frase de confirmação
+        #ou enviar email para a pessoa encaminhando para uma pagina que faça-o digitar o email e senha de novo.
