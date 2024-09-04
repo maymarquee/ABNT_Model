@@ -1,11 +1,24 @@
-
-/* falta alterar as fontes e design de inputs */
-
 :root{
     --cor-fundo: #879BAF;
     --cor-forma: #EDF0F3;
 }
 
+.fundo_cadastro{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--cor-fundo);
+}
+.forma_cadastro{
+    display:flex;
+    padding: 20px;
+    border-radius: 50px;
+    background-color: var(--cor-forma);
+    align-items: center;
+    gap: 75px;
+    margin-top: 60px;
+    box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.25);
+}
 .container{
     display: flex;
     flex-direction: row;
@@ -21,18 +34,34 @@
 .textos{
     display: flex;
     flex-direction: column;
+    font-family: "Crimson Text";
+    font-size: 50px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    color: #222;
     /* background: green; */
+}
+.possui_conta{
+    color: #222;
+    font-family: "Crimson Text";
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
 }
 .container-inputs{
     /* background: yellow; */
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 15px;
 }
 .nome-sobrenome{
     display: flex;
     flex-direction: row;
     gap: 20px;
+    line-height: 0;
+    /* background: rebeccapurple; */
 }
 .nome, .sobrenome, .senha, .confirmar-senha{
     display: flex;
@@ -41,11 +70,14 @@
 .email{
     display: flex;
     flex-direction: column;
+    line-height: 0.5;
+    /* background: pink; */
 }
 .container-senhas{
     display: flex;
     flex-direction: row;
     gap: 20px;
+    line-height: 0.5;
 }
 .inputs{
     border-radius: 8px;
@@ -60,6 +92,7 @@
     background: var(--cor-fundo) ;
     color: var(--cor-forma);
     font-size: 17px;
+    font-family: "Crimson Text";
 }
 .botao-cadastrar:hover{
     cursor: pointer;
@@ -70,4 +103,5 @@
 }
 .label{
     font-size: 17px;
+    font-family: "Crimson Text";
 }

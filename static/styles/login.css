@@ -10,7 +10,7 @@ body{
     background-color: var(--cor-fundo); 
     padding: 32px 0px 0px 0px;
 }
- .fundo-login{
+.fundo-login{
     display: flex;
     justify-content: center;
     align-items: center;
@@ -19,6 +19,7 @@ body{
 .forma-login{
     display: flex;
     padding: 20px;
+    margin-top: 57px;
     align-items: center;
     gap: 75px;
     flex-shrink: 0;
