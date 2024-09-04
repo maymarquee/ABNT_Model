@@ -23,8 +23,12 @@
                 <div class="container">
                     <div class="cadastrar">
                         <div class="textos">
-                            <h1>Bem-vindo!</h1>
+                            <div class="textos_menores" style="height: 60px;">
+                            <p class="titulo_cadastro">Bem-vindo!</p>
+                            </div>
+                            <div class="container_texto_secundario">
                             <p class="possui_conta">Já possui uma conta? <a class="rota-login" href="{% url 'login' %}">Faça login</a></p>
+                            </div>
                         </div>
                         <div class="container-inputs">
                             <div class="nome-sobrenome">
@@ -58,7 +62,7 @@
                         <div class="container-logo">
                             <a href="{% url 'index' %}"><img style="width: 80px;" src="{% static 'img/ICONS_OO-removebg-preview.webp' %}" alt=""></a>
                         </div>
-                        <img style="width: 320px;" src="{% static 'img/computador.png' %}" alt="">
+                        <img style="width: 440px;" src="{% static 'img/computador.png' %}" alt="">
                     </div>
                 </div>
             </div>

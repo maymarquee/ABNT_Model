@@ -18,7 +18,7 @@ body{
 }
 .forma-login{
     display: flex;
-    padding: 20px;
+    padding: 30px;
     margin-top: 57px;
     align-items: center;
     gap: 75px;
@@ -105,7 +105,7 @@ body{
 .texto-email{
     color: #222;
     font-family: "Crimson Text";
-    font-size: 30px;
+    font-size: 22px;
     font-style: normal;
     font-weight: 400;
     line-height: normal;
@@ -157,7 +157,7 @@ body{
 .texto-senha{
     color: #222;
     font-family: "Crimson Text";
-    font-size: 30px;
+    font-size: 22px;
     font-style: normal;
     font-weight: 400;
     line-height: normal;
@@ -222,7 +222,7 @@ body{
     background: var(--cor-fundo);
     border: none;
     color: #FFF;
-    font-size: 30px;
+    font-size: 22px;
     font-family: "Crimson Text";
 }
 .botao-entrar:hover{
