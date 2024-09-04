@@ -12,5 +12,6 @@ urlpatterns = [
     path("logout/", views.desconectar, name="desconectar"),
     path("cadastro/", views.cadastro, name="cadastro"),
     path("recuperar_conta/", views.recuperar_conta, name="recuperar_conta"),
-    path("redefinir_senha/<str:username>/<str:token>", views.redefinir_senha, name="redefinir_senha")
+    path("redefinir_senha/<str:username>/<str:token>", views.redefinir_senha, name="redefinir_senha"),
+    path("deletar_conta/",views.deletar_conta, name="deletar_conta")
 ]

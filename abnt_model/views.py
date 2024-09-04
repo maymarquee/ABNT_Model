@@ -7,9 +7,11 @@ from django.contrib import messages
 from django.core.mail import send_mail
 from setup import settings
 from django.contrib.auth.tokens import PasswordResetTokenGenerator
+from django.contrib.auth.hashers import check_password, make_password
 
 
 def index(request):
+    
     autenticado = request.user.is_authenticated
     context={
         "autenticado":autenticado
@@ -127,26 +129,20 @@ def perfil(request):
 
 
 def login_view(request):
-    context = {
-        "status_de_envio":False,
-    }
-
     if request.method == "POST":
         email = request.POST.get("email")
         senha = request.POST.get("senha")
         user = authenticate(username=email,password=senha)
+        
+
         if user is not None:
             login(request,user)
             return redirect('index')
         else:
-            print('erro')
-            context = {
-            "status_de_envio":True,
-            "mensagem": 'senha ou email inválidos, tente novamente. *'
-            }
-            return render(request, 'abnt_model/login.html',context)
+            mensagem= "senha ou email inválidos, tente novamente. *"
+            return render(request, 'abnt_model/login.html',{"mensagem":mensagem})
         
-    return render(request, 'abnt_model/login.html',context)
+    return render(request, 'abnt_model/login.html')
 
 def cadastro(request):
     context = {
@@ -162,41 +158,38 @@ def cadastro(request):
         confirmar_senha = request.POST.get("confirmar_senha")
 
         if not all([nome,sobrenome,email,senha,confirmar_senha]):
-            context = {
-            "status_de_erro":True,
-            "mensagem": 'Todos os campos devem ser preenchidos.'
-            }
-            return render(request, 'abnt_model/cadastro.html',context)
+            mensagem= "Todos os campos devem ser preenchidos."
+            return render(request, 'abnt_model/cadastro.html',{"mensagem": mensagem})
         
-        if senha != confirmar_senha: #se tiver errada ele recarrega a pagina
-            context = {
-            "status_de_erro":True,
-            "mensagem": 'As senhas não são iguais, é necessário que sejam iguais para prosseguir.'
-            }
-            return render(request, 'abnt_model/cadastro.html',context)
+        if senha != confirmar_senha:
+            mensagem= "As senhas não são iguais, é necessário que sejam iguais para prosseguir."
+            return render(request, 'abnt_model/cadastro.html',{"mensagem": mensagem})
         
         if User.objects.filter(email=email).exists():
-            context = {
-            "status_de_erro":True,
-            "mensagem": 'Este email já está cadastrado.'
-            }
-            return render(request, 'abnt_model/cadastro.html',context)
+            mensagem="Este email já está cadastrado.'"
+            return render(request, 'abnt_model/cadastro.html',{"mensagem": mensagem})
         try:
             user = User.objects.create_user(username= email, email=email, password=senha, first_name=nome ,last_name=sobrenome)
             user.save()
             return redirect('login')
         except:
-            context = {
-            "status_de_erro":True,
-            "mensagem": 'Houve um erro no preenchimento dos campos, se atente aos dados solicitados.'
-            }
-            return render(request, 'abnt_model/cadastro.html',context)
+            mensagem= 'Houve um erro no preenchimento dos campos, se atente aos dados solicitados.'
+            return render(request, 'abnt_model/cadastro.html',{"mensagem": mensagem})
     print(context)
-    return render(request, 'abnt_model/cadastro.html',context)
+    return render(request, 'abnt_model/cadastro.html',{"mensagem": mensagem})
 
+@login_required
 def deletar_conta(request):
     if request.method == "POST":
-        pass
-        # todo
-        #perguntar melhor lógica para o professor, pagina direto pedindo senha e que digite uma frase de confirmação
-        #ou enviar email para a pessoa encaminhando para uma pagina que faça-o digitar o email e senha de novo.
+        frase = request.POST.get("frase")
+        frase = frase.lower()
+        print(frase)
+        if  frase == "desejo excluir minha conta permanentemente":
+            request.user.delete()
+            return redirect('index')
+        else:
+            mensagem = "Não foi possível deletar a conta. Digite a frase corretamente. **"
+            return render(request, 'abnt_model/deletar_conta.html', {"mensagem": mensagem})
+
+    return render(request, 'abnt_model/deletar_conta.html')
+

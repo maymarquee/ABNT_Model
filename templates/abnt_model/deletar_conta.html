@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="shortcut icon"
+      href="{% static 'img/ICONS_OO-removebg-preview.webp' %}"
+      type="image/x-icon"
+    />
+    <link rel="stylesheet" href="{% static 'styles/perfil.css' %}" />
+    <link rel="stylesheet" href="{% static 'styles/login.css' %}" />
+    <title>ABNT Model</title>
+  </head>
+  <body style="background: #46617c">
+    <form action="{% url 'deletar_conta' %}" method="POST">
+      {% csrf_token %}
+      <div id="forma">
+        <div id="componentes">
+          <h1>Deletar conta</h1>
+          
+          <p>OBSERVAÇÃO: você esta prestes a excluir sua conta, esta é uma ação irreversível,
+            Digite a frase a seguir para que sua conta seja excluída:</p>
+          <b>
+            <p>"desejo excluir minha conta permanentemente."</p>
+          </b>
+          <input type="text" name="frase">
+          <p class="mensagem_de_erro">{{ mensagem }}</p>
+          <button type="submit">Confirmar</button>
+        </div>
+      </div>
+    </form>
+  </body>
+</html>
