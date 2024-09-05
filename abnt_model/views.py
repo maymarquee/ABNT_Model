@@ -194,9 +194,17 @@ def cadastro(request):
     print(context)
     return render(request, 'abnt_model/cadastro.html',context)
 
+@login_required
 def deletar_conta(request):
     if request.method == "POST":
-        pass
-        # todo
-        #perguntar melhor lógica para o professor, pagina direto pedindo senha e que digite uma frase de confirmação
-        #ou enviar email para a pessoa encaminhando para uma pagina que faça-o digitar o email e senha de novo.
+        frase = request.POST.get("frase")
+        frase = frase.lower()
+        print(frase)
+        if  frase == "desejo excluir minha conta permanentemente":
+            request.user.delete()
+            return redirect('index')
+        else:
+            mensagem = "Não foi possível deletar a conta. Digite a frase corretamente. **"
+            return render(request, 'abnt_model/deletar_conta.html', {"mensagem": mensagem})
+
+    return render(request, 'abnt_model/deletar_conta.html')
