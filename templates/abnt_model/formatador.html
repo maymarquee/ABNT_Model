@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="{% static 'img/ICONS_OO-removebg-preview.webp' %}" type="image/x-icon">
+    <link rel="stylesheet" href="{% static 'styles/formatador.css' %}">
+    <title>ABNT Model</title>
+</head>
+<body>
+    <form action="{% url 'formatador' %}" method="POST">
+        {% csrf_token %}
+        <input name="titulo" type="text" placeholder="Título">
+        <input name="nome_do_arquivo" type="text" placeholder="Nome do Arquivo">
+        <input name="autor" type="text" placeholder="Autor">
+        <input name="instituicao" type="text" placeholder="Instituição">
+        <input name="ano" type="text" placeholder="Ano">
+        <input name="resumo" type="text" placeholder="Resumo">
+        <input name="palavras_chaves" type="text" placeholder="Palavras-Chaves">
+        <input name="abstract" type="text" placeholder="Abstract">
+        <input name="keywords" type="text" placeholder="Keywords">
+        <textarea name="introducao" placeholder="Introdução"></textarea>
+        <textarea name="problematizacao" placeholder="Problematização"></textarea>
+        <textarea name="justificativa" placeholder="Justificativa"></textarea>
+        <textarea name="questao_geral" placeholder="Questão geral"></textarea>
+        <textarea name="objetivo" placeholder="Objetivo"></textarea>
+        <textarea name="metodologia" placeholder="Metodologia"></textarea>
+        <textarea name="desenvolvimento" placeholder="Desenvolvimento">As redes sociais desempenham um papel fundamental na era digital, servindo como
+            plataformas dominantes para a disseminação de informações e a formação da opinião pública. No
+            entanto, a ascensão dessas plataformas também trouxe à tona desafios significativos,
+            particularmente no que diz respeito à disseminação de fake news e desinformação.
+            Os algoritmos de recomendação das redes sociais são projetados para maximizar o
+            engajamento dos usuários, o que frequentemente resulta na amplificação de conteúdos
+            sensacionalistas e polarizadores. Segundo a autora turca Tufekci em seu livro de 2017: “Twitter
+            and Tear Gas: The Power and Fragility of Networked Protest”, ela aponta que, ao priorizar
+            informações que geram reações emocionais intensas, os algoritmos não apenas promovem fake
+            news, mas também contribuem para a criação de bolhas informativas. Esses ambientes fechados
+            reforçam crenças existentes e limitam o confronto com informações divergentes, exacerbando a
+            polarização social.
+            Essa dinâmica de amplificação é especialmente problemática porque a natureza viral das
+            redes sociais permite que fake news se espalhem com uma velocidade de até 70% mais rápida que
+            as notícias verdadeiras segundo o MIT, é uma escala que superam os mecanismos tradicionais de
+            verificação e correção (Aline Felippe, 2024). A capacidade de viralização das notícias falsas faz
+            com que a desinformação se torne uma característica predominante no ambiente digital, ofuscando
+            informações precisas e comprometendo a qualidade do debate público.
+            A exposição repetida a fake news nas redes sociais tem um impacto significativo na
+            formação da opinião pública. Ainda revisando as ideias do livro de Tufekci, ela argumenta que a
+            persistência e a repetição de desinformação podem moldar percepções e crenças de forma
+            duradoura. A formação de convicções incorretas e o reforço de preconceitos existentes são
+            consequências diretas dessa exposição, levando a uma maior polarização e fragmentação das
+            opiniões. Esse fenômeno é evidente em questões políticas e sociais cruciais, onde a desinformação
+            pode influenciar comportamentos eleitorais e desestabilizar instituições democráticas. A
+            polarização é intensificada pela tendência das redes sociais em criar bolhas informativas, onde os
+            usuários são expostos predominantemente a conteúdos que confirmam suas crenças pré-existentes.
+            A falta de diversidade informativa dentro dessas bolhas reduz a capacidade dos indivíduos de
+            desenvolver um entendimento equilibrado e informado sobre questões complexas.
+            Os desafios enfrentados na regulação e moderação de conteúdo nas redes sociais são
+            amplos e complexos. Tufekci destaca que a regulamentação é muitas vezes inadequada, em sua
+            palestra “Como a Internet tornou mudanças sociais fáceis de organizar, difíceis de conseguir”
+            pela TED talk em 2015, citou vários exemplos de censura, assim sendo entendidas como a
+            regulamentação ao extremo, citou até mesmo um exemplo de seu país que censurou notícia de um
+            protesto contra a destruição de um parque, assim destacando a dificuldade de implementar a
+            regulamentação. Por ações de governos como esse que há a dificuldade de implementar políticas
+            eficazes que equilibrem a liberdade de expressão com a necessidade de controlar a desinformação,
+            as plataformas enfrentam a tarefa árdua de identificar e remover fake news sem infringir direitos
+            fundamentais, como é o caso do confronto entre Elon Musk e Alexandre de Moraes, aonde a
+            plataforma X (o novo twitter, de Elon Musk) no Brasil, que é obrigado a remover posts sem o
+            devido prazo de verificação e sujeitos a multas de 100mil reais em caso de não remoção de post
+            dentro do prazo.
+            Além disso, as estratégias de moderação (conjunto de regras e técnicas adotadas pelas redes
+            sociais com o intuito de mitigar as notícias falsas) são frequentemente criticadas por falta de
+            transparência e por não abordar de forma satisfatória a complexidade da desinformação. Tufekci,
+            em seu livro de 2017, no capítulo “The Road Ahead”, sugere que uma das abordagens mais
+            promissoras é aumentar a transparência dos algoritmos de recomendação, o que poderia ajudar a
+            reduzir a amplificação de conteúdos enganosos.
+            Além do mais, a promoção da alfabetização midiática também é crucial. Educar os usuários
+            sobre como avaliar a veracidade das informações e incentivar práticas de verificação pode ajudar
+            a criar um público mais crítico e informado. Além disso, a colaboração com verificadores de fatos 
+            e a adoção de melhores práticas de moderação são passos importantes para combater a
+            desinformação de maneira mais eficaz.</textarea>
+        <textarea name="analise_discussao" placeholder="Análise e Discussão"></textarea>
+        <textarea name="conclusao" placeholder="Conclusão">Este estudo examinou o impacto das redes sociais na disseminação de fake news e
+            desinformação, analisando como essas dinâmicas influenciam a formação da opinião pública, com
+            base na perspectiva crítica de Zeynep Tufekci. A pesquisa do presente ensaio revelou que os
+            algoritmos de recomendação das redes sociais desempenham um papel crucial na amplificação de
+            conteúdos sensacionalistas e polarizadores. Esses algoritmos não apenas priorizam informações
+            que geram fortes reações emocionais, mas também criam bolhas informativas que reforçam
+            crenças existentes e limitam a exposição a pontos de vista divergentes. Como resultado, a
+            disseminação de fake news contribui para a formação de convicções incorretas e aumenta a
+            polarização social, afetando significativamente comportamentos eleitorais e desestabilizando
+            instituições democráticas.
+            Os desafios na regulação e moderação de conteúdo foram destacados, evidenciando a
+            dificuldade de equilibrar a liberdade de expressão com o controle da desinformação. As estratégias
+            atuais de moderação frequentemente carecem de transparência e eficácia, tornando a tarefa ainda
+            mais complexa. Para mitigar esses problemas, o estudo propõe soluções como a maior
+            transparência dos algoritmos de recomendação e a promoção da alfabetização midiática, que são
+            essenciais para formar um público mais crítico e bem-informado.
+            Os objetivos do trabalho foram atingidos ao abordar de forma abrangente os mecanismos
+            de disseminação de fake news, o impacto na opinião pública, os desafios regulatórios e as
+            estratégias de combate. Para futuras pesquisas, serão explorados os seguintes temas: estratégias de
+            moderação, investigar o impacto da alfabetização midiática, analisar a transparência dos
+            algoritmos de recomendação, comparar abordagens regulatórias internacionais e examinar as
+            dinâmicas de polarização social.</textarea>
+        <textarea name="referencias" placeholder="Referências Bibliográficas">TUFEKCI, Zeynep. Twitter and Tear Gas: The Power and Fragility of Networked Protest. New
+            York: Yale University Press, 2017.
+            UNIÃO INTERNACIONAL DE TELECOMUNICAÇÕES (UIT). Relatório Estado da Banda
+            Larga no Mundo 2023. Genebra: UIT, 2023. Disponível em:
+            https://www.itu.int/en/mediacentre/Pages/PR-2023-09-12-universal-and-meaningfulconnectivity-by-2030.aspx. Acesso em: 14 abr. 2024.
+            TUFEKCI, Zeynep. Como a Internet tornou mudanças sociais fáceis de organizar, difíceis de
+            conseguir. TED. Publicado em 2015. Disponível em:
+            https://www.ted.com/talks/zeynep_tufekci_online_social_change_easy_to_organize_hard_to_wi
+            n?language=pt-br. Acesso em: 15 abr. 2024.
+            METRÓPOLES. Novo embate: Musk usa Twitter para acusar Moraes de violar a lei. Metrópoles,
+            23 ago. 2024. Disponível em: https://www.metropoles.com/brasil/novo-embate-musk-usa-twitterpara-acusar-moraes-de-violar-a-lei. Acesso em: 24 ago. 2024.
+            ESTADÃO VERIFICA. Lutadora argelina é alvo de campanha de desinformação nas redes. O
+            Estado de S. Paulo, 23 ago. 2024. Disponível em: https://www.estadao.com.br/estadaoverifica/imane-khelif-boxe-trans-falso/. Acesso em: 24 ago. 2024.
+            FELIPPE, Aline. Fake news se espalham 70% mais rápido que notícias verdadeiras. Correio
+            Braziliense, Brasília, 08 mar. 2018. Disponível em:
+            https://www.correiobraziliense.com.br/app/noticia/tecnologia/2018/03/08/interna_tecnologia,664
+            835/fake-news-se-espalham-70-mais-rapido-que-noticias-verdadeiras.shtml. Acesso em: 24 ago.
+            2024.</textarea>
+        <button type="submit">ENVIAR</button>
+    </form>
+
+    {% if download_url %}
+        <a href="{{ download_url }}" class="btn">Baixar PDF</a>
+    {% endif %}
+</body>
+</html>

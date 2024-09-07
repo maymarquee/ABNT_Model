@@ -13,5 +13,7 @@ urlpatterns = [
     path("cadastro/", views.cadastro, name="cadastro"),
     path("recuperar_conta/", views.recuperar_conta, name="recuperar_conta"),
     path("redefinir_senha/<str:username>/<str:token>", views.redefinir_senha, name="redefinir_senha"),
-    path("deletar_conta/",views.deletar_conta, name="deletar_conta")
+    path("deletar_conta/",views.deletar_conta, name="deletar_conta"),
+    path("formatador/",views.formatador, name="formatador"),
+    # path("rota_do_site/",views.codigo_back_end, name="referencia_da_url"),
 ]
