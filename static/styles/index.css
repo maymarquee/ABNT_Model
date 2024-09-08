@@ -1,14 +1,19 @@
-@import url('cores.css');
-@import url('fonte.css');
+@import url(fonte.css);
+@import url(cores.css);
 
 *{
     padding: 0px;
     margin: 0px;
 }
-html{
-    scroll-behavior: smooth;
+
+:root{
+    --fonte-principal: var(--playfair);
+    --fonte-geral: var(--raleway);
+    --fonte-secundaria: var(--crimson);
 }
+
 body{
+
     background-color: var(--cor-fundo);
 }
 .titulo_forma{
@@ -21,7 +26,7 @@ body{
 }
 .titulo{
     color: #FFF;
-    font-family: var(--playfair) ;
+    font-family: var(--fonte-principal);
     font-size: 37px;
     font-style: normal;
     font-weight: 700;
@@ -55,7 +60,7 @@ body{
     color: var(--texto);
     border: none;
     padding: 10px 20px;
-    font-family: "Raleway", sans-serif;
+    font-family: var(--fonte-geral);
     font-size: 16px;
     border-radius: 10px;
     cursor: pointer;
@@ -131,7 +136,7 @@ body{
 }
 nav{
     color: var(--cor-catalogo);
-    font-family: "Crimson Text", serif;
+    font-family: var(--fonte-secundaria);
     font-size: 43px;
     font-style: normal;
     font-weight: 700;
@@ -139,7 +144,7 @@ nav{
 }
 .options_nav{
     color: var(--cor-catalogo);
-    font-family: "Crimson Text", serif;
+    font-family: var(--fonte-secundaria);
     font-size: 25px;
     font-style: normal;
     line-height: normal;
@@ -162,17 +167,16 @@ nav{
 .subtitulo_1{
     color: var(--cor-catalogo);
     text-align: left;
-    font-family: "Crimson Text", serif;
+    font-family: var(--fonte-secundaria);
     font-size: 35px;
     font-style: normal;
     font-weight: 700;
     line-height: normal;
 }
 .text_1{
-
     color: var(--cor-catalogo);
     text-align: justify;
-    font-family: "Raleway", sans-serif;
+    font-family: var(--fonte-geral);
     font-size: 20px;
     font-style: normal;
     font-weight: 400;
@@ -258,14 +262,13 @@ nav{
     color: var(--texto);
     font-weight: 700;
     text-align: left;
-    font-family: "Crimson Text", serif;
+    font-family: var(--fonte-secundaria);
     font-size: 30px;
 }
 .complemento_frase{
-
     color: var(--texto);
-    font-family: "Raleway", sans-serif;
-    font-size: 14px;
+    font-family: var(--fonte-geral);
+    font-size: 18px;
     font-style: normal;
     font-weight: 400;
     line-height: normal;
@@ -279,7 +282,7 @@ nav{
 .subtitulo_2{
     color: var(--cor-catalogo);
     text-align: right;
-    font-family: "Crimson Text", serif;
+    font-family: var(--fonte-secundaria);
     font-size: 45px;
     font-style: normal;
     font-weight: 700;
@@ -301,7 +304,7 @@ nav{
     color: var(--texto);
     padding: 10px 0px 0px 0px;
     text-align: center;
-    font-family: "Crimson Text", serif;
+    font-family: var(--fonte-secundaria);
     font-size: 45px;
     font-style: normal;
     font-weight: 700;
@@ -346,7 +349,7 @@ nav{
 }
 .nome_devs{
     color: var(--texto);
-    font-family: "Crimson Text", serif;
+    font-family: var(--fonte-secundaria);
     font-size: 32px;
     font-style: normal;
     font-weight: 600;
@@ -364,7 +367,7 @@ nav{
 .texto_devs{
     color: var(--texto);
     text-align: justify;
-    font-family: "Raleway", sans-serif;
+    font-family: var(--fonte-geral);
     font-size: 20px;
     font-style: normal;
     font-weight: 400;
@@ -387,7 +390,7 @@ nav{
     color: white; /* Cor do texto */
     padding: 10px 20px; /* Espaçamento interno do botão */
     font-size: 16px; /* Tamanho da fonte do texto */
-    font-family: "Raleway", sans-serif;
+    font-family: var(--fonte-geral);
     cursor: pointer; /* Muda o cursor para indicar que é clicável */
     border-radius: 5px; /* Adiciona bordas arredondadas */
     transition: background-color 0.3s, transform 0.3s;
@@ -412,7 +415,7 @@ nav{
     color: white; /* Cor do texto */
     padding: 10px 20px; /* Espaçamento interno do botão */
     font-size: 16px; /* Tamanho da fonte do texto */
-    font-family: "Raleway", sans-serif;
+    font-family: var(--fonte-geral);
     cursor: pointer; /* Muda o cursor para indicar que é clicável */
     border-radius: 5px; /* Adiciona bordas arredondadas */
     transition: background-color 0.3s, transform 0.3s; /* Transições suaves para cor e transformação */
@@ -448,7 +451,7 @@ a{
 .text_forma_p4{
     color: var(--cor-fundo);
     font-size: 20px;
-    font-family: "Raleway", sans-serif;
+    font-family: var(--fonte-geral);
     height: 100px;
     text-align: justify;
     margin: 10px;
@@ -456,7 +459,7 @@ a{
 .subtitulo_4{
     color: var(--cor-fundo);
     text-align: left;
-    font-family: "Crimson Text", serif;
+    font-family: var(--fonte-secundaria);
     font-size: 35px;
     font-style: normal;
     font-weight: 700;

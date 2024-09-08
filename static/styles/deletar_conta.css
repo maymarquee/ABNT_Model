@@ -1,0 +1,76 @@
+@import url(cores.css);
+@import url(fonte.css);
+
+:root{
+    --fonte-principal: var(--playfair);
+}
+
+body{
+    background-color: var(--cor-edicao-paginas);
+}
+
+#container{
+    display: flex;
+    flex-direction: column;
+    display: flex;
+    gap: 40px;
+    padding: 20px 40px 40px 40px;
+}
+.texto_deletar{
+    color: #222;
+    font-family: var(--fonte-principal);
+    font-size: 42px;
+    font-style: normal;
+    align-items: left;
+    text-align: left;
+    line-height: normal;
+}
+.texto_explicacao{
+    text-align: justify;
+    color: #222;
+    font-family: var(--fonte-principal);
+    font-size: 20px;
+}
+.frase_exclusao{
+    color: rgb(248, 16, 16);  
+    font-family: var(--fonte-principal);
+    font-size: 22px;
+    text-align: center;
+}
+.container_input{
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+    height: 100%; 
+}
+.input_frase{
+    width: 100%; 
+    height: 20px;
+    padding: 10px;
+    border-radius: 15px;
+    border: 0.742px solid #3C3C3C; 
+    background-color: #FFF; 
+    font-size: 20px;
+}
+.container_botao{
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+    height: 100%; 
+}
+.botao_confirmar{
+    width: 270px; 
+    height: 44px;
+    padding: 7px;
+    border-radius: 20px; 
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    border: 0.742px solid #3C3C3C; 
+    background-color: var(--cor-edicao-paginas); 
+    font-size: 15px;
+    font-family: var(--fonte-principal);
+    color: #FFF;
+    font-weight: normal;
+    cursor: pointer;
+}

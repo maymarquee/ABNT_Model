@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 {% load static %}
-<html lang="en">
+<html lang="pt-br">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -10,24 +10,28 @@
       type="image/x-icon"
     />
     <link rel="stylesheet" href="{% static 'styles/perfil.css' %}" />
-    <link rel="stylesheet" href="{% static 'styles/login.css' %}" />
+    <link rel="stylesheet" href="{% static 'styles/deletar_conta.css' %}" />
     <title>ABNT Model</title>
   </head>
-  <body style="background: #46617c">
+  <body>
     <form action="{% url 'deletar_conta' %}" method="POST">
       {% csrf_token %}
       <div id="forma">
-        <div id="componentes">
-          <h1>Deletar conta</h1>
+        <div id="container">
+          <div class="container_texto">
+            <p class="texto_deletar">Deletar conta</p>
+          </div>
           
-          <p>OBSERVAÇÃO: Você está prestes a excluir sua conta, esta é uma ação irreversível,
+          <p class="texto_explicacao"><b>OBSERVAÇÃO</b>: Você está prestes a excluir sua conta, <b> e esta é uma ação irreversível!</b> <br />
             Digite a frase a seguir para que sua conta seja excluída:</p>
-          <b>
-            <p>"desejo excluir minha conta permanentemente."</p>
-          </b>
-          <input type="text" name="frase">
+            <p class="frase_exclusao">"desejo excluir minha conta permanentemente."</p>
+            <div class="container_input">
+              <input type="text" name="frase" class="input_frase">
+            </div>
           <p class="mensagem_de_erro">{{ mensagem }}</p>
-          <button type="submit">Confirmar</button>
+          <div class="container_botao">
+            <button class="botao_confirmar" type="submit">CONFIRMAR</button>
+          </div>
         </div>
       </div>
     </form>

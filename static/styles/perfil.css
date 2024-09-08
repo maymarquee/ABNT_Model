@@ -1,11 +1,14 @@
+@import url(cores.css);
+@import url(fonte.css);
+
 *{
     padding: 0px;
     margin: 0px;
 }
 :root{
-    --cor-fundo: #879BAF;
-    --cor-forma:#EDF0F3;
+    --fonte-principal: var(--crimson-regular);
 }
+
 body{
     display: flex;
     padding: 64px 32px;
@@ -13,22 +16,24 @@ body{
     justify-content: center;
     align-items: center;
     gap: 8px; 
-    background: var(--cor-fundo);
+    background: var(--cor-topbar);
     height: 75vh;
 }
 #forma{
     display: flex;
+    width: 880px;
+    height: 480px;
     padding: 30px;
     margin-top: 45px;
     align-items: center;
     gap: 75px;
-    flex-shrink: 0;
     border-radius: 50px;
-    background-color: var(--cor-forma);
+    background-color: var(--cor-fundo);
     box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.25);
 }
 #componentes{
     display: flex;
+    width: 100%;
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -37,6 +42,7 @@ body{
 }
 #componentes-sup{
     /* background: green; */
+    margin-top: -40px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -85,12 +91,12 @@ body{
     flex-direction: column;
     justify-content: space-between;
     align-items: flex-start;
-    flex-shrink: 0;
+    /* flex-shrink: 0; */
     gap:18px
 }
 .infos{
-    min-width: 300px;
-    min-height: 10px;
+    width: 230px;
+    height: 20px;
     display: flex;
     padding:8px;
     text-decoration: solid 2px;
@@ -108,7 +114,6 @@ body{
     justify-content: flex-end;
     align-items: flex-end;
     gap: 30px;
-    flex-shrink: 0;
 }
 .btn_edit_perfil_salvar{
     border-radius: 8px;
@@ -135,7 +140,7 @@ body{
     box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.25);
 }
 .btn_edit_perfil_cancelar:hover{
-    background: #c98181;
+    background: #e66d6d;
     box-shadow: none;
 }
 .btn_edit_perfil_salvar:hover{
@@ -144,5 +149,20 @@ body{
 }
 .redirecionamento_edit{
     text-decoration: none;
+}
+.botao_deletar{
+    width: 150px; 
+    padding: 7px;
+    border-radius: 15px; 
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background-size: 49px 49px;
+    border: 0.742px solid #3C3C3C; 
+    background-color: #e5dfdf; 
+    font-size: 10px;
+    font-family: var(--fonte-principal);
+    font-weight: bold;
+    cursor: pointer;
 }
 

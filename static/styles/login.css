@@ -1,20 +1,22 @@
+@import url(cores.css);
+@import url(fonte.css);
+
 :root{
-    --cor-fundo: #879BAF;
-    --cor-forma: #EDF0F3;
+    --fonte-principal: var(--crimson-regular);
 }
 *{
     padding: 0px ; 
     margin: 0px;
 }
 body{
-    background-color: var(--cor-fundo); 
+    background-color: var(--cor-topbar); 
     padding: 32px 0px 0px 0px;
 }
 .fundo-login{
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: var(--cor-fundo);
+    background-color: var(--cor-topbar);
 }
 .forma-login{
     display: flex;
@@ -24,7 +26,7 @@ body{
     gap: 75px;
     flex-shrink: 0;
     border-radius: 50px;
-    background-color: var(--cor-forma);
+    background-color: var(--cor-fundo);
     box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.25);
 }
 .container-textos-botoes{
@@ -57,7 +59,7 @@ body{
 }
 .texto-bem-vindo{
     color: #222;
-    font-family: "Crimson Text";
+    font-family: var(--fonte-principal);
     font-size: 50px;
     font-style: normal;
     font-weight: 400;
@@ -78,15 +80,15 @@ body{
 }
 .texto-nao-possui-conta{
     color: #222;
-    font-family: "Crimson Text";
+    font-family: var(--fonte-principal);
     font-size: 20px;
     font-style: normal;
     font-weight: 400;
     line-height: normal;
 }
 .rota-cadastro{
-    color: #879BAF;
-    font-family: "Crimson Text";
+    color: var(--cor-topbar);
+    font-family: var(--fonte-principal);
     font-size: 20px;
     font-style: normal;
     font-weight: 400;
@@ -104,7 +106,7 @@ body{
 }
 .texto-email{
     color: #222;
-    font-family: "Crimson Text";
+    font-family: var(--fonte-principal);
     font-size: 22px;
     font-style: normal;
     font-weight: 400;
@@ -156,7 +158,7 @@ body{
 }
 .texto-senha{
     color: #222;
-    font-family: "Crimson Text";
+    font-family: var(--fonte-principal);
     font-size: 22px;
     font-style: normal;
     font-weight: 400;
@@ -204,8 +206,8 @@ body{
     gap: 7.824px; 
 }
 .texto-esqueceu{
-    color: var(--cor-fundo);
-    font-family: "Crimson Text";
+    color: var(--cor-topbar);
+    font-family: var(--fonte-principal);
     font-size: 20px;
     font-style: normal;
     font-weight: 400;
@@ -219,11 +221,11 @@ body{
     gap: 8px;
     align-self: stretch;
     border-radius: 15px;
-    background: var(--cor-fundo);
+    background: var(--cor-topbar);
     border: none;
     color: #FFF;
     font-size: 22px;
-    font-family: "Crimson Text";
+    font-family: var(--fonte-principal);
 }
 .botao-entrar:hover{
     cursor: pointer;
