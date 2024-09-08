@@ -19,6 +19,7 @@ def index(request):
     }
     return render(request, 'abnt_model/index.html', context)
 
+@login_required
 def desconectar(request):
     autenticado = request.user.is_authenticated
     if autenticado == True:
@@ -26,7 +27,7 @@ def desconectar(request):
         return redirect('index')
 
 
-
+@login_required
 def perfil_editar(request):
     context = {
         "nome": request.user.first_name,
@@ -119,7 +120,7 @@ def recuperar_conta(request):
     return render(request, 'abnt_model/recuperar_conta.html', context={"status_de_envio": False})
 
 
-
+@login_required
 def perfil(request):
     context = {
         "nome": request.user.first_name,
@@ -215,10 +216,10 @@ def deletar_conta(request):
 @login_required
 def formatador(request):
     if request.method == "POST":
-        # Obtendo dados do formulário
-        nome_do_arquivo = request.POST.get("nome_do_arquivo", "documento")
-
+        nome_do_arquivo = request.POST.get("nome_do_arquivo")
+        
         dados = {
+            'nome_do_arquivo': nome_do_arquivo,
             'titulo': request.POST.get("titulo", ""),
             'autor': request.POST.get("autor", ""),
             'instituicao': request.POST.get("instituicao", ""),
@@ -253,7 +254,7 @@ def formatador(request):
         elif tipo_do_arquivo == "docx":
             # Converte o HTML para DOCX
             pass
-
     return render(request, 'abnt_model/formatador.html')
+
 
 

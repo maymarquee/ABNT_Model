@@ -1,49 +1,20 @@
 <!DOCTYPE html>
+{% load static %}
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Trabalho de Conclusão de Curso</title>
-    <style>
-        * {
-            font-family: 'Times New Roman', Times, serif;
-        }
-        h1 {
-            text-align: center;
-        }
-        h2 {
-            text-align: left;
-        }
-        p {
-            text-align: justify;
-        }
-        .capitulo {
-            margin-top: 2cm;
-        }
-        .referencias {
-            margin-top: 3cm;
-        }
-
-        /* CSS para impressão */
-        @media print {
-            .page-break {
-                page-break-before: always; /* Quebra a página antes do elemento */
-                page-break-inside: avoid; /* Evita quebras de página dentro do elemento */
-            }
-        }
-    </style>
+    <title>{{nome_do_arquivo}}</title>
 </head>
 <body>
-    <header>
+    <header class="capa">
         {% if imagem %}
         <img src="{{ imagem }}" alt="">
         {% endif %}
-        <h1>Nome da Instituição</h1>
-        <h2>Curso de Nome do Curso</h2>
-        <h3>Título do Trabalho de Conclusão de Curso</h3>
-        <p>Nome do Autor</p>
-        <p>Orientador: Nome do Orientador</p>
-        <p>Local e Data</p>
+        <h2 style="margin-bottom: 4cm;">Nome da Instituição</h2>
+        <h2 style="margin-bottom: 4cm;">Nome do Autor</h2>
+        <h1 style="margin-bottom: 12.5cm;">Título do Trabalho de Conclusão de Curso</h1>
+        <h2 >Local e Data</h2>
     </header>
 
     <section class="capitulo page-break">
@@ -72,7 +43,7 @@
     </section>
 
     <section id="capitulo1" class="capitulo page-break">
-        <h2>1. Introdução</h2>
+        <h3>1. Introdução</h3>
         <p>A introdução deve contextualizar o problema de pesquisa, apresentar os objetivos do trabalho e justificar a sua importância.
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci aspernatur labore aperiam tenetur, officia neque rerum, voluptatibus sunt quo odio temporibus dolorem molestiae numquam. Officia velit rerum veritatis iste deserunt.
             Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quisquam debitis dolore cumque quo iusto incidunt corporis aut consequuntur deserunt pariatur voluptas earum, magnam recusandae, et accusamus nisi quidem ab qui?
@@ -102,30 +73,71 @@
     </section>
 
     <section id="capitulo2" class="capitulo page-break">
-        <h2>2. Revisão da Literatura</h2>
+        <h3>2. Revisão da Literatura</h3>
         <p>A revisão da literatura deve apresentar os principais estudos e teorias relacionadas ao tema do trabalho.</p>
     </section>
 
     <section id="capitulo3" class="capitulo page-break">
-        <h2>3. Metodologia</h2>
+        <h3>3. Metodologia</h3>
         <p>A seção de metodologia deve detalhar os métodos e técnicas utilizados para a realização da pesquisa.</p>
     </section>
 
     <section id="capitulo4" class="capitulo page-break">
-        <h2>4. Resultados e Discussão</h2>
+        <h3>4. Resultados e Discussão</h3>
         <p>Nesta seção, são apresentados os resultados obtidos na pesquisa e suas implicações são discutidas.</p>
     </section>
 
     <section id="capitulo5" class="capitulo page-break">
-        <h2>5. Conclusão</h2>
+        <h3>5. Conclusão</32>
         <p>A conclusão deve sintetizar os principais achados da pesquisa e sugerir possíveis desdobramentos futuros.</p>
     </section>
 
     <section id="referencias" class="referencias page-break">
-        <h2>Referências</h2>
+        <h3>Referências</h3>
         <p>As referências devem ser listadas em ordem alfabética pelo sobrenome do autor. As normas da ABNT para referências devem ser seguidas com atenção.</p>
         <p>Exemplo de referência:</p>
         <p>AUTOR, Nome. <i>Título do Livro</i>. Editora, ano.</p>
     </section>
+    <div class="footer">
+        Página {{ page }} de {{ pages }}
+    </div>
 </body>
+<style>
+    @page {
+        margin: 3cm 2cm 2cm 3cm;
+    }
+    body {
+        font-family: 'Times New Roman', Times, serif;
+    }
+    title {
+        font-size: 16;
+    }
+    h1 {
+        text-align: center;
+        font-size: 16;
+    }
+    h2 {
+        font-weight: normal;
+        text-align: center;
+        font-size: 14;
+    }
+    h3 {
+        text-align: left;
+        font-size: 12;
+    }
+    p {
+        font-size: 12;
+        text-align: justify;
+    }
+    /* CSS para impressão */
+    @media print {
+        .page-break {
+            page-break-before: always; /* Quebra a página antes do elemento */
+            page-break-inside: avoid; /* Evita quebras de página dentro do elemento */
+        }
+    }
+</style>
+
+</style>
 </html>
+
