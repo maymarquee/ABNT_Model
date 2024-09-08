@@ -45,10 +45,10 @@
         </div>
         <div >
             <nav class="catalogo">
-            <a onclick="scrollToSection(1)" class="options_nav" href="#">Objetivo</a>
-            <a onclick="scrollToSection(2)" class="options_nav" href="#">Modelos</a>
-            <a onclick="scrollToSection(3)" class="options_nav" href="#">Quem somos?</a>
-            <a onclick="scrollToSection(4)" class="options_nav" href="#">Dúvidas</a>
+            <a onclick="scrollToSection(1)" class="options_nav" href="#forma_p1">Objetivo</a>
+            <a onclick="scrollToSection(2)" class="options_nav" href="#forma_p2">Modelos</a>
+            <a onclick="scrollToSection(3)" class="options_nav" href="#forma_p3">Quem somos?</a>
+            <a onclick="scrollToSection(4)" class="options_nav" href="#forma_p4">Dúvidas</a>
             </nav>
         </div>
     </div>
@@ -155,28 +155,5 @@
 
 </footer>
 
-
-<script>
-    // codigo gerado com gpt preciso entender
-    document.querySelectorAll('.options_nav').forEach(link => {
-        link.addEventListener('click', function(e) {
-            e.preventDefault();
-            const section = this.getAttribute('data-section');
-            scrollToSection(parseInt(section));
-        });
-    });
-
-    function scrollToSection(section) {
-        if (section === 1) {
-            document.getElementById('forma_p1').scrollIntoView({ behavior: 'smooth' });
-        } else if (section === 2) {
-            document.getElementById('forma_p2').scrollIntoView({ behavior: 'smooth' });
-        } else if (section === 3) {
-            document.getElementById('forma_p3').scrollIntoView({ behavior: 'smooth' });
-        } else if (section === 4) {
-            document.getElementById('forma_p4').scrollIntoView({ behavior: 'smooth' });
-        }
-    }
-</script>
 
 </html>

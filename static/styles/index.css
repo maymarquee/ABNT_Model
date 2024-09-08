@@ -1,18 +1,12 @@
+@import url('cores.css');
+@import url('fonte.css');
 
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display+SC:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=Playfair+Display+SC:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=Playfair+Display+SC:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
 *{
     padding: 0px;
     margin: 0px;
 }
-
-:root {
-    --cor-topbar: #879BAF;
-    --cor-fundo: #EDF0F3;
-    --cor-fundo-escuro: #C7C7CA;
-    --cor-catalogo: #213A5C;
-    --texto: #2c2c2c;
+html{
+    scroll-behavior: smooth;
 }
 body{
     background-color: var(--cor-fundo);
@@ -27,7 +21,7 @@ body{
 }
 .titulo{
     color: #FFF;
-    font-family: "Playfair Display SC", serif;
+    font-family: var(--playfair) ;
     font-size: 37px;
     font-style: normal;
     font-weight: 700;

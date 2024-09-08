@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trabalho de Conclusão de Curso</title>
+    <style>
+        * {
+            font-family: 'Times New Roman', Times, serif;
+        }
+        h1 {
+            text-align: center;
+        }
+        h2 {
+            text-align: left;
+        }
+        p {
+            text-align: justify;
+        }
+        .capitulo {
+            margin-top: 2cm;
+        }
+        .referencias {
+            margin-top: 3cm;
+        }
+
+        /* CSS para impressão */
+        @media print {
+            .page-break {
+                page-break-before: always; /* Quebra a página antes do elemento */
+                page-break-inside: avoid; /* Evita quebras de página dentro do elemento */
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        {% if imagem %}
+        <img src="{{ imagem }}" alt="">
+        {% endif %}
+        <h1>Nome da Instituição</h1>
+        <h2>Curso de Nome do Curso</h2>
+        <h3>Título do Trabalho de Conclusão de Curso</h3>
+        <p>Nome do Autor</p>
+        <p>Orientador: Nome do Orientador</p>
+        <p>Local e Data</p>
+    </header>
+
+    <section class="capitulo page-break">
+        <h2>Resumo</h2>
+        <p>O resumo deve apresentar os principais pontos do trabalho, incluindo o objetivo, a metodologia, os resultados e as conclusões. O resumo deve ter entre 150 e 500 palavras e ser seguido de palavras-chave.</p>
+        <p><strong>Palavras-chave:</strong> palavra1, palavra2, palavra3</p>
+    </section>
+
+    <section class="capitulo page-break">
+        <h2>Abstract</h2>
+        <p>The abstract should summarize the main points of the work, including the objective, methodology, results, and conclusions. The abstract should be between 150 and 500 words and followed by keywords.</p>
+        <p><strong>Keywords:</strong> keyword1, keyword2, keyword3</p>
+    </section>
+
+    <section class="capitulo page-break">
+        <h2>Sumário</h2>
+        <ul>
+
+            <li><a href="#capitulo1">1. Introdução</a></li>
+            <li><a href="#capitulo2">2. Revisão da Literatura</a></li>
+            <li><a href="#capitulo3">3. Metodologia</a></li>
+            <li><a href="#capitulo4">4. Resultados e Discussão</a></li>
+            <li><a href="#capitulo5">5. Conclusão</a></li>
+            <li><a href="#referencias">Referências</a></li>
+        </ul>
+    </section>
+
+    <section id="capitulo1" class="capitulo page-break">
+        <h2>1. Introdução</h2>
+        <p>A introdução deve contextualizar o problema de pesquisa, apresentar os objetivos do trabalho e justificar a sua importância.
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci aspernatur labore aperiam tenetur, officia neque rerum, voluptatibus sunt quo odio temporibus dolorem molestiae numquam. Officia velit rerum veritatis iste deserunt.
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quisquam debitis dolore cumque quo iusto incidunt corporis aut consequuntur deserunt pariatur voluptas earum, magnam recusandae, et accusamus nisi quidem ab qui?
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum quibusdam officia quaerat omnis nostrum ut ea, laboriosam exercitationem itaque natus, cum amet fugit eligendi molestias tenetur commodi expedita. Provident, hic?
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolore officia repudiandae nostrum reiciendis quia quibusdam ipsum rem quo corporis animi doloribus rerum saepe cumque aliquid nobis, expedita temporibus iure sequi.
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti, reprehenderit voluptas asperiores dicta rem exercitationem expedita veritatis nulla quia sapiente deserunt fuga officiis cupiditate excepturi placeat, quos odio consectetur cumque!
+            Eligendi incidunt aliquid expedita eos! Non natus pariatur, hic minus dolor assumenda officia dolorem, iusto sunt consequatur sint earum quo nisi illum doloremque aliquam expedita dicta quasi. Cumque, est recusandae?
+            Quis autem quaerat aspernatur amet voluptate. Eaque possimus maxime ea corrupti vitae blanditiis ullam necessitatibus hic incidunt iusto expedita recusandae magnam nesciunt laboriosam veritatis voluptatum, alias quisquam laudantium? Pariatur, dignissimos.
+            Reprehenderit praesentium autem aliquam ad voluptate aspernatur dolores ab dolorem repellat dignissimos alias voluptates a omnis, amet sed rem, magni ex. Necessitatibus deleniti nulla dolorum minus itaque maxime ratione! Cumque?
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Cum sed provident labore! Adipisci, inventore? Debitis magnam nam ratione ab sequi tempora voluptate natus culpa unde laboriosam, numquam facere saepe illo.
+            Inventore quisquam tenetur maxime et modi. Non ratione et odit? Velit quidem, fugit sed eius numquam accusamus suscipit doloremque officia nam. Mollitia repellat quibusdam pariatur consequuntur maxime accusamus fugit perspiciatis.
+            Esse itaque mollitia aperiam nesciunt maiores harum consectetur dolor neque consequuntur ipsa, quia, molestias ad eos architecto dicta delectus. Inventore expedita neque maxime dicta minima perspiciatis? Perspiciatis consequatur eligendi tempore?
+            Accusamus sequi reprehenderit, libero temporibus nulla facere minima fuga accusantium facilis quo impedit ea ut beatae illo suscipit voluptatem architecto eveniet eius omnis cupiditate perspiciatis aut atque. Totam, consequatur sit!
+            Quae provident maiores, laborum eaque rerum asperiores quam laboriosam quis in rem sequi, adipisci minus aspernatur iure commodi! Nostrum voluptate eaque fugiat obcaecati eligendi corporis, nobis quae totam aliquid architecto?
+            Magnam nobis, perferendis assumenda vitae consectetur libero saepe perspiciatis autem minima sapiente impedit error sed ipsa aliquid! Neque repellat, alias commodi molestiae unde architecto vitae aliquam quas odit atque. Dignissimos?
+            Quaerat praesentium suscipit animi nostrum! Omnis asperiores suscipit ipsum inventore aperiam neque assumenda, architecto ad eos maiores ut error accusamus, enim velit blanditiis! Dolor nam quis necessitatibus quae eius iusto!
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Iusto provident sed doloribus maiores reprehenderit? Tenetur, ipsum, aliquam voluptate itaque sit illum molestias ut unde veritatis dolorem, obcaecati nam eum vel?
+            Corrupti ipsum aliquid sint quas quibusdam ducimus a similique reprehenderit enim totam voluptatem dicta earum praesentium porro nostrum eligendi magni vitae, iure, libero autem aut commodi! Consequuntur laborum dolorem voluptatem!
+            Suscipit maxime deserunt hic fugit doloremque dolorem rem sint eaque, ipsa nesciunt vel, quo, nihil error enim dolorum cupiditate reiciendis? Suscipit veniam, ipsam aperiam voluptates eligendi eveniet voluptatem nostrum sed.
+            Quibusdam sed laboriosam iure, fugit reiciendis mollitia magni quos odio necessitatibus qui maiores laborum libero dolorem nam modi quidem atque quia. Aperiam rerum dolore laudantium reprehenderit. Illum qui aperiam dicta!
+            Ipsam, quasi aspernatur eum excepturi sequi at quos aut ab dicta laboriosam, cumque suscipit, voluptas aliquam sunt illo quo! Accusantium, dolorem? Aut facere odit, fugiat ex reprehenderit beatae nemo iste.
+            Nihil quaerat temporibus, magnam sit excepturi animi nesciunt repudiandae ipsa, nostrum pariatur placeat error sed odio dolores eum atque praesentium recusandae quo. Ipsum accusamus vero voluptate est aspernatur animi id?
+            Nisi voluptates id, nulla beatae, obcaecati fugit, facere tenetur eaque quisquam amet sit pariatur saepe iusto consectetur quo quaerat. Sed molestias ea, cumque quae magnam sit laborum dolorem. Facilis, quidem.
+            Quia unde, eos dolorem minus necessitatibus voluptas rem saepe sed tempora, exercitationem sequi obcaecati veniam quidem inventore illo ea. Autem illum voluptate voluptatibus eaque non delectus quisquam, cupiditate molestiae aperiam.
+            Sed aperiam assumenda quae. Dignissimos ex adipisci maiores praesentium similique. Suscipit accusamus, qui tempora doloremque porro perferendis dicta consectetur corporis obcaecati rem non nisi quae id itaque quo, animi aut.
+        </p>
+    </section>
+
+    <section id="capitulo2" class="capitulo page-break">
+        <h2>2. Revisão da Literatura</h2>
+        <p>A revisão da literatura deve apresentar os principais estudos e teorias relacionadas ao tema do trabalho.</p>
+    </section>
+
+    <section id="capitulo3" class="capitulo page-break">
+        <h2>3. Metodologia</h2>
+        <p>A seção de metodologia deve detalhar os métodos e técnicas utilizados para a realização da pesquisa.</p>
+    </section>
+
+    <section id="capitulo4" class="capitulo page-break">
+        <h2>4. Resultados e Discussão</h2>
+        <p>Nesta seção, são apresentados os resultados obtidos na pesquisa e suas implicações são discutidas.</p>
+    </section>
+
+    <section id="capitulo5" class="capitulo page-break">
+        <h2>5. Conclusão</h2>
+        <p>A conclusão deve sintetizar os principais achados da pesquisa e sugerir possíveis desdobramentos futuros.</p>
+    </section>
+
+    <section id="referencias" class="referencias page-break">
+        <h2>Referências</h2>
+        <p>As referências devem ser listadas em ordem alfabética pelo sobrenome do autor. As normas da ABNT para referências devem ser seguidas com atenção.</p>
+        <p>Exemplo de referência:</p>
+        <p>AUTOR, Nome. <i>Título do Livro</i>. Editora, ano.</p>
+    </section>
+</body>
+</html>
