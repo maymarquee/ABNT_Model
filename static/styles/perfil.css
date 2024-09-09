@@ -175,4 +175,13 @@ body{
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    gap: 30px;
+}
+.foto_perfil{
+        width: 160px; 
+        height: 160px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 1px solid #ddd;
+    
 }

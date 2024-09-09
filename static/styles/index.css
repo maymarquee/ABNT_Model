@@ -88,7 +88,7 @@ body{
     top: 42px;
     right: 0;
     background-color: var(--cor-fundo);
-    min-width: 182px;
+    min-width: 181px;
     border-radius: 0px 0px 10px 10px;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
     z-index: 1000;
@@ -464,4 +464,11 @@ a{
     font-weight: 700;
     line-height: normal;
     margin: 10px;
+}
+.foto_perfil{
+    width: 30px; /* Define a largura da imagem */
+    height: 30px; /* Define a altura da imagem */
+    border-radius: 50%; /* Faz a imagem ficar redonda */
+    object-fit: cover; /* Faz com que a imagem se ajuste ao contêiner sem distorcer */
+
 }

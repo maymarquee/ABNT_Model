@@ -18,8 +18,12 @@ from .models import Image
 def index(request):
     autenticado = request.user.is_authenticated
     context={
-        "autenticado":autenticado
+        "autenticado":autenticado,
     }
+    if autenticado:
+        url = Image.objects.get(user = request.user)
+        return render(request, 'abnt_model/index.html', context={"imagem": url.image})
+    
     return render(request, 'abnt_model/index.html', context)
 
 def login_view(request):
@@ -130,7 +134,6 @@ def perfil_editar(request):
         novo_email = request.POST.get("email")
         nova_senha = request.POST.get("senha")
         nova_imagem = request.POST.get("url_imagem")
-    
 
         if not (novo_nome and novo_sobrenome and novo_email):
             return render(request, 'abnt_model/perfil_editar.html', context)
@@ -201,7 +204,7 @@ def cadastro(request):
         try:
             user = User.objects.create_user(username= email, email=email, password=senha, first_name=nome ,last_name=sobrenome)
             user.save()
-            imagem_padrao = 'https://static.vecteezy.com/system/resources/previews/002/275/847/original/male-avatar-profile-icon-of-smiling-caucasian-man-vector.jpg'
+            imagem_padrao = 'https://i.pinimg.com/564x/bc/8f/29/bc8f29c4183345bcc63bd4a161e88c71.jpg'
             url = Image.objects.create(user=user, image=imagem_padrao)
             url.save()
             return redirect('login')
