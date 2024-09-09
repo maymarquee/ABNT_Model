@@ -1,0 +1,70 @@
+@import url(fonte.css);
+@import url(cores.css);
+
+:root{
+    --fonte-principal: var(--crimson);
+}
+
+body{
+    background-color: var(--cor-topbar); 
+    padding: 32px 0px 0px 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#forma{
+    display: flex;
+    padding: 30px;
+    margin-top: 57px;
+    align-items: center;
+    gap: 75px;
+    flex-shrink: 0;
+    border-radius: 50px;
+    background-color: var(--cor-fundo);
+    box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.25);
+}
+#componentes{
+    display: flex;
+    flex-direction: column;
+    display: flex;
+    gap: 40px;
+    padding: 20px 40px 40px 40px;
+}
+.container_escritas{
+    display: flex;
+    justify-content: left;
+    flex-direction: column; 
+    align-items: start;
+    height: 100%; 
+    line-height: 0;
+    align-self: stretch;
+}
+.titulo{
+    color: #222;
+    font-family: var(--fonte-principal);
+    font-size: 42px;
+    font-style: normal;
+    align-items: left;
+    text-align: left;
+    line-height: normal;
+}
+.container_email{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+.texto_email{
+    color: #222;  
+    font-family: var(--fonte-principal);
+    font-size: 17px;
+    text-align: left;
+}
+.input_email{
+    width: 100%; 
+    height: 20px;
+    padding: 10px;
+    border-radius: 15px;
+    border: 0.742px solid #3C3C3C; 
+    background-color: #FFF; 
+    font-size: 15px;
+}
