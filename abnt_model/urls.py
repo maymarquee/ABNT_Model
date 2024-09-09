@@ -2,6 +2,7 @@
 from django.urls import path
 from . import views  # Importa as views onde está a lógica
 
+
 urlpatterns = [
     path("", views.index, name="index"),
     path("perfil/", views.perfil, name="perfil"),
@@ -14,3 +15,4 @@ urlpatterns = [
     path("deletar_conta/", views.deletar_conta, name="deletar_conta"),
     path("formatador/", views.formatador, name="formatador"),
 ]
+

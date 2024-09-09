@@ -8,15 +8,11 @@
 </head>
 <body>
     <header class="capa">
-        {% if imagem %}
-        <img src="{{ imagem }}" alt="">
-        {% endif %}
         <h2 style="margin-bottom: 4cm;">Nome da Instituição</h2>
         <h2 style="margin-bottom: 4cm;">Nome do Autor</h2>
         <h1 style="margin-bottom: 12.5cm;">Título do Trabalho de Conclusão de Curso</h1>
         <h2 >Local e Data</h2>
     </header>
-
     <section class="capitulo page-break">
         <h2>Resumo</h2>
         <p>O resumo deve apresentar os principais pontos do trabalho, incluindo o objetivo, a metodologia, os resultados e as conclusões. O resumo deve ter entre 150 e 500 palavras e ser seguido de palavras-chave.</p>
@@ -30,19 +26,13 @@
     </section>
 
     <section class="capitulo page-break">
-        <h2>Sumário</h2>
-        <ul>
-
-            <li><a href="#capitulo1">1. Introdução</a></li>
-            <li><a href="#capitulo2">2. Revisão da Literatura</a></li>
-            <li><a href="#capitulo3">3. Metodologia</a></li>
-            <li><a href="#capitulo4">4. Resultados e Discussão</a></li>
-            <li><a href="#capitulo5">5. Conclusão</a></li>
-            <li><a href="#referencias">Referências</a></li>
-        </ul>
+        <section id="sumario" class="capitulo page-break">
+            <h2>Sumário</h2>
+            <ul id="sumario-list"></ul>
+        </section>
     </section>
 
-    <section id="capitulo1" class="capitulo page-break">
+    <section id="capitulo" class="capitulo page-break">
         <h3>1. Introdução</h3>
         <p>A introdução deve contextualizar o problema de pesquisa, apresentar os objetivos do trabalho e justificar a sua importância.
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci aspernatur labore aperiam tenetur, officia neque rerum, voluptatibus sunt quo odio temporibus dolorem molestiae numquam. Officia velit rerum veritatis iste deserunt.
@@ -72,22 +62,22 @@
         </p>
     </section>
 
-    <section id="capitulo2" class="capitulo page-break">
+    <section id="capitulo" class="capitulo page-break">
         <h3>2. Revisão da Literatura</h3>
         <p>A revisão da literatura deve apresentar os principais estudos e teorias relacionadas ao tema do trabalho.</p>
     </section>
 
-    <section id="capitulo3" class="capitulo page-break">
+    <section id="capitulo" class="capitulo page-break">
         <h3>3. Metodologia</h3>
         <p>A seção de metodologia deve detalhar os métodos e técnicas utilizados para a realização da pesquisa.</p>
     </section>
 
-    <section id="capitulo4" class="capitulo page-break">
+    <section id="capitulo" class="capitulo page-break">
         <h3>4. Resultados e Discussão</h3>
         <p>Nesta seção, são apresentados os resultados obtidos na pesquisa e suas implicações são discutidas.</p>
     </section>
 
-    <section id="capitulo5" class="capitulo page-break">
+    <section id="capitulo" class="capitulo page-break">
         <h3>5. Conclusão</32>
         <p>A conclusão deve sintetizar os principais achados da pesquisa e sugerir possíveis desdobramentos futuros.</p>
     </section>
@@ -98,13 +88,16 @@
         <p>Exemplo de referência:</p>
         <p>AUTOR, Nome. <i>Título do Livro</i>. Editora, ano.</p>
     </section>
-    <div class="footer">
-        Página {{ page }} de {{ pages }}
-    </div>
 </body>
 <style>
-    @page {
+    @page{
         margin: 3cm 2cm 2cm 3cm;
+    }
+    @page {
+    @bottom-center {
+        content: counter(page) " de " counter(pages);
+        font-size: 10pt;
+    }
     }
     body {
         font-family: 'Times New Roman', Times, serif;
@@ -128,6 +121,8 @@
     p {
         font-size: 12;
         text-align: justify;
+        line-height: 1.5;
+        font-weight: normal;
     }
     /* CSS para impressão */
     @media print {
@@ -137,7 +132,25 @@
         }
     }
 </style>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const capitulos = document.querySelectorAll('.capitulo h3');
+        const sumarioList = document.getElementById('sumario-list');
 
-</style>
+        capitulos.forEach((capitulo, index) => {
+            // Adiciona um ID para cada capítulo, se ainda não tiver um
+            const id = `capitulo${index + 1}`;
+            if (!capitulo.parentElement.id) {
+                capitulo.parentElement.id = id;
+            }
+
+            // Cria um item de lista para o sumário
+            const li = document.createElement('li');
+            li.innerHTML = `<a href="#${id}">${capitulo.textContent}</a>`;
+            sumarioList.appendChild(li);
+        });
+    });
+</script>
+
 </html>
 

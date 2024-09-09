@@ -34,12 +34,12 @@
           <div id="perfil-id">
             <div class="foto-user">
               <img
-                style="width: 160px"
-                src="../../static/img/perfil-user.png"
+                style="width: 160px; border-radius: 100px;"
+                src="{{ imagem }}"
                 alt=""
               />
             </div>
-            <a href="{% url 'deletar_conta' %}"><button>Deletar conta</button></a>
+            <a href="{% url 'deletar_conta' %}"><button class="botao_deletar" >DELETAR CONTA</button></a>
           </div>
           <div class="dados-pessoais-view">
             <div>

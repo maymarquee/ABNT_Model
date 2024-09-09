@@ -12,7 +12,7 @@
     <form action="{% url 'formatador' %}" method="POST" enctype="multipart/form-data">
         {% csrf_token %}
         <input name="nome_do_arquivo" type="text" placeholder="Nome do Arquivo">
-        <input type="file" name="img_instituicao">
+        <input type="file" name="img">
         <input name="titulo" type="text" placeholder="Título">
         <input name="autor" type="text" placeholder="Autor">
         <input name="instituicao" type="text" placeholder="Instituição">

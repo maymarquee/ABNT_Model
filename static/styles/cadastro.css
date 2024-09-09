@@ -1,20 +1,21 @@
+@import url(cores.css);
+@import url(fonte.css);
 
 :root{
-    --cor-fundo: #879BAF;
-    --cor-forma: #EDF0F3;
+    --fonte-principal: var(--crimson-regular);
 }
 
 .fundo_cadastro{
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: var(--cor-fundo);
+    background-color: var(--cor-topbar);
 }
 .forma_cadastro{
     display:flex;
     padding: 20px;
     border-radius: 50px;
-    background-color: var(--cor-forma);
+    background-color: var(--cor-fundo);
     align-items: center;
     gap: 75px;
     margin-top: 50px;
@@ -41,7 +42,7 @@
     /* background: red; */
 }
 .textos_menores{
-    font-family: "Crimson Text";
+    font-family: var(--fonte-principal);
     font-size: 50px;
     font-style: normal;
     font-weight: 400; 
@@ -60,7 +61,7 @@
 }
 .possui_conta{
     color: #222;
-    font-family: "Crimson Text";
+    font-family: var(--fonte-principal);
     font-size: 20px;
     font-style: normal;
     font-weight: 400;
@@ -102,19 +103,19 @@
     padding: 10px;
     border: none;
     border-radius: 10px;
-    background: var(--cor-fundo) ;
-    color: var(--cor-forma);
+    background: var(--cor-topbar) ;
+    color: var(--cor-fundo);
     font-size: 17px;
-    font-family: "Crimson Text";
+    font-family: var(--fonte-principal);
 }
 .botao-cadastrar:hover{
     cursor: pointer;
     background: #6d859d;
 }
 .rota-login{
-    color: #879BAF;
+    color: var(--cor-topbar);
 }
 .label{
     font-size: 17px;
-    font-family: "Crimson Text";
+    font-family: var(--fonte-principal);
 }

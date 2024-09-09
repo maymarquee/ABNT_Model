@@ -45,10 +45,10 @@
         </div>
         <div >
             <nav class="catalogo">
-            <a onclick="scrollToSection(1)" class="options_nav" href="#forma_p1">Objetivo</a>
-            <a onclick="scrollToSection(2)" class="options_nav" href="#forma_p2">Modelos</a>
-            <a onclick="scrollToSection(3)" class="options_nav" href="#forma_p3">Quem somos?</a>
-            <a onclick="scrollToSection(4)" class="options_nav" href="#forma_p4">Dúvidas</a>
+                <a onclick="scrollToSection(1)" class="options_nav" href="#">Objetivo</a>
+                <a onclick="scrollToSection(2)" class="options_nav" href="#">Modelos</a>
+                <a onclick="scrollToSection(3)" class="options_nav" href="#">Quem somos?</a>
+                <a onclick="scrollToSection(4)" class="options_nav" href="#">Dúvidas</a>
             </nav>
         </div>
     </div>
@@ -84,7 +84,7 @@
                             <p><b>"Sua Formatação ABNT, Rápida e Sem Complicação. Apenas Digite e Pronto!"</b></p>
                         </div>
                         <div class="complemento_frase">
-                            <p>Produza trabalhos acadêmicos de forma rápida e dinâmica</p>
+                            <p>Produza trabalhos acadêmicos de forma rápida e dinâmica!</p>
                         </div>
                 </div>
                 <div class="text2_forma_p2">
@@ -157,5 +157,26 @@
 
 </footer>
 
+<script>
+    document.querySelectorAll('.options_nav').forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            const section = this.getAttribute('data-section');
+            scrollToSection(parseInt(section));
+        });
+    });
+
+    function scrollToSection(section) {
+        if (section === 1) {
+            document.getElementById('forma_p1').scrollIntoView({ behavior: 'smooth' });
+        } else if (section === 2) {
+            document.getElementById('forma_p2').scrollIntoView({ behavior: 'smooth' });
+        } else if (section === 3) {
+            document.getElementById('forma_p3').scrollIntoView({ behavior: 'smooth' });
+        } else if (section === 4) {
+            document.getElementById('forma_p4').scrollIntoView({ behavior: 'smooth' });
+        }
+    }
+</script>
 
 </html>

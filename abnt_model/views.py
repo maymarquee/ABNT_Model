@@ -11,6 +11,9 @@ from django.contrib.auth.tokens import PasswordResetTokenGenerator
 from django.template.loader import render_to_string
 from weasyprint import HTML
 from django.conf import settings
+from PIL import Image
+import urllib.request
+from .models import Image
 
 def index(request):
     autenticado = request.user.is_authenticated
@@ -19,6 +22,27 @@ def index(request):
     }
     return render(request, 'abnt_model/index.html', context)
 
+def login_view(request):
+    context = {
+        "status_de_envio":False,
+    }
+
+    if request.method == "POST":
+        email = request.POST.get("email")
+        senha = request.POST.get("senha")
+        user = authenticate(username=email,password=senha)
+        if user is not None:
+            login(request,user)
+            return redirect('index')
+        else:
+            context = {
+            "status_de_envio":True,
+            "mensagem": 'Senha ou email inválidos, tente novamente. *'
+            }
+            return render(request, 'abnt_model/login.html',context)
+        
+    return render(request, 'abnt_model/login.html',context)
+
 @login_required
 def desconectar(request):
     autenticado = request.user.is_authenticated
@@ -26,72 +50,7 @@ def desconectar(request):
         logout(request)
         return redirect('index')
 
-
-@login_required
-def perfil_editar(request):
-    context = {
-        "nome": request.user.first_name,
-        "sobrenome": request.user.last_name,
-        "email": request.user.email
-    }
-
-    if request.method == "POST":
-        novo_nome = request.POST.get("nome")
-        novo_sobrenome = request.POST.get("sobrenome")
-        novo_email = request.POST.get("email")
-        nova_senha = request.POST.get("senha")
-        
-
-        if not (novo_nome and novo_sobrenome and novo_email):
-            return render(request, 'abnt_model/perfil_editar.html', context)
-        try:
-            user = User.objects.get(email=request.user.email)
-            user.first_name = novo_nome
-            user.last_name = novo_sobrenome
-            user.email = novo_email
-            if nova_senha:
-                user.set_password(nova_senha)
-            user.save()
-            
-            if nova_senha:
-                # Atualiza a sessão do usuário para não invalidar a sessão atual
-                update_session_auth_hash(request, user)
-            
-            return redirect('perfil')
-
-        except User.DoesNotExist:
-            return redirect('perfil_editar')
-    else:
-        return render(request, 'abnt_model/perfil_editar.html', context)
-
-
-def redefinir_senha(request, username, token):
-    usuario = User.objects.get(username=username)
-    senha = request.POST.get("senha")
-    confirmar_senha = request.POST.get("confirmar_senha")
-
-    if request.method == "POST":
-        if senha != confirmar_senha:
-            return redirect("redefinir_senha", username, token)
-
-        usuario.set_password(senha)
-        usuario.save(force_update=True)
-
-        return redirect("login")
-
-    gerador = PasswordResetTokenGenerator()
-
-    if gerador.check_token(usuario, token):
-
-        context = {"username":username, "token":token}
-
-        return render(request,'abnt_model/redefinir_senha.html', context)
-
-
 def recuperar_conta(request):
-
-    # ! fazer tratamento de erros, em caso do email não existir
-
     if request.method == "POST":
         email = request.POST.get("email")
 
@@ -119,38 +78,91 @@ def recuperar_conta(request):
 
     return render(request, 'abnt_model/recuperar_conta.html', context={"status_de_envio": False})
 
+def redefinir_senha(request, username, token):
+    usuario = User.objects.get(username=username)
+    senha = request.POST.get("senha")
+    confirmar_senha = request.POST.get("confirmar_senha")
+    context = {
+        "username":username, 
+        "token":token,
+        }
+    
+    if request.method == "POST":
+        if senha != confirmar_senha:
+            return render(request,'abnt_model/redefinir_senha.html', context={"mensagem":'As senhas não são iguais, tente novamente. **'})
+
+        usuario.set_password(senha)
+        usuario.save(force_update=True)
+
+        return redirect("login")
+
+    gerador = PasswordResetTokenGenerator()
+
+    if gerador.check_token(usuario, token):
+        return render(request,'abnt_model/redefinir_senha.html', context)
 
 @login_required
 def perfil(request):
+    url = Image.objects.get(user = request.user)
     context = {
         "nome": request.user.first_name,
         "sobrenome": request.user.last_name,
-        "email": request.user.email
+        "email": request.user.email,
+        "imagem": url.image
     }
     return render(request, 'abnt_model/perfil.html', context)
 
 
-def login_view(request):
+@login_required
+def perfil_editar(request):
+    url = Image.objects.get(user = request.user)
     context = {
-        "status_de_envio":False,
+        "nome": request.user.first_name,
+        "sobrenome": request.user.last_name,
+        "email": request.user.email,
+        "imagem": url.image
     }
 
     if request.method == "POST":
-        email = request.POST.get("email")
-        senha = request.POST.get("senha")
-        user = authenticate(username=email,password=senha)
-        if user is not None:
-            login(request,user)
-            return redirect('index')
-        else:
-            print('erro')
-            context = {
-            "status_de_envio":True,
-            "mensagem": 'Senha ou email inválidos, tente novamente. *'
-            }
-            return render(request, 'abnt_model/login.html',context)
-        
-    return render(request, 'abnt_model/login.html',context)
+
+        novo_nome = request.POST.get("nome")
+        novo_sobrenome = request.POST.get("sobrenome")
+        novo_email = request.POST.get("email")
+        nova_senha = request.POST.get("senha")
+        nova_imagem = request.POST.get("url_imagem")
+    
+
+        if not (novo_nome and novo_sobrenome and novo_email):
+            return render(request, 'abnt_model/perfil_editar.html', context)
+        try:
+            user = User.objects.get(email=request.user.email)
+            user.first_name = novo_nome
+            user.last_name = novo_sobrenome
+            user.email = novo_email
+
+            if nova_senha:
+                user.set_password(nova_senha)
+            user.save()
+
+            if nova_imagem:
+                if not Image.objects.filter(user= request.user).exists():
+                    campo_imagem = Image.objects.create(user=user, image=nova_imagem)
+                    campo_imagem.save()
+                else:
+                    campo_imagem = url
+                    campo_imagem.image = nova_imagem
+                    campo_imagem.save()
+
+            if nova_senha:
+                # Atualiza a sessão do usuário para não invalidar a sessão atual
+                update_session_auth_hash(request, user)
+            
+            return redirect('perfil')
+
+        except User.DoesNotExist:
+            return redirect('perfil_editar')
+    else:
+        return render(request, 'abnt_model/perfil_editar.html', context)
 
 def cadastro(request):
     context = {
@@ -164,6 +176,7 @@ def cadastro(request):
         email = request.POST.get("email")
         senha = request.POST.get("senha")
         confirmar_senha = request.POST.get("confirmar_senha")
+
 
         if not all([nome,sobrenome,email,senha,confirmar_senha]):
             context = {
@@ -188,6 +201,9 @@ def cadastro(request):
         try:
             user = User.objects.create_user(username= email, email=email, password=senha, first_name=nome ,last_name=sobrenome)
             user.save()
+            imagem_padrao = 'https://static.vecteezy.com/system/resources/previews/002/275/847/original/male-avatar-profile-icon-of-smiling-caucasian-man-vector.jpg'
+            url = Image.objects.create(user=user, image=imagem_padrao)
+            url.save()
             return redirect('login')
         except:
             context = {
@@ -195,7 +211,6 @@ def cadastro(request):
             "mensagem": 'Houve um erro no preenchimento dos campos, se atente aos dados solicitados.'
             }
             return render(request, 'abnt_model/cadastro.html',context)
-    print(context)
     return render(request, 'abnt_model/cadastro.html',context)
 
 @login_required
@@ -213,11 +228,21 @@ def deletar_conta(request):
 
     return render(request, 'abnt_model/deletar_conta.html')
 
+    
+from django.shortcuts import render
+from django.http import HttpResponse
+from django.contrib.auth.decorators import login_required
+from django.template.loader import render_to_string
+from weasyprint import HTML
+from pdf2docx import Converter
+import io
+import tempfile
+import os
+
 @login_required
 def formatador(request):
     if request.method == "POST":
         nome_do_arquivo = request.POST.get("nome_do_arquivo")
-        
         dados = {
             'nome_do_arquivo': nome_do_arquivo,
             'titulo': request.POST.get("titulo", ""),
@@ -240,21 +265,37 @@ def formatador(request):
             'referencias': request.POST.get("referencias", ""),
         }
         tipo_do_arquivo = request.POST.get("tipo_do_arquivo", "pdf")
+
+        # Renderiza o HTML com os dados fornecidos
         html_string = render_to_string('abnt_model/documento.html', dados)
-        
-        if tipo_do_arquivo == "pdf":
-            # Converte o HTML para PDF
-            pdf_file = HTML(string=html_string).write_pdf()
-            
-            # Retorna o PDF como resposta
+        pdf_file = HTML(string=html_string).write_pdf()
+
+        if tipo_do_arquivo == 'pdf':
+            # Envia o arquivo PDF como resposta
             response = HttpResponse(pdf_file, content_type='application/pdf')
             response['Content-Disposition'] = f'attachment; filename="{nome_do_arquivo}.pdf"'
             return response
-        
-        elif tipo_do_arquivo == "docx":
-            # Converte o HTML para DOCX
-            pass
+        else:
+            # Salva o PDF em um arquivo temporário
+            with tempfile.NamedTemporaryFile(delete=False, suffix=".pdf") as temp_pdf_file:
+                temp_pdf_file.write(pdf_file)
+                temp_pdf_file_path = temp_pdf_file.name
+            
+            # Converte o PDF para DOCX
+            docx_stream = io.BytesIO()
+            try:
+                converter = Converter(temp_pdf_file_path)
+                converter.convert(docx_stream)
+            finally:
+                converter.close()
+            
+            # Remove o arquivo PDF temporário
+            os.remove(temp_pdf_file_path)
+            
+            # Configura o stream do DOCX
+            docx_stream.seek(0)
+            response = HttpResponse(docx_stream.read(), content_type='application/vnd.openxmlformats-officedocument.wordprocessingml.document')
+            response['Content-Disposition'] = f'attachment; filename="{nome_do_arquivo}.docx"'
+            return response
+
     return render(request, 'abnt_model/formatador.html')
-
-
-

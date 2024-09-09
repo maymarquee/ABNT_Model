@@ -9,7 +9,7 @@
     <title>ABNT Model</title>
   </head>
   <body style="background: #46617c;">
-    <form action="{% url 'perfil_editar' %}" method="POST" >
+    <form action="{% url 'perfil_editar' %}" method="POST" enctype="multipart/form-data">
         {% csrf_token %} 
         <div id="forma">
           <div id="componentes">
@@ -20,10 +20,12 @@
               <div id="perfil-id">
                 <div class="foto-user">
                   <img
-                    style="width: 160px"
-                    src="../../static/img/perfil-user.png"
-                    alt=""
+                  style="width: 160px; border-radius: 100px;"
+                  src="{{ imagem }}"
+                  alt="imagem_perfil"
                   />
+                  <input type="url" name="url_imagem" class="infos" placeholder="Digite aqui a url da sua foto.">
+                  
                 </div>
               </div>
               <div class="dados-pessoais-view">
@@ -46,7 +48,9 @@
               </div>
             </div>
             <section class="container_btn_edit">
-                <a class="redirecionamento_edit" href=""><button class="btn_edit_perfil_cancelar">CANCELAR EDIÇÃO</button></a>
+                <a class="redirecionamento_edit" href="{% url 'perfil' %}">
+                  <button class="btn_edit_perfil_cancelar">CANCELAR EDIÇÃO</button>
+                </a>
                 <button class="btn_edit_perfil_salvar" type="submit">SALVAR EDIÇÃO</button>
             </section>
           </div>
