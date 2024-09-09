@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 {% load static%}
-<html lang="en">
+<html lang="pt-br">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="shortcut icon" href="{% static '../static/img/ICONS_OO-removebg-preview.webp' %}" type="image/x-icon">
-    <link rel="stylesheet" href="../../static/styles/perfil.css" />
+    <link rel="stylesheet" href="../../static/styles/recuperar_conta.css" />
+    <link rel="stylesheet" href="../../static/styles/deletar_conta.css" />
     <title>ABNT Model</title>
   </head>
 <body>
@@ -16,14 +17,20 @@
             <div id="componentes">
                 {% if status_de_envio == False%}
 
-                <h1>Recuperar Conta</h1>
-                <p>digite um email em que você tenha acesso para receber um email de redefinição de senha.</p>
-                <label for="email">Email:</label>
-                <input name="email" type="email" id="email" placeholder="digite aqui.">
-                <button type="submit">Confirmar</button>
+                <div class="container_escritas">
+                  <p class="titulo">Recuperar Conta</p>
+                  <p class="texto_explicacao">Digite um email em que você tenha acesso para receber um link de redefinição de senha.</p>
+                </div>
+                <div class="container_email">
+                  <label class="texto_email" for="email">Email:</label>
+                  <input class="input_email" name="email" type="email" id="email" placeholder="Digite aqui">
+                </div>
+                <div class="container_botao">
+                  <button class="botao_confirmar" type="submit">CONFIRMAR</button>
+                </div>
 
                 {% else %}
-                <p> o email foi enviado com sucesso para {{ username }}, cheque sua caixa postal.</p>
+                <p style="font-size: 18px;"> O email foi enviado com sucesso para {{ username }}, cheque sua caixa de entrada.</p>
 
                 {% endif %}
             </div>
@@ -32,5 +39,3 @@
 
 </body>
 </html>
-
-<!-- falta deixar essa pagina bonita, ela ta muito feia -->

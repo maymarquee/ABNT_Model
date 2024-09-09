@@ -5,7 +5,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="shortcut icon" href="{% static 'img/ICONS_OO-removebg-preview.webp' %}" type="image/x-icon">
-    <link rel="stylesheet" href="{% static 'styles/perfil.css' %}" />
+    <link rel="stylesheet" href="{% static 'styles/redefinir_senha.css' %}" />
+    <link rel="stylesheet" href="{% static 'styles/deletar_conta.css' %}" />
     <title>Redefinir Senha - ABNT Model</title>
 </head>
 <body>
@@ -13,16 +14,24 @@
         {% csrf_token %} 
         <div id="forma">
             <div id="componentes">
-                <h1>Redefinição de Senha</h1>
-                <p>Digite aqui a sua nova senha.</p>
-                <label for="senha">Senha:</label>
-                <input type="password" name="senha" id="senha" placeholder="Digite aqui sua nova senha" required />
-                <label for="confirmar_senha">Confirmar Senha:</label>
-                <input type="password" name="confirmar_senha" id="confirmar_senha" placeholder="Digite aqui sua nova senha novamente" required />
+                <div class="container_infos">
+                    <p class="titulo">Redefinição de Senha</p>
+                    <p class="texto_secundario">Digite aqui a sua nova senha.</p>
+                </div> 
+                <div class="container_botoes">
+                    <label class="texto_senha" for="senha">Senha:</label>
+                    <input class="input_senha" type="password" name="senha" id="senha" placeholder="Digite aqui sua nova senha" required />
+                    <label class="texto_senha" for="confirmar_senha">Confirmar Senha:</label>
+                    <input class="input_senha" type="password" name="confirmar_senha" id="confirmar_senha" placeholder="Digite aqui sua nova senha novamente" required />
+                </div>
                 <p style="color: red;">{{mensagem}}</p>
-                <button type="submit">Confirmar</button>
+                <div class="container_botao">
+                    <button class="botao_confirmar" type="submit">CONFIRMAR</button>
+                </div>
             </div>
         </div>
     </form>
 </body>
 </html>
+
+<!-- falta deixar essa pagina bonita, ela ta muito feia -->
