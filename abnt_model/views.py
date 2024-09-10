@@ -246,7 +246,9 @@ import os
 def formatador(request):
     if request.method == "POST":
         nome_do_arquivo = request.POST.get("nome_do_arquivo")
+        imagem = request.POST.get("img")
         dados = {
+            'imagem': imagem,
             'nome_do_arquivo': nome_do_arquivo,
             'titulo': request.POST.get("titulo", ""),
             'autor': request.POST.get("autor", ""),

@@ -7,12 +7,24 @@
     <title>{{nome_do_arquivo}}</title>
 </head>
 <body>
+    {% if imagem %}
+    <header class="capa" style="position: relative; text-align: center;">
+        <img class="img_instituicao" src="{{imagem}}" style="display: block; margin: 0 auto;">
+        <h2 style="position: absolute; top: 6cm; left: 50%; transform: translateX(-50%);">Nome da Instituição</h2>
+        <h2 style="position: absolute; top: 10cm; left: 50%; transform: translateX(-50%);">Nome do Autor</h2>
+        <h1 style="position: absolute; top: 15cm;">Título do Trabalho de Conclusão de Curso</h1>
+        <h2 style="position: absolute; top: 23cm; left: 50%; transform: translateX(-50%);">Local e Data</h2>
+    </header>
+    
+    {% else %}
     <header class="capa">
         <h2 style="margin-bottom: 4cm;">Nome da Instituição</h2>
         <h2 style="margin-bottom: 4cm;">Nome do Autor</h2>
         <h1 style="margin-bottom: 12.5cm;">Título do Trabalho de Conclusão de Curso</h1>
         <h2 >Local e Data</h2>
     </header>
+    {% endif %}
+
     <section class="capitulo page-break">
         <h2>Resumo</h2>
         <p>O resumo deve apresentar os principais pontos do trabalho, incluindo o objetivo, a metodologia, os resultados e as conclusões. O resumo deve ter entre 150 e 500 palavras e ser seguido de palavras-chave.</p>
@@ -93,7 +105,7 @@
     @page{
         margin: 3cm 2cm 2cm 3cm;
     }
-    @page {
+    @page{
     @bottom-center {
         content: counter(page) " de " counter(pages);
         font-size: 10pt;
@@ -124,6 +136,20 @@
         line-height: 1.5;
         font-weight: normal;
     }
+/* Para garantir que a imagem não seja muito grande */
+.capa img {
+    max-width: 100%; /* Garante que a imagem não exceda a largura do contêiner */
+    height: auto; /* Mantém a proporção da imagem */
+}
+
+.img_instituicao {
+    width: 6cm;      /* Define a largura da imagem */
+    height: 3cm;     /* Define a altura da imagem */
+    object-fit: cover; /* Ajusta a imagem para cobrir o contêiner, cortando se necessário */
+    display: block;  /* Garante que a margem automática funcione */
+    margin: 0 auto;  /* Centraliza a imagem horizontalmente */
+}
+
     /* CSS para impressão */
     @media print {
         .page-break {

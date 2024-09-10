@@ -82,10 +82,6 @@ body{
     align-items: center;
     gap: 40px;
 }
-.id-text::before{
-    content: "ID:";
-    font-weight: bold;
-}
 .dados-pessoais-view{
     display: flex;
     flex-direction: column;
@@ -158,8 +154,8 @@ body{
     justify-content: center;
     text-align: center;
     background-size: 49px 49px;
-    border: 0.742px solid #3C3C3C; 
-    background-color: #e5dfdf; 
+    border: 0.742px solid var(--cor-fundo); 
+    background-color:var(--cor-fundo); 
     font-size: 10px;
     font-family: var(--fonte-principal);
     font-weight: bold;
@@ -182,6 +178,6 @@ body{
         height: 160px;
         border-radius: 50%;
         object-fit: cover;
-        border: 1px solid #ddd;
+        border: 1px solid var(--cor-fundo);
     
 }
