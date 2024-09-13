@@ -5,6 +5,12 @@
     --fonte-principal: var(--crimson-regular);
 }
 
+body.dark-mode{
+    --cor-topbar: #171D25;
+    --cor-fundo: #5F6D7A4C;
+    --texto: #E0E4E8;
+}
+
 .fundo_cadastro{
     display: flex;
     justify-content: center;
@@ -47,7 +53,7 @@
     font-style: normal;
     font-weight: 400; 
     line-height: normal;
-    color: #222;
+    color: var(--texto);
     /* background: green;  */
 }
 .container_texto_secundario{
@@ -60,7 +66,7 @@
     /* background: blue; */
 }
 .possui_conta{
-    color: #222;
+    color: var(--texto);
     font-family: var(--fonte-principal);
     font-size: 20px;
     font-style: normal;
@@ -77,15 +83,18 @@
     flex-direction: row;
     gap: 20px;
     line-height: 0;
+    color: var(--texto);
 }
 .nome, .sobrenome, .senha, .confirmar-senha{
     display: flex;
     flex-direction: column;
+    color: var(--texto);
 }
 .email{
     display: flex;
     flex-direction: column;
     line-height: 0.5;
+    color: var(--texto);
 }
 .container-senhas{
     display: flex;
@@ -104,7 +113,7 @@
     border: none;
     border-radius: 10px;
     background: var(--cor-topbar) ;
-    color: var(--cor-fundo);
+    color: #E0E4E8;
     font-size: 17px;
     font-family: var(--fonte-principal);
 }

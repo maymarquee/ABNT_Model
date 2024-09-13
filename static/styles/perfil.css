@@ -9,6 +9,13 @@
     --fonte-principal: var(--crimson-regular);
 }
 
+body.dark-mode{
+    --cor-topbar: #171D25;
+    --cor-fundo: #5F6D7A4C;
+    --texto: #E0E4E8;
+    background-color: var(--cor-topbar);
+}
+
 body{
     display: flex;
     padding: 64px 32px;
@@ -20,6 +27,7 @@ body{
     height: 75vh;
 }
 #forma{
+    background-color: var(--cor-fundo);
     display: flex;
     width: 880px;
     height: 480px;
@@ -28,7 +36,6 @@ body{
     align-items: center;
     gap: 75px;
     border-radius: 50px;
-    background-color: var(--cor-fundo);
     box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.25);
 }
 #componentes{
@@ -48,6 +55,13 @@ body{
     align-items: center;
     align-self: stretch;
 }
+.texto_sup{
+    color: var(--texto);
+    display: flex;
+    gap: 8px;
+    font-size: 35px;
+    font-family: var(--fonte-principal);
+}
 #subtitulo-voltar{
     /* background: blue; */
     display: flex;
@@ -55,7 +69,7 @@ body{
     justify-content: center;
     gap: 8px;
     text-decoration: none;
-    color: black;
+    color: var(--texto);
     font-size: 18px;
 } 
 #subtitulo{
@@ -108,6 +122,8 @@ body{
 }
 .label{
     font-weight: bold;
+    font-family: var(--fonte-principal);
+    color: var(--texto);
 }
 .container_btn_edit{
     display: flex;

@@ -8,13 +8,13 @@
     <link rel="stylesheet" href="{% static '../static/styles/perfil.css' %}" />
     <title>ABNT Model</title>
   </head>
-  <body style="background: #46617c;">
+  <body>
     <form action="{% url 'perfil_editar' %}" method="POST" enctype="multipart/form-data">
         {% csrf_token %} 
         <div id="forma">
           <div id="componentes">
             <div id="componentes-sup">
-                <h1>Editar dados:</h1>
+                <p class="texto_sup">Editar dados:</p>
             </div>
             <div id="componentes-inf">
               <div id="perfil-id">
@@ -43,7 +43,7 @@
                 </div>
                 <div>
                   <label class="label" for="Senha">Mudar senha:</label>
-                  <input name="senha" class="infos" type="text" value="{{ senha }}" placeholder="digite aqui caso deseje mudar a senha.">
+                  <input name="senha" class="infos" type="text" value="{{ senha }}" placeholder="Digite aqui caso deseje mudar a senha.">
                 </div>
               </div>
             </div>
@@ -56,5 +56,6 @@
           </div>
         </div>
     </form>
+    <script src="{% static '../static/script/index.js' %}"></script>
   </body>
 </html>
