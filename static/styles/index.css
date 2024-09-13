@@ -11,9 +11,23 @@
     --fonte-secundaria: var(--crimson);
 }
 
+body.dark-mode{
+    --cor-topbar: #171D25;
+    --cor-fundo: #5F6D7A4C;
+    --cor-fundo-escuro: #5F6D7A4C;
+    --cor-catalogo: #171D25;
+    --texto: #E0E4E8;
+    --cor-edicao-paginas: #46617c;
+    --cor-subtitulo: #879BAF;
+    --cor-azul-escuro: #879BAF;
+    background-color: #12111C;
+    --texto-secundario: #E0E4E8;
+    --cor-forma_1: #EDF0F3;
+}
+
 body{
 
-    background-color: var(--cor-fundo);
+    background-color: var(--cor-forma);
 }
 .titulo_forma{
     display: flex;
@@ -105,7 +119,7 @@ body{
 
 /* Estilo para cada item do dropdown */
 .dropdown-content a {
-    color: #333;
+    color: var(--texto);
     padding: 12px 16px;
     text-decoration: none;
     display: flex;
@@ -124,7 +138,7 @@ body{
 /* Muda a cor de fundo e o texto quando o usuário passa o mouse sobre um item do dropdown */
 .dropdown-content a:hover {
     background-color: var(--cor-fundo-escuro);
-    color: #000;
+    color: var(--texto);
     border-radius: 10px;
 }
 .catalogo{
@@ -134,7 +148,7 @@ body{
     flex-shrink: 0;
 }
 nav{
-    color: var(--cor-catalogo);
+    color: var(--cor-azul-escuro);
     font-family: var(--fonte-secundaria);
     font-size: 43px;
     font-style: normal;
@@ -142,7 +156,7 @@ nav{
     line-height: normal;
 }
 .options_nav{
-    color: var(--cor-catalogo);
+    color: var(--cor-azul-escuro);
     font-family: var(--fonte-secundaria);
     font-size: 25px;
     font-style: normal;
@@ -163,8 +177,9 @@ nav{
     align-self: stretch;
     gap: 32px;
 }
+/* texto do subtitulo da forma 1 */
 .subtitulo_1{
-    color: var(--cor-catalogo);
+    color: var(--cor-subtitulo);
     text-align: left;
     font-family: var(--fonte-secundaria);
     font-size: 35px;
@@ -172,8 +187,9 @@ nav{
     font-weight: 700;
     line-height: normal;
 }
+/* texto dentro da forma 1, primeira apresentação do site */
 .text_1{
-    color: var(--cor-catalogo);
+    color: var(--texto);
     text-align: justify;
     font-family: var(--fonte-geral);
     font-size: 20px;
@@ -181,6 +197,8 @@ nav{
     font-weight: 400;
     line-height: normal;
 }
+
+/* !! olhar o fundo da forma 1 */
 .apresentation{
     display: flex;
     flex-direction: row;
@@ -279,7 +297,7 @@ nav{
     align-self: stretch;
 }
 .subtitulo_2{
-    color: var(--cor-catalogo);
+    color: var(--cor-azul-escuro);
     text-align: right;
     font-family: var(--fonte-secundaria);
     font-size: 45px;
@@ -445,10 +463,9 @@ a{
     padding: 12px 25px;
     flex-direction: column;
     height: 350px;
-    /* editar espaçamento das escritas na parte de dúvidas */
 } 
 .text_forma_p4{
-    color: var(--cor-fundo);
+    color: var(--texto-secundario);
     font-size: 20px;
     font-family: var(--fonte-geral);
     height: 100px;
@@ -456,7 +473,7 @@ a{
     margin: 10px;
 }
 .subtitulo_4{
-    color: var(--cor-fundo);
+    color: var(--texto-secundario);
     text-align: left;
     font-family: var(--fonte-secundaria);
     font-size: 35px;

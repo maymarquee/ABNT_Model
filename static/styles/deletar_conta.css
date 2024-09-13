@@ -5,6 +5,13 @@
     --fonte-principal: var(--playfair);
 }
 
+body.dark-mode{
+    --cor-topbar: #171D25;
+    --cor-fundo: #5F6D7A4C;
+    --texto: #E0E4E8;
+    background-color: var(--cor-topbar);
+}
+
 body{
     background-color: var(--cor-edicao-paginas);
 }
@@ -18,7 +25,7 @@ body{
     width: 100%;
 }
 .texto_deletar{
-    color: #222;
+    color: var(--texto);
     font-family: var(--fonte-principal);
     font-size: 42px;
     font-style: normal;
@@ -28,7 +35,7 @@ body{
 }
 .texto_explicacao{
     text-align: justify;
-    color: #222;
+    color: var(--texto);
     font-family: var(--fonte-principal);
     font-size: 20px;
 }
@@ -68,10 +75,10 @@ body{
     justify-content: center;
     text-align: center;
     border: 0.742px solid #3C3C3C; 
-    background-color: var(--cor-edicao-paginas); 
+    background-color: var(--cor-topbar); 
     font-size: 15px;
     font-family: var(--fonte-principal);
-    color: #FFF;
+    color: var(--texto);
     font-weight: normal;
     cursor: pointer;
 }

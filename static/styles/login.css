@@ -8,6 +8,13 @@
     padding: 0px ; 
     margin: 0px;
 }
+
+body.dark-mode{
+    --cor-topbar: #171D25;
+    --cor-fundo: #5F6D7A4C;
+    --texto: #E0E4E8;
+}
+
 body{
     background-color: var(--cor-topbar); 
     padding: 32px 0px 0px 0px;
@@ -58,7 +65,7 @@ body{
     gap: 8px;
 }
 .texto-bem-vindo{
-    color: #222;
+    color: var(--texto);
     font-family: var(--fonte-principal);
     font-size: 50px;
     font-style: normal;
@@ -79,7 +86,7 @@ body{
     gap: 7.824px;
 }
 .texto-nao-possui-conta{
-    color: #222;
+    color: var(--texto);
     font-family: var(--fonte-principal);
     font-size: 20px;
     font-style: normal;
@@ -105,7 +112,7 @@ body{
     align-items: left;
 }
 .texto-email{
-    color: #222;
+    color: var(--texto);
     font-family: var(--fonte-principal);
     font-size: 22px;
     font-style: normal;
@@ -157,7 +164,7 @@ body{
     align-self: stretch;
 }
 .texto-senha{
-    color: #222;
+    color: var(--texto);
     font-family: var(--fonte-principal);
     font-size: 22px;
     font-style: normal;

@@ -5,6 +5,13 @@
     --fonte-principal: var(--crimson);
 }
 
+body.dark-mode{
+    --cor-topbar: #171D25;
+    --cor-fundo: #5F6D7A4C;
+    --texto: #E0E4E8;
+    background-color: var(--cor-topbar);
+}
+
 body{
     background-color: var(--cor-topbar); 
     padding: 32px 0px 0px 0px;
@@ -41,7 +48,7 @@ body{
     margin-top: -30px;
 }
 .titulo{
-    color: #222;
+    color: var(--texto);
     font-family: var(--fonte-principal);
     font-size: 42px;
     font-style: normal;
@@ -50,11 +57,11 @@ body{
     line-height: normal;
 }
 .texto_explicacao{
+    color: var(--texto);
     display: flex;
     margin-top: -15px;
     font-family: var(--fonte-principal);
     font-size: 22px;
-    color: #222;
     font-style: normal;
     text-align: left;
 }
@@ -64,7 +71,7 @@ body{
     gap: 5px;
 }
 .texto_email{
-    color: #222;  
+    color: var(--texto);  
     font-family: var(--fonte-principal);
     font-size: 17px;
     text-align: left;
