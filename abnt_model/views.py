@@ -13,7 +13,7 @@ from weasyprint import HTML
 from django.conf import settings
 from PIL import Image
 import urllib.request
-from .models import Image
+from .models import Image, Simple_TCC
 
 def index(request):
     autenticado = request.user.is_authenticated
@@ -242,35 +242,125 @@ import io
 import tempfile
 import os
 
+def inserir_dados_Simple_TCC(
+        user, 
+        nome_do_arquivo,
+        titulo,
+        autor,
+        instituicao,
+        ano,
+        resumo,
+        palavras_chaves,
+        abstract,
+        keyword,
+        introducao,
+        problematizacao,
+        justificativa,
+        questao_geral,
+        metodologia,
+        desenvolvimento,
+        analise_discussao,
+        conclusao,
+        referencias):
+    
+    modelo_trabalho = Simple_TCC.objects.create(
+        user = user,
+        nome_do_arquivo = nome_do_arquivo,
+        titulo = titulo,
+        autor = autor,
+        instituicao = instituicao,
+        ano = ano,
+        resumo = resumo,
+        palavras_chaves = palavras_chaves,
+        abstract = abstract,
+        keyword = keyword,
+        introducao = introducao,
+        problematizacao = problematizacao,
+        justificativa = justificativa,
+        questao_geral = questao_geral,
+        metodologia = metodologia,
+        desenvolvimento = desenvolvimento,
+        analise_discussao = analise_discussao,
+        conclusao = conclusao,
+        referencias = referencias,
+    )
+    modelo_trabalho.save()
+
+
+
 @login_required
 def formatador(request):
     if request.method == "POST":
-        nome_do_arquivo = request.POST.get("nome_do_arquivo")
-        imagem = request.POST.get("img")
+        nome_do_arquivo = request.POST.get("nome_do_arquivo", "")
+        imagem = request.POST.get("img", "")
+        titulo = request.POST.get("titulo", "")
+        autor = request.POST.get("autor", "")
+        instituicao = request.POST.get("instituicao", "")
+        ano = request.POST.get("ano", "")
+        resumo = request.POST.get("resumo", "")
+        palavras_chaves = request.POST.get("palavras_chaves", "")
+        abstract = request.POST.get("abstract", "")
+        keywords = request.POST.get("keywords", "")
+        introducao = request.POST.get("introducao", "")
+        problematizacao = request.POST.get("problematizacao", "")
+        justificativa = request.POST.get("justificativa", "")
+        questao_geral = request.POST.get("questao_geral", "")
+        objetivo = request.POST.get("objetivo", "")
+        metodologia = request.POST.get("metodologia", "")
+        desenvolvimento = request.POST.get("desenvolvimento", "")
+        analise_discussao = request.POST.get("analise_discussao", "")
+        conclusao = request.POST.get("conclusao", "")
+        referencias = request.POST.get("referencias", "")
+        checkbox = request.POST.get("salvar_modelo","")
+        
+        if checkbox == 'on':
+            modelo_trabalho = Simple_TCC.objects.create(
+            user = request.user,
+            nome_do_arquivo = nome_do_arquivo,
+            titulo = titulo,
+            autor = autor,
+            instituicao = instituicao,
+            ano = ano,
+            resumo = resumo,
+            palavras_chaves = palavras_chaves,
+            abstract = abstract,
+            keywords = keywords,
+            introducao = introducao,
+            problematizacao = problematizacao,
+            justificativa = justificativa,
+            questao_geral = questao_geral,
+            metodologia = metodologia,
+            desenvolvimento = desenvolvimento,
+            analise_discussao = analise_discussao,
+            conclusao = conclusao,
+            referencias = referencias,
+            )
+            modelo_trabalho.save()
+
         dados = {
             'imagem': imagem,
             'nome_do_arquivo': nome_do_arquivo,
-            'titulo': request.POST.get("titulo", ""),
-            'autor': request.POST.get("autor", ""),
-            'instituicao': request.POST.get("instituicao", ""),
-            'ano': request.POST.get("ano", ""),
-            'resumo': request.POST.get("resumo", ""),
-            'palavras_chaves': request.POST.get("palavras_chaves", ""),
-            'abstract': request.POST.get("abstract", ""),
-            'keywords': request.POST.get("keywords", ""),
-            'introducao': request.POST.get("introducao", ""),
-            'problematizacao': request.POST.get("problematizacao", ""),
-            'justificativa': request.POST.get("justificativa", ""),
-            'questao_geral': request.POST.get("questao_geral", ""),
-            'objetivo': request.POST.get("objetivo", ""),
-            'metodologia': request.POST.get("metodologia", ""),
-            'desenvolvimento': request.POST.get("desenvolvimento", ""),
-            'analise_discussao': request.POST.get("analise_discussao", ""),
-            'conclusao': request.POST.get("conclusao", ""),
-            'referencias': request.POST.get("referencias", ""),
+            'titulo': titulo,
+            "autor": autor,
+            "instituicao": instituicao,
+            "ano": ano,
+            "resumo": resumo,
+            "palavras_chaves": palavras_chaves,
+            "abstract": abstract,
+            "keywords": keywords,
+            "introducao": introducao,
+            "problematizacao": problematizacao,
+            "justificativa": justificativa,
+            "questao_geral": questao_geral,
+            "objetivo": objetivo,
+            "metodologia": metodologia,
+            "desenvolvimento": desenvolvimento,
+            "analise_discussao": analise_discussao,
+            "conclusao": conclusao,
+            "referencias": referencias,
         }
-        tipo_do_arquivo = request.POST.get("tipo_do_arquivo", "pdf")
 
+        tipo_do_arquivo = request.POST.get("tipo_do_arquivo", "pdf")
         # Renderiza o HTML com os dados fornecidos
         html_string = render_to_string('abnt_model/documento.html', dados)
         pdf_file = HTML(string=html_string).write_pdf()

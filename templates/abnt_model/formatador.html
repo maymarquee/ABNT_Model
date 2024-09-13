@@ -31,15 +31,12 @@
         <textarea name="analise_discussao" placeholder="Análise e Discussão"></textarea>
         <textarea name="conclusao" placeholder="Conclusão"></textarea>
         <textarea name="referencias" placeholder="Referências Bibliográficas"></textarea>
+        <input type="checkbox" name="salvar_modelo" id="">
         <select name="tipo_do_arquivo" id="">
             <option value="pdf">PDF</option>
             <option value="docx">DOCX</option>
         </select>
-        <button type="submit">ENVIAR</button>
+        <button type="submit">BAIXAR DOCUMENTO</button>
     </form>
-
-    {% if download_url %}
-        <a href="{{ download_url }}" class="btn">Baixar PDF</a>
-    {% endif %}
 </body>
 </html>
