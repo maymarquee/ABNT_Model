@@ -1,37 +1,48 @@
-
 @import url('fonte.css');
 @import url('cores.css');
-/* Reset básico */
+
+:root{
+    --fonte-principal: var(--playfair);
+    --fonte-geral: var(--raleway);
+}
+
+body.dark-mode{
+    --cor-topbar: #171D25;
+    --cor-fundo: #5F6D7A4C;
+    --texto: #E0E4E8;
+}
+
 body, ul, li {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/* Estilos gerais da página */
 body {
-    font-family: Arial, sans-serif;
+    font-family: var(--fonte-principal);
     background-color: var(--cor-topbar);
-    color: #333;
+    color: var(--texto);
     padding: 20px;
+    align-items: center;
 }
 
-/* Container principal */
+/* container principal */
 #forma {
     max-width: 800px;
-    margin: 0 auto;
+    margin: 120px auto;
     padding: 20px;
-    background: #fff;
-    border-radius: 8px;
+    background: var(--cor-fundo);
+    border-radius: 20px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    overflow-y: auto;
 }
 
-/* Seção dos documentos */
+/* seção dos documentos */
 .componentes_documentos {
     padding: 10px;
 }
 
-/* Lista de documentos */
+/* lista de documentos */
 ul {
     list-style: none;
 }
@@ -40,7 +51,7 @@ li {
     margin-bottom: 10px;
 }
 
-/* Estilos para os cards dos documentos */
+/* estilos para os cards dos documentos */
 .cards {
     display: flex;
     align-items: center;
@@ -56,22 +67,23 @@ li {
 
 .cards a {
     text-decoration: none;
-    color: #007bff;
+    color: var(--cor-topbar);
     font-weight: bold;
+    font-family: var(--fonte-principal);
 }
 
 .cards a:hover {
     text-decoration: underline;
 }
 
-/* Estilos para o botão de deletar */
+/* estilos para o botão de deletar */
 button {
     background-color: #dc3545;
-    color: white;
+    color: #E0E4E8;
     border: none;
     padding: 10px 20px;
     font-size: 16px;
-    border-radius: 5px;
+    border-radius: 15px;
     cursor: pointer;
     transition: background-color 0.3s ease;
 }
@@ -80,9 +92,9 @@ button:hover {
     background-color: #c82333;
 }
 
-/* Mensagem quando não há documentos */
+/* mensagem quando não há documentos */
 p {
-    font-family: var(--crimson);
+    font-family: var(--fonte-principal);
     font-size: 18px;
 }
 .container_btn{
