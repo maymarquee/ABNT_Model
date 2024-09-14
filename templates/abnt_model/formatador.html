@@ -33,7 +33,7 @@
                     <!-- Campos do formulário com IDs -->
                     <div id="nome_do_arquivo" class="form-group">
                         <label for="nome_do_arquivo">Nome do Arquivo</label>
-                        <input class="class_input" name="nome_do_arquivo" type="text" placeholder="Nome do Arquivo" value="{{documento.nome_do_arquivo}}">
+                        <input class="class_input" name="nome_do_arquivo" type="text" placeholder="Adcione um nome para o arquivo formatado" value="{{documento.nome_do_arquivo}}">
                     </div>
 
                     <div class="form-group" id="capa">
@@ -41,70 +41,70 @@
                         <input class="class_input" type="url" name="img" id="img" placeholder="Digite aqui a url da imagem que você deseja colocar na capa" value="{{documento.url.imagem}}">
 
                         <label for="titulo">Título:</label>
-                        <input class="class_input" name="titulo" type="text" id="titulo" placeholder="Título" value="{{documento.titulo}}">
+                        <input class="class_input" name="titulo" type="text" id="titulo" placeholder=" Dê um título para o ensaio" value="{{documento.titulo}}">
 
                         <label for="autor">Autor:</label>
-                        <input class="class_input" name="autor" type="text" id="autor" placeholder="Autor" value="{{documento.autor}}">
+                        <input class="class_input" name="autor" type="text" id="autor" placeholder="Nome do autor do ensaio" value="{{documento.autor}}">
 
                         <label for="instituicao">Instituição:</label>
-                        <input class="class_input" name="instituicao" type="text" id="instituicao" placeholder="Instituição" value="{{documento.instituicao}}">
+                        <input class="class_input" name="instituicao" type="text" id="instituicao" placeholder="Instituição associada" value="{{documento.instituicao}}">
 
                         <label for="ano">Ano:</label>
-                        <input class="class_input" name="ano" type="text" id="ano" placeholder="Ano" value="{{documento.ano}}">
+                        <input class="class_input" name="ano" type="text" id="ano" placeholder="Ano de produção do ensaio" value="{{documento.ano}}">
                     </div>
 
                     <div id="resumo" class="form-group">
                         <label for="resumo">Resumo</label>
-                        <input class="class_input" name="resumo" type="text" placeholder="Resumo" value="{{documento.resumo}}">
+                        <input class="class_input" name="resumo" type="text" placeholder="Resumo do ensaio" value="{{documento.resumo}}">
 
                         <label for="palavras_chaves">Palavras-Chaves</label>
-                        <input class="class_input" name="palavras_chaves" type="text" placeholder="Palavras-Chaves" value="{{documento.palavras_chaves}}">
+                        <input class="class_input" name="palavras_chaves" type="text" placeholder="Palavras-Chaves do ensaio" value="{{documento.palavras_chaves}}">
                         
                         <label for="abstract">Abstract</label>
-                        <input class="class_input" name="abstract" type="text" placeholder="Abstract" value="{{documento.abstract}}">
+                        <input class="class_input" name="abstract" type="text" placeholder="Abstract: versão em inglês do resumo" value="{{documento.abstract}}">
 
                         <label for="keywords">Keywords</label>
-                        <input class="class_input" name="keywords" type="text" placeholder="Keywords" value="{{documento.keywords}}">
+                        <input class="class_input" name="keywords" type="text" placeholder="Keywords: versão em inglês das palavras-chaves" value="{{documento.keywords}}">
 
                     </div>
 
                     <div id="introducao" class="form-group">
                         <label for="introducao">Introdução</label>
-                        <textarea class="class_textarea" name="introducao" placeholder="Introdução">{{documento.introducao}}</textarea>
+                        <textarea class="class_textarea" name="introducao" placeholder="Introdução do ensaio">{{documento.introducao}}</textarea>
 
                         <label for="problematizacao">Problematização</label>
-                        <textarea class="class_textarea" name="problematizacao" placeholder="Problematização">{{documento.problematizacao}}</textarea>
+                        <textarea class="class_textarea" name="problematizacao" placeholder="Problematização do ensaio">{{documento.problematizacao}}</textarea>
 
                         <label for="justificativa">Justificativa</label>
-                        <textarea class="class_textarea" name="justificativa" placeholder="Justificativa">{{documento.justificativa}}</textarea>
+                        <textarea class="class_textarea" name="justificativa" placeholder="Justificativa do ensaio">{{documento.justificativa}}</textarea>
 
                         <label for="questao_geral">Questão Geral</label>
-                        <textarea class="class_textarea" name="questao_geral" placeholder="Questão geral">{{documento.questao_geral}}</textarea>
+                        <textarea class="class_textarea" name="questao_geral" placeholder="Questão geral do ensaio">{{documento.questao_geral}}</textarea>
 
                         <label for="objetivo">Objetivo</label>
-                        <textarea class="class_textarea" name="objetivo" placeholder="Objetivo">{{documento.objetivo}}</textarea>
+                        <textarea class="class_textarea" name="objetivo" placeholder="Objetivo do ensaio">{{documento.objetivo}}</textarea>
                         
                         <label for="metodologia">Metodologia</label>
-                        <textarea class="class_textarea" name="metodologia" placeholder="Metodologia">{{documento.metodologia}}</textarea>
+                        <textarea class="class_textarea" name="metodologia" placeholder="Metodologia utilizada no ensaio">{{documento.metodologia}}</textarea>
 
                     </div>
 
                     <div id="desenvolvimento" class="form-group">
                         <label for="desenvolvimento">Desenvolvimento</label>
-                        <textarea class="class_textarea" name="desenvolvimento" placeholder="Desenvolvimento">{{documento.desenvolvimento}}</textarea>
+                        <textarea class="class_textarea" name="desenvolvimento" placeholder="Desenvolvimento do ensaio">{{documento.desenvolvimento}}</textarea>
 
                         <label for="analise_discussao">Análise e Discussão</label>
-                        <textarea class="class_textarea" name="analise_discussao" placeholder="Análise e Discussão">{{documento.analise_discussao}}</textarea>
+                        <textarea class="class_textarea" name="analise_discussao" placeholder="Análise e Discussão do tema">{{documento.analise_discussao}}</textarea>
                     </div>
 
                     <div id="conclusao" class="form-group">
                         <label for="conclusao">Conclusão</label>
-                        <textarea class="class_textarea" name="conclusao" placeholder="Conclusão">{{documento.conclusao}}</textarea>
+                        <textarea class="class_textarea" name="conclusao" placeholder="Conclusão do ensaio">{{documento.conclusao}}</textarea>
                     </div>
 
                     <div id="referencias" class="form-group">
                         <label for="referencias">Referências Bibliográficas</label>
-                        <textarea class="class_textarea" name="referencias" placeholder="Referências Bibliográficas">{{documento.referencias}}</textarea>
+                        <textarea class="class_textarea" name="referencias" placeholder="Referências Bibliográficas utilizadas no ensaio">{{documento.referencias}}</textarea>
                     </div>
 
                     <div id="tipo_do_arquivo" class="form-group">
@@ -144,7 +144,7 @@
                             <!-- Campos do formulário com IDs -->
                             <div id="nome_do_arquivo" class="form-group">
                                 <label for="nome_do_arquivo">Nome do Arquivo</label>
-                                <input class="class_input" name="nome_do_arquivo" type="text" placeholder="Nome do Arquivo">
+                                <input class="class_input" name="nome_do_arquivo" type="text" placeholder="Dê um nome para o arquivo que será formatado">
                             </div>
         
                             <div class="form-group" id="capa">
@@ -152,70 +152,70 @@
                                 <input class="class_input" type="url" name="img" id="img" placeholder="Digite aqui a url da imagem que você deseja colocar na capa">
         
                                 <label for="titulo">Título:</label>
-                                <input class="class_input" name="titulo" type="text" id="titulo" placeholder="Título">
+                                <input class="class_input" name="titulo" type="text" id="titulo" placeholder="Dê um título para o ensaio">
         
                                 <label for="autor">Autor:</label>
-                                <input class="class_input" name="autor" type="text" id="autor" placeholder="Autor">
+                                <input class="class_input" name="autor" type="text" id="autor" placeholder="Nome do autor do ensaio">
         
                                 <label for="instituicao">Instituição:</label>
-                                <input class="class_input" name="instituicao" type="text" id="instituicao" placeholder="Instituição">
+                                <input class="class_input" name="instituicao" type="text" id="instituicao" placeholder="Instituição associada">
         
                                 <label for="ano">Ano:</label>
-                                <input class="class_input" name="ano" type="text" id="ano" placeholder="Ano">
+                                <input class="class_input" name="ano" type="text" id="ano" placeholder="Ano de escrita do ensaio">
                             </div>
         
                             <div id="resumo" class="form-group">
                                 <label for="resumo">Resumo</label>
-                                <input class="class_input" name="resumo" type="text" placeholder="Resumo">
+                                <input class="class_input" name="resumo" type="text" placeholder="Resumo do ensaio">
         
                                 <label for="palavras_chaves">Palavras-Chaves</label>
-                                <input class="class_input" name="palavras_chaves" type="text" placeholder="Palavras-Chaves">
+                                <input class="class_input" name="palavras_chaves" type="text" placeholder="Palavras-Chaves do ensaio">
                                 
                                 <label for="abstract">Abstract</label>
-                                <input class="class_input" name="abstract" type="text" placeholder="Abstract">
+                                <input class="class_input" name="abstract" type="text" placeholder="Abstract: versão em inglês do resumo">
         
                                 <label for="keywords">Keywords</label>
-                                <input class="class_input" name="keywords" type="text" placeholder="Keywords">
+                                <input class="class_input" name="keywords" type="text" placeholder="Keywords: versão em inglês das palavras-chaves">
         
                             </div>
         
                             <div id="introducao" class="form-group">
                                 <label for="introducao">Introdução</label>
-                                <textarea class="class_textarea" name="introducao" placeholder="Introdução"></textarea>
+                                <textarea class="class_textarea" name="introducao" placeholder="Introdução do ensaio"></textarea>
         
                                 <label for="problematizacao">Problematização</label>
-                                <textarea class="class_textarea" name="problematizacao" placeholder="Problematização"></textarea>
+                                <textarea class="class_textarea" name="problematizacao" placeholder="Problematização do ensaio"></textarea>
         
                                 <label for="justificativa">Justificativa</label>
-                                <textarea class="class_textarea" name="justificativa" placeholder="Justificativa"></textarea>
+                                <textarea class="class_textarea" name="justificativa" placeholder="Justificativa do tema escolhido"></textarea>
         
                                 <label for="questao_geral">Questão Geral</label>
-                                <textarea class="class_textarea" name="questao_geral" placeholder="Questão geral"></textarea>
+                                <textarea class="class_textarea" name="questao_geral" placeholder="Questão geral do ensaio"></textarea>
         
                                 <label for="objetivo">Objetivo</label>
-                                <textarea class="class_textarea" name="objetivo" placeholder="Objetivo"></textarea>
+                                <textarea class="class_textarea" name="objetivo" placeholder="Objetivo do ensaio"></textarea>
                                 
                                 <label for="metodologia">Metodologia</label>
-                                <textarea class="class_textarea" name="metodologia" placeholder="Metodologia"></textarea>
+                                <textarea class="class_textarea" name="metodologia" placeholder="Metodologia utilizada no ensaio"></textarea>
         
                             </div>
         
                             <div id="desenvolvimento" class="form-group">
                                 <label for="desenvolvimento">Desenvolvimento</label>
-                                <textarea class="class_textarea" name="desenvolvimento" placeholder="Desenvolvimento"></textarea>
+                                <textarea class="class_textarea" name="desenvolvimento" placeholder="Desenvolvimento do ensaio"></textarea>
         
                                 <label for="analise_discussao">Análise e Discussão</label>
-                                <textarea class="class_textarea" name="analise_discussao" placeholder="Análise e Discussão"></textarea>
+                                <textarea class="class_textarea" name="analise_discussao" placeholder="Análise e Discussão do ensaio"></textarea>
                             </div>
         
                             <div id="conclusao" class="form-group">
                                 <label for="conclusao">Conclusão</label>
-                                <textarea class="class_textarea" name="conclusao" placeholder="Conclusão"></textarea>
+                                <textarea class="class_textarea" name="conclusao" placeholder="Conclusão do ensaio"></textarea>
                             </div>
         
                             <div id="referencias" class="form-group">
                                 <label for="referencias">Referências Bibliográficas</label>
-                                <textarea class="class_textarea" name="referencias" placeholder="Referências Bibliográficas"></textarea>
+                                <textarea class="class_textarea" name="referencias" placeholder="Referências Bibliográficas utilizadas no ensaio"></textarea>
                             </div>
 
                             <div id="tipo_do_arquivo" class="form-group">
