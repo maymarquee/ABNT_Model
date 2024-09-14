@@ -1,0 +1,112 @@
+@import url(fonte.css);
+@import url(cores.css);
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+:root{
+    --fonte-principal: var(--playfair);
+    --fonte-geral: var(--raleway);
+    --fonte-secundaria: var(--crimson);
+}
+
+body.dark-mode{
+    --cor-topbar: #171D25;
+    --cor-topbar-mais: #0F141B;
+    --cor-hoover-formatador: #25303e;
+    --cor-fundo: #5F6D7A4C;
+    --texto: #E0E4E8;
+}
+
+body {
+    font-family: var(--fonte-geral);
+    display: flex;
+    min-height: 100vh;
+    background-color: var(--cor-fundo);
+}
+
+.container {
+    display: flex;
+    width: 100vh;
+}
+
+.sidebar {
+    width: 300px;
+    height: 100vh;
+    background-color: var(--cor-topbar-mais);
+    padding: 20px;
+    color: #E0E4E8;
+    position: fixed;
+    height: 100%;
+    overflow-y: auto;
+}
+
+.sidebar ul {
+    list-style-type: none;
+}
+
+.sidebar ul li {
+    margin-bottom: 10px;
+}
+
+.sidebar ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    display: block;
+    padding: 10px;
+    background-color: var(--cor-topbar);
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.sidebar ul li a:hover {
+    background-color: var(--cor-hoover-formatador);
+}
+
+.form-section {
+    margin-left: 300px;
+    padding: 20px;
+    width: calc(100vh - 300px);
+    min-height: 100vh;
+    background-color: var(--cor-fundo);
+    height: 100vh;
+    overflow: hidden;
+}
+
+.form-group {
+    display: none;
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 16px;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+    width: 100%;
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+button {
+    background-color: var(--cor-topbar);
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+button:hover {
+    background-color: var(--cor-hoover-formatador);
+}

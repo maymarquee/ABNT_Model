@@ -4,7 +4,7 @@ function toggleDarkMode(event) {
     const body = document.body;
     body.classList.toggle('dark-mode'); // adiciona ou remove a classe 'dark-mode'
 
-    // se o modo escuro está ativado, salvamos a preferência no localStorage
+    // se o modo escuro está ativado, salva a preferência no localStorage
     if (body.classList.contains('dark-mode')) {
         localStorage.setItem('darkMode', 'enabled');
     } else {
@@ -16,7 +16,7 @@ function toggleDarkMode(event) {
 function loadDarkModePreference() {
     const darkMode = localStorage.getItem('darkMode');
 
-    // se a preferência for "enabled", ativamos o modo escuro
+    // se a preferência for "enabled", ativa o modo escuro
     if (darkMode === 'enabled') {
         document.body.classList.add('dark-mode');
     }
