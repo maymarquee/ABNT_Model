@@ -1,0 +1,101 @@
+
+@import url('fonte.css');
+@import url('cores.css');
+/* Reset básico */
+body, ul, li {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Estilos gerais da página */
+body {
+    font-family: Arial, sans-serif;
+    background-color: var(--cor-topbar);
+    color: #333;
+    padding: 20px;
+}
+
+/* Container principal */
+#forma {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Seção dos documentos */
+.componentes_documentos {
+    padding: 10px;
+}
+
+/* Lista de documentos */
+ul {
+    list-style: none;
+}
+
+li {
+    margin-bottom: 10px;
+}
+
+/* Estilos para os cards dos documentos */
+.cards {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background: #fafafa;
+}
+
+.cards input[type="checkbox"] {
+    margin-right: 10px;
+}
+
+.cards a {
+    text-decoration: none;
+    color: #007bff;
+    font-weight: bold;
+}
+
+.cards a:hover {
+    text-decoration: underline;
+}
+
+/* Estilos para o botão de deletar */
+button {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #c82333;
+}
+
+/* Mensagem quando não há documentos */
+p {
+    font-family: var(--crimson);
+    font-size: 18px;
+}
+.container_btn{
+    display: flex;
+    justify-content: right;
+}
+#voltar{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: left;
+    gap: 8px;
+    text-decoration: none;
+    color: var(--texto);
+    font-size: 18px;
+}
