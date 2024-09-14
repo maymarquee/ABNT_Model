@@ -7,165 +7,217 @@
     <title>{{nome_do_arquivo}}</title>
 </head>
 <body>
-    {% if imagem %}
+    {% if url_imagem %}
     <header class="capa" style="position: relative; text-align: center;">
-        <img class="img_instituicao" src="{{imagem}}" style="display: block; margin: 0 auto;">
-        <h2 style="position: absolute; top: 6cm; left: 50%; transform: translateX(-50%);">Nome da Instituição</h2>
-        <h2 style="position: absolute; top: 10cm; left: 50%; transform: translateX(-50%);">Nome do Autor</h2>
-        <h1 style="position: absolute; top: 15cm;">Título do Trabalho de Conclusão de Curso</h1>
-        <h2 style="position: absolute; top: 23cm; left: 50%; transform: translateX(-50%);">Local e Data</h2>
+        <img class="img_instituicao" src="{{url_imagem}}" style="display: block; margin: 0 auto;">
+        <h2 style="position: absolute; top: 6cm; left: 50%; transform: translateX(-50%);">{{instituicao}}</h2>
+        <h2 style="position: absolute; top: 10cm; left: 50%; transform: translateX(-50%);">{{autor}}</h2>
+        <h1 style="position: absolute; top: 15cm;">{{titulo}}</h1>
+        <h2 style="position: absolute; top: 22.5cm; left: 50%; transform: translateX(-50%);">{{local}} <br> {{ano}}</h2>
     </header>
     
     {% else %}
     <header class="capa">
-        <h2 style="margin-bottom: 4cm;">{{instituicao}}</h2>
-        <h2 style="margin-bottom: 4cm;">{{autor}}</h2>
-        <h1 style="margin-bottom: 12.5cm;">{{titulo}}</h1>
-        <h2 >{{local}}-{{ano}}</h2>
+        <h2 style="position: absolute; top:0cm; left: 50%; transform: translate(-50%);">{{instituicao}}</h2>
+        <h2 style="position: absolute; top:4cm; left: 50%; transform: translate(-50%);">{{autor}}</h2>
+        <h1 style="position: absolute; top:8cm; left: 50%; transform: translate(-50%);" >{{titulo}}</h1>
+        <h2 style="position: absolute; top:22.5cm; left: 50%; transform: translate(-50%);">{{local}} <br> {{ano}}</h2>
     </header>
     {% endif %}
     {% if resumo %}
     <section class="capitulo page-break">
-        <h2>Resumo</h2>
-        <p>{{resumo}}</p>
-        <p><strong>Palavras-chave:</strong> {{palavras_chaves}}</p>
+        <h2><strong>Resumo</strong></h2>
+        <div class="texto-justificado">
+            {% for paragrafo in resumo %}
+                <p class="identar">{{paragrafo}}</p>
+            {% endfor%}
+        </div>
+        <div class="texto-justificado"><strong>Palavras-chave:</strong> {{palavras_chaves}}</div>
     </section>
     {% endif %}
+
     {% if abstract %}
     <section class="capitulo page-break">
-        <h2>Abstract</h2>
-        <p>{{abstract}}</p>
-        <p><strong>Keywords:</strong> {{keywords}} </p>
+        <h2><strong>Abstract</strong></h2>
+        <div class="texto-justificado">
+            {% for paragrafo in abstract %}
+                <p class="identar">{{paragrafo}}</p>
+            {% endfor%}
+        </div>
+        <div class="texto-justificado"><strong>Keywords:</strong> {{keywords}}</div>
     </section>
     {% endif %}
-    <!-- <section class="capitulo page-break">
-        <section id="sumario" class="capitulo page-break">
-            <h2>Sumário</h2>
-            <ul id="sumario-list"></ul>
-        </section>
-    </section> -->
-    
+
     {% if introducao %}
     <section id="capitulo" class="capitulo page-break">
         <h3> Introdução</h3>
-        <p>
-            {{introducao}}
-        </p>
+        <div class="texto-justificado">
+            {% for paragrafo in introducao %}
+                <p class="identar">{{paragrafo}}</p>
+            {% endfor%}
+        </div>
     </section>
     {% endif %}
+
     {% if problematizacao %}
     <section id="capitulo" class="capitulo page-break">
         <h3> Problematização</h3>
-        <p>
-            {{introduca}}
-        </p>
+        <div class="texto-justificado">
+            {% for paragrafo in problematizacao %}
+                <p class="identar">{{paragrafo}}</p>
+            {% endfor%}
+        </div>
     </section>
     {% endif %}
+
     {% if justificativa %}
     <section id="capitulo" class="capitulo page-break">
         <h3> Justificativa</h3>
-        <p>
-            {{justificativa}}
-        </p>
+        <div class="texto-justificado">
+            {% for paragrafo in justificativa %}
+                <p class="identar">{{paragrafo}}</p>
+            {% endfor%}
+        </div>
     </section>
     {% endif %}
+
     {% if questao_geral %}
     <section id="capitulo" class="capitulo page-break">
         <h3> Questão geral</h3>
-        <p>
-            {{questao_geral}}
-        </p>
+        <div class="texto-justificado">
+            {% for paragrafo in questao_geral %}
+                <p class="identar">{{paragrafo}}</p>
+            {% endfor%}
+        </div>
     </section>
     {% endif %}
+
     {% if objetivo %}
     <section id="capitulo" class="capitulo page-break">
         <h3> Objetivo</h3>
-        <p>
-            {{objetivo}}
-        </p>
+        <div class="texto-justificado">
+            {% for paragrafo in objetivo %}
+                <p class="identar">{{paragrafo}}</p>
+            {% endfor%}
+        </div>
     </section>
     {% endif %}
+
     {% if metodologia %}
     <section id="capitulo" class="capitulo page-break">
         <h3> Metodologia</h3>
-        <p>{{metodologia}}</p>
+        <div class="texto-justificado">
+            {% for paragrafo in metodologia %}
+                <p class="identar">{{paragrafo}}</p>
+            {% endfor%}
+        </div>
     </section>
     {% endif %}
+
     {% if desenvolvimento %}
     <section id="capitulo" class="capitulo page-break">
         <h3> Desenvolvimento</h3>
-        <p>
-            {{desenvolvimento}}
-        </p>
+        <div class="texto-justificado">
+            {% for paragrafo in desenvolvimento %}
+                <p class="identar">{{paragrafo}}</p>
+            {% endfor%}
+        </div>
     </section>
     {% endif %}
+
     {% if analise_discussao %}
     <section id="capitulo" class="capitulo page-break">
         <h3> Análises e Discussões</h3>
-        <p>{{analise_discussao}}</p>
+        <div class="texto-justificado">
+            {% for paragrafo in analise_discussao %}
+                <p class="identar">{{paragrafo}}</p>
+            {% endfor%}
+        </div>
     </section>
     {% endif %}
+
     {% if conclusao %}
     <section id="capitulo" class="capitulo page-break">
-        <h3> Conclusão</32>
-        <p>{{conclusao}}</p>
+        <h3> Conclusão</h3>
+        <div class="texto-justificado">
+        <div class="texto-justificado">
+            {% for paragrafo in introducao %}
+                <p class="identar">{{paragrafo}}</p>
+            {% endfor%}
+        </div>
+        </div>
     </section>
     {% endif %}
+
     {% if referencias %}
     <section id="referencias" class="referencias page-break">
         <h3>Referências</h3>
-        <p>{{referencias}}</p>
+        <div class="texto-justificado">
+            {% for paragrafo in referencias %}
+            <p>{{paragrafo}}</p>
+            {% endfor%}
+        </div>
     </section>
     {% endif %}
+
 </body>
 <style>
-    @page{
+    @page {
         margin: 3cm 2cm 2cm 3cm;
     }
-    @page{
-    @bottom-center {
-        content: counter(page) " de " counter(pages);
-        font-size: 10pt;
-    }
-    }
+
     body {
         font-family: 'Times New Roman', Times, serif;
     }
+    
     title {
-        font-size: 16;
+        font-size: 16pt;
     }
+    
     h1 {
         text-align: center;
-        font-size: 16;
+        font-size: 16pt;
+        width: 100%;
     }
+    
     h2 {
         font-weight: normal;
         text-align: center;
-        font-size: 14;
+        font-size: 14pt;
+        width: 100%;
     }
+    
     h3 {
         text-align: left;
-        font-size: 12;
+        font-size: 12pt;
     }
-    p {
-        font-size: 12;
-        text-align: justify;
-        line-height: 1.5;
-        font-weight: normal;
-    }
-/* Para garantir que a imagem não seja muito grande */
-.capa img {
-    max-width: 100%; /* Garante que a imagem não exceda a largura do contêiner */
-    height: auto; /* Mantém a proporção da imagem */
-}
 
-.img_instituicao {
-    width: 6cm;      /* Define a largura da imagem */
-    height: 3cm;     /* Define a altura da imagem */
-    object-fit: cover; /* Ajusta a imagem para cobrir o contêiner, cortando se necessário */
-    display: block;  /* Garante que a margem automática funcione */
-    margin: 0 auto;  /* Centraliza a imagem horizontalmente */
-}
+    .texto-justificado {
+        align-self: stretch;
+        text-align: justify;
+        font-family: 'Times New Roman', Times, serif;
+        
+    }
+    .identar{
+        text-indent: 1.5cm;
+    }
+    
+    .capa {
+        position: relative;
+    }
+
+    .capa img {
+        max-width: 100%; /* Garante que a imagem não exceda a largura do contêiner */
+        height: auto; /* Mantém a proporção da imagem */
+    }
+
+    .img_instituicao {
+        width: 6cm; /* Define a largura da imagem */
+        height: 3cm; /* Define a altura da imagem */
+        object-fit: cover; /* Ajusta a imagem para cobrir o contêiner, cortando se necessário */
+        display: block; /* Garante que a margem automática funcione */
+        margin: 0 auto; /* Centraliza a imagem horizontalmente */
+    }
 
     /* CSS para impressão */
     @media print {
@@ -175,6 +227,4 @@
         }
     }
 </style>
-
 </html>
-

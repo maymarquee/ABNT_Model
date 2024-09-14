@@ -242,63 +242,56 @@ import io
 import tempfile
 import os
 
+
+def pegarTexto(texto):
+    parágrafos = texto.split('\n')
+    
+    parágrafos_processados = []
+    
+    for parágrafo in parágrafos:
+        parágrafo = parágrafo.strip()
+        
+        if parágrafo:
+            parágrafos_processados.append(parágrafo)
+    
+    return parágrafos_processados
+
+
 @login_required
 def formatador(request, pk=None):
     if request.method == "POST":
         nome_do_arquivo = request.POST.get("nome_do_arquivo", "")
-        imagem = request.POST.get("img", "")
-        titulo = request.POST.get("titulo", "")
+        url_imagem = request.POST.get("url_imagem", "")
+        titulo = request.POST.get("titulo","")
         autor = request.POST.get("autor", "")
+        autor = autor.upper()
         instituicao = request.POST.get("instituicao", "")
+        instituicao = instituicao.upper()
+        local = request.POST.get("local","")
+        local = local.upper()
         ano = request.POST.get("ano", "")
-        resumo = request.POST.get("resumo", "")
+        resumo = pegarTexto(request.POST.get("resumo", ""))
         palavras_chaves = request.POST.get("palavras_chaves", "")
-        abstract = request.POST.get("abstract", "")
+        abstract = pegarTexto(request.POST.get("abstract", ""))
         keywords = request.POST.get("keywords", "")
-        introducao = request.POST.get("introducao", "")
-        problematizacao = request.POST.get("problematizacao", "")
-        justificativa = request.POST.get("justificativa", "")
-        questao_geral = request.POST.get("questao_geral", "")
-        objetivo = request.POST.get("objetivo", "")
-        metodologia = request.POST.get("metodologia", "")
-        desenvolvimento = request.POST.get("desenvolvimento", "")
-        analise_discussao = request.POST.get("analise_discussao", "")
-        conclusao = request.POST.get("conclusao", "")
-        referencias = request.POST.get("referencias", "")
+        introducao = pegarTexto(request.POST.get("introducao", ""))
+        problematizacao = pegarTexto(request.POST.get("problematizacao", ""))
+        justificativa = pegarTexto(request.POST.get("justificativa", ""))
+        questao_geral = pegarTexto(request.POST.get("questao_geral", ""))
+        objetivo = pegarTexto(request.POST.get("objetivo", ""))
+        metodologia = pegarTexto(request.POST.get("metodologia", ""))
+        desenvolvimento = pegarTexto(request.POST.get("desenvolvimento", ""))
+        analise_discussao = pegarTexto(request.POST.get("analise_discussao", ""))
+        conclusao = pegarTexto(request.POST.get("conclusao", ""))
+        referencias = pegarTexto(request.POST.get("referencias", ""))
         checkbox = request.POST.get("salvar_modelo","")
-        
-        if checkbox == 'on':
-            defaults = {
-            'user' : request.user,
-            "titulo" : titulo,
-            "autor" : autor,
-            "instituicao" : instituicao,
-            "ano" : ano,
-            "resumo" : resumo,
-            "palavras_chaves" : palavras_chaves,
-            "abstract" : abstract,
-            "keywords" : keywords,
-            "introducao" : introducao,
-            "problematizacao" : problematizacao,
-            "justificativa" : justificativa,
-            "questao_geral" : questao_geral,
-            "metodologia" : metodologia,
-            "desenvolvimento" : desenvolvimento,
-            'analise_discussao' : analise_discussao,
-            'conclusao' : conclusao,
-            'referencias' : referencias,
-            }
-            modelo_trabalho = Simple_TCC.objects.update_or_create(
-            nome_do_arquivo = nome_do_arquivo,
-            defaults=defaults,
-            )
 
         dados = {
-            'imagem': imagem,
-            'nome_do_arquivo': nome_do_arquivo,
+            'url_imagem': url_imagem,
             'titulo': titulo,
             "autor": autor,
             "instituicao": instituicao,
+            "local":local,
             "ano": ano,
             "resumo": resumo,
             "palavras_chaves": palavras_chaves,
@@ -315,24 +308,27 @@ def formatador(request, pk=None):
             "conclusao": conclusao,
             "referencias": referencias,
         }
-
+        if checkbox == 'on':
+            defaults = dados.copy()
+            defaults["user"]= request.user
+            modelo_trabalho = Simple_TCC.objects.update_or_create(
+            nome_do_arquivo = nome_do_arquivo,
+            defaults=defaults,
+            )
+        dados["nome_do_arquivo"]= nome_do_arquivo
         tipo_do_arquivo = request.POST.get("tipo_do_arquivo", "pdf")
-        # Renderiza o HTML com os dados fornecidos
         html_string = render_to_string('abnt_model/documento.html', dados)
         pdf_file = HTML(string=html_string).write_pdf()
 
         if tipo_do_arquivo == 'pdf':
-            # Envia o arquivo PDF como resposta
             response = HttpResponse(pdf_file, content_type='application/pdf')
             response['Content-Disposition'] = f'attachment; filename="{nome_do_arquivo}.pdf"'
             return response
         else:
-            # Salva o PDF em um arquivo temporário
             with tempfile.NamedTemporaryFile(delete=False, suffix=".pdf") as temp_pdf_file:
                 temp_pdf_file.write(pdf_file)
                 temp_pdf_file_path = temp_pdf_file.name
             
-            # Converte o PDF para DOCX
             docx_stream = io.BytesIO()
             try:
                 converter = Converter(temp_pdf_file_path)
@@ -340,10 +336,8 @@ def formatador(request, pk=None):
             finally:
                 converter.close()
             
-            # Remove o arquivo PDF temporário
             os.remove(temp_pdf_file_path)
-            
-            # Configura o stream do DOCX
+
             docx_stream.seek(0)
             response = HttpResponse(docx_stream.read(), content_type='application/vnd.openxmlformats-officedocument.wordprocessingml.document')
             response['Content-Disposition'] = f'attachment; filename="{nome_do_arquivo}.docx"'

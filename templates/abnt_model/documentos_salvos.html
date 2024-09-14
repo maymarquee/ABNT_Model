@@ -31,7 +31,7 @@
                         <li>
                             <section class="cards">
                                 <input type="checkbox" value="{{ documento.pk }}" name="documento_ids">
-                                <a href="{% url 'formatador' documento.pk %}">{{ documento.nome_do_arquivo }} - {{ documento.pk }}</a>
+                                <a href="{% url 'formatador' documento.pk %}">{{ documento.nome_do_arquivo }}</a>
                             </section>
                         </li>
                         {% endfor %}

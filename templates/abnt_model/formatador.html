@@ -38,8 +38,8 @@
 
                     <div class="form-group" id="capa">
                         <label for="img">Imagem da Capa:</label>
-                        <input class="class_input" type="url" name="img" id="img" placeholder="Digite aqui a url da imagem que você deseja colocar na capa" value="{{documento.url.imagem}}">
-
+                        <input class="class_input" type="text" name="url_imagem" id="img" placeholder="Digite aqui a url da imagem que você deseja colocar na capa" value="{{documento.url_imagem}}">
+                            
                         <label for="titulo">Título:</label>
                         <input class="class_input" name="titulo" type="text" id="titulo" placeholder="Título" value="{{documento.titulo}}">
 
@@ -48,6 +48,9 @@
 
                         <label for="instituicao">Instituição:</label>
                         <input class="class_input" name="instituicao" type="text" id="instituicao" placeholder="Instituição" value="{{documento.instituicao}}">
+
+                        <label for="local">Local:</label>
+                        <input class="class_input" name="local" type="text" id="ano" placeholder="Ano" value="{{documento.local}}">
 
                         <label for="ano">Ano:</label>
                         <input class="class_input" name="ano" type="text" id="ano" placeholder="Ano" value="{{documento.ano}}">
@@ -110,7 +113,7 @@
                     <div id="tipo_do_arquivo" class="form-group">
                         <div class="container_salvar">
                             <input type="checkbox" name="salvar_modelo" >
-                            <p for="salvar_modelo">Salvar modelo</p>
+                            <p for="salvar_modelo">Salvar/Atualizar documento</p>
                         </div>
                         <label for="tipo_do_arquivo">Tipo do Arquivo</label>
                         <select name="tipo_do_arquivo">
@@ -138,7 +141,7 @@
                             <li><a href="#" data-target="tipo_do_arquivo">Tipo do Arquivo</a></li>
                         </ul>
                     </nav>
-        
+                    
                     <!-- Área de edição à direita -->
                     <div class="form-section">     
                             <!-- Campos do formulário com IDs -->
@@ -149,7 +152,7 @@
         
                             <div class="form-group" id="capa">
                                 <label for="img">Imagem da Capa:</label>
-                                <input class="class_input" type="url" name="img" id="img" placeholder="Digite aqui a url da imagem que você deseja colocar na capa">
+                                <input class="class_input" type="text" name="url_imagem" id="img" placeholder="Digite aqui a url da imagem que você deseja colocar na capa">
         
                                 <label for="titulo">Título:</label>
                                 <input class="class_input" name="titulo" type="text" id="titulo" placeholder="Título">
@@ -159,7 +162,10 @@
         
                                 <label for="instituicao">Instituição:</label>
                                 <input class="class_input" name="instituicao" type="text" id="instituicao" placeholder="Instituição">
-        
+
+                                <label for="local">Local:</label>
+                                <input class="class_input" name="local" type="text" id="ano" placeholder="Ano">
+
                                 <label for="ano">Ano:</label>
                                 <input class="class_input" name="ano" type="text" id="ano" placeholder="Ano">
                             </div>
@@ -221,7 +227,7 @@
                             <div id="tipo_do_arquivo" class="form-group">
                                 <div class="container_salvar">
                                     <input type="checkbox" name="salvar_modelo" >
-                                    <p for="salvar_modelo">Salvar modelo</p>
+                                    <p for="salvar_modelo">Salvar/atualizar documento</p>
                                 </div>
                                 <label for="tipo_do_arquivo">Tipo do Arquivo</label>
                                 <select name="tipo_do_arquivo">

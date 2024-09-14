@@ -22,6 +22,7 @@ class Documentos_Abstract(models.Model): #classe Abstrata, como modelo padrão
 class Simple_TCC(Documentos_Abstract): #classe que herda da abstrata
     url_imagem = models.URLField() 
     instituicao = models.TextField()
+    local = models.TextField()
     ano = models.TextField()
     resumo = models.TextField()
     palavras_chaves = models.TextField()

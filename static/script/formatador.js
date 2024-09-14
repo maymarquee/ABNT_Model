@@ -29,3 +29,34 @@ document.addEventListener("DOMContentLoaded", function () {
     // Exibe o primeiro campo por padrão
     showField("nome_do_arquivo");
 });
+
+// script.js
+function applyStyle(command) {
+    const textarea = document.getElementById('editor');
+    const selectedText = textarea.value.substring(textarea.selectionStart, textarea.selectionEnd);
+
+    let formattedText;
+
+    switch(command) {
+        case 'bold':
+            formattedText = `**${selectedText}**`;
+            break;
+        case 'italic':
+            formattedText = `*${selectedText}*`;
+            break;
+        case 'underline':
+            formattedText = `__${selectedText}__`;
+            break;
+        case 'insertOrderedList':
+            formattedText = `1. ${selectedText.split('\n').join('\n1. ')}`;
+            break;
+        case 'insertUnorderedList':
+            formattedText = `• ${selectedText.split('\n').join('\n• ')}`;
+            break;
+        default:
+            formattedText = selectedText;
+    }
+
+    textarea.setRangeText(formattedText, textarea.selectionStart, textarea.selectionEnd, 'select');
+    textarea.focus();
+}

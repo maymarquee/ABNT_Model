@@ -103,9 +103,27 @@ body {
 }
 .class_textarea{
     height: 250px;
+    text-align: justify; /* Justifica o texto */
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 12pt;
+    line-height: 1.5;
+    font-weight: normal;
+    white-space: pre-wrap; /* Permite a quebra de linha */
+    overflow: auto; /* Adiciona barras de rolagem, se necessário */
+    word-wrap: break-word; /* Garante que o texto longo quebre dentro do contêiner */
+    margin: 0; /* Remove margens para um ajuste melhor */
 }
 .class_input{
     height: 75px;
+    text-align: justify; /* Justifica o texto */
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 12pt;
+    line-height: 1.5;
+    font-weight: normal;
+    white-space: pre-wrap; /* Permite a quebra de linha */
+    overflow: auto; /* Adiciona barras de rolagem, se necessário */
+    word-wrap: break-word; /* Garante que o texto longo quebre dentro do contêiner */
+    margin: 0; /* Remove margens para um ajuste melhor */
 }
 
 button {
@@ -129,3 +147,4 @@ button:hover {
     gap: 10px;
     margin-bottom: 20px;
 }
+
