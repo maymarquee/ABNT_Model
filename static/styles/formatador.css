@@ -22,14 +22,9 @@ body.dark-mode{
 
 body {
     font-family: var(--fonte-geral);
+    color: var(--texto);
     display: flex;
-    min-height: 100vh;
-    background-color: var(--cor-fundo);
-}
-
-.container {
-    display: flex;
-    width: 100vh;
+    background-color: var(--cor-topbar);
 }
 
 .sidebar {
@@ -42,7 +37,9 @@ body {
     height: 100%;
     overflow-y: auto;
 }
-
+.container{
+    width: 100%;
+}
 .sidebar ul {
     list-style-type: none;
 }
@@ -69,11 +66,10 @@ body {
 .form-section {
     margin-left: 300px;
     padding: 20px;
-    width: calc(100vh - 300px);
     min-height: 100vh;
     background-color: var(--cor-fundo);
     height: 100vh;
-    overflow: hidden;
+    overflow-y: auto;
 }
 
 .form-group {
@@ -87,14 +83,29 @@ body {
     font-size: 16px;
 }
 
-.form-group input,
-.form-group textarea,
 .form-group select {
     width: 100%;
     padding: 10px;
     font-size: 14px;
     border: 1px solid #ccc;
     border-radius: 5px;
+}
+
+.class_input, .class_textarea{
+    width: 100%;
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 15px;
+    margin-bottom: 10px;
+    background: var(--cor-hoover-formatador);
+    color: var(--texto);
+}
+.class_textarea{
+    height: 250px;
+}
+.class_input{
+    height: 75px;
 }
 
 button {
@@ -105,8 +116,16 @@ button {
     border-radius: 5px;
     cursor: pointer;
     font-size: 16px;
+    margin-top: 20px;
 }
 
 button:hover {
     background-color: var(--cor-hoover-formatador);
+}
+.container_salvar{
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    gap: 10px;
+    margin-bottom: 20px;
 }

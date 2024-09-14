@@ -9,11 +9,12 @@
     <title>ABNT Model</title>
 </head>
 <body>
-    {% if documento %}
-    <form action="{% url 'formatador' documento.pk %}" method="POST" enctype="multipart/form-data">
-        {% csrf_token %}
+
         <div class="container">
             <!-- Menu à esquerda -->
+            {% if documento %}
+            <form action="{% url 'formatador' documento.pk %}" method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
             <nav class="sidebar">
                 <ul>
                     <li><a href="#" data-target="nome_do_arquivo">Nome do Arquivo</a></li>
@@ -23,7 +24,6 @@
                     <li><a href="#" data-target="desenvolvimento">Desenvolvimento</a></li>
                     <li><a href="#" data-target="conclusao">Conclusão</a></li>
                     <li><a href="#" data-target="referencias">Referências Bibliográficas</a></li>
-                    <li><a href="#" data-target="salvar_modelo">Salvar modelo</a></li>
                     <li><a href="#" data-target="tipo_do_arquivo">Tipo do Arquivo</a></li>
                 </ul>
             </nav>
@@ -33,97 +33,97 @@
                     <!-- Campos do formulário com IDs -->
                     <div id="nome_do_arquivo" class="form-group">
                         <label for="nome_do_arquivo">Nome do Arquivo</label>
-                        <input name="nome_do_arquivo" type="text" placeholder="Nome do Arquivo" value="{{documento.nome_do_arquivo}}">
+                        <input class="class_input" name="nome_do_arquivo" type="text" placeholder="Nome do Arquivo" value="{{documento.nome_do_arquivo}}">
                     </div>
 
                     <div class="form-group" id="capa">
                         <label for="img">Imagem da Capa:</label>
-                        <input type="file" name="img" id="img" value="{{documento.url.imagem}}">
+                        <input class="class_input" type="url" name="img" id="img" placeholder="Digite aqui a url da imagem que você deseja colocar na capa" value="{{documento.url.imagem}}">
 
                         <label for="titulo">Título:</label>
-                        <input name="titulo" type="text" id="titulo" placeholder="Título" value="{{documento.titulo}}">
+                        <input class="class_input" name="titulo" type="text" id="titulo" placeholder="Título" value="{{documento.titulo}}">
 
                         <label for="autor">Autor:</label>
-                        <input name="autor" type="text" id="autor" placeholder="Autor" value="{{documento.autor}}">
+                        <input class="class_input" name="autor" type="text" id="autor" placeholder="Autor" value="{{documento.autor}}">
 
                         <label for="instituicao">Instituição:</label>
-                        <input name="instituicao" type="text" id="instituicao" placeholder="Instituição" value="{{documento.instituicao}}">
+                        <input class="class_input" name="instituicao" type="text" id="instituicao" placeholder="Instituição" value="{{documento.instituicao}}">
 
                         <label for="ano">Ano:</label>
-                        <input name="ano" type="text" id="ano" placeholder="Ano" value="{{documento.ano}}">
+                        <input class="class_input" name="ano" type="text" id="ano" placeholder="Ano" value="{{documento.ano}}">
                     </div>
 
                     <div id="resumo" class="form-group">
                         <label for="resumo">Resumo</label>
-                        <input name="resumo" type="text" placeholder="Resumo" value="{{documento.resumo}}">
+                        <input class="class_input" name="resumo" type="text" placeholder="Resumo" value="{{documento.resumo}}">
 
                         <label for="palavras_chaves">Palavras-Chaves</label>
-                        <input name="palavras_chaves" type="text" placeholder="Palavras-Chaves" value="{{documento.palavras_chaves}}">
+                        <input class="class_input" name="palavras_chaves" type="text" placeholder="Palavras-Chaves" value="{{documento.palavras_chaves}}">
                         
                         <label for="abstract">Abstract</label>
-                        <input name="abstract" type="text" placeholder="Abstract" value="{{documento.abstract}}">
+                        <input class="class_input" name="abstract" type="text" placeholder="Abstract" value="{{documento.abstract}}">
 
                         <label for="keywords">Keywords</label>
-                        <input name="keywords" type="text" placeholder="Keywords" value="{{documento.keywords}}">
+                        <input class="class_input" name="keywords" type="text" placeholder="Keywords" value="{{documento.keywords}}">
 
                     </div>
 
                     <div id="introducao" class="form-group">
                         <label for="introducao">Introdução</label>
-                        <textarea name="introducao" placeholder="Introdução">{{documento.introducao}}</textarea>
+                        <textarea class="class_textarea" name="introducao" placeholder="Introdução">{{documento.introducao}}</textarea>
 
                         <label for="problematizacao">Problematização</label>
-                        <textarea name="problematizacao" placeholder="Problematização">{{documento.problematizacao}}</textarea>
+                        <textarea class="class_textarea" name="problematizacao" placeholder="Problematização">{{documento.problematizacao}}</textarea>
 
                         <label for="justificativa">Justificativa</label>
-                        <textarea name="justificativa" placeholder="Justificativa">{{documento.justificativa}}</textarea>
+                        <textarea class="class_textarea" name="justificativa" placeholder="Justificativa">{{documento.justificativa}}</textarea>
 
                         <label for="questao_geral">Questão Geral</label>
-                        <textarea name="questao_geral" placeholder="Questão geral">{{documento.questao_geral}}</textarea>
+                        <textarea class="class_textarea" name="questao_geral" placeholder="Questão geral">{{documento.questao_geral}}</textarea>
 
                         <label for="objetivo">Objetivo</label>
-                        <textarea name="objetivo" placeholder="Objetivo">{{documento.objetivo}}</textarea>
+                        <textarea class="class_textarea" name="objetivo" placeholder="Objetivo">{{documento.objetivo}}</textarea>
                         
                         <label for="metodologia">Metodologia</label>
-                        <textarea name="metodologia" placeholder="Metodologia">{{documento.metodologia}}</textarea>
+                        <textarea class="class_textarea" name="metodologia" placeholder="Metodologia">{{documento.metodologia}}</textarea>
 
                     </div>
 
                     <div id="desenvolvimento" class="form-group">
                         <label for="desenvolvimento">Desenvolvimento</label>
-                        <textarea name="desenvolvimento" placeholder="Desenvolvimento">{{documento.desenvolvimento}}</textarea>
+                        <textarea class="class_textarea" name="desenvolvimento" placeholder="Desenvolvimento">{{documento.desenvolvimento}}</textarea>
 
                         <label for="analise_discussao">Análise e Discussão</label>
-                        <textarea name="analise_discussao" placeholder="Análise e Discussão">{{documento.analise_discussao}}</textarea>
+                        <textarea class="class_textarea" name="analise_discussao" placeholder="Análise e Discussão">{{documento.analise_discussao}}</textarea>
                     </div>
 
                     <div id="conclusao" class="form-group">
                         <label for="conclusao">Conclusão</label>
-                        <textarea name="conclusao" placeholder="Conclusão">{{documento.conclusao}}</textarea>
+                        <textarea class="class_textarea" name="conclusao" placeholder="Conclusão">{{documento.conclusao}}</textarea>
                     </div>
 
                     <div id="referencias" class="form-group">
                         <label for="referencias">Referências Bibliográficas</label>
-                        <textarea name="referencias" placeholder="Referências Bibliográficas">{{documento.referencias}}</textarea>
-                    </div>
-
-                    <div id="salvar_modelo" class="form-group">
-                        <label for="salvar_modelo">Salvar modelo</label>
-                        <input type="checkbox" name="salvar_modelo" id="">
+                        <textarea class="class_textarea" name="referencias" placeholder="Referências Bibliográficas">{{documento.referencias}}</textarea>
                     </div>
 
                     <div id="tipo_do_arquivo" class="form-group">
+                        <div class="container_salvar">
+                            <input type="checkbox" name="salvar_modelo" >
+                            <p for="salvar_modelo">Salvar modelo</p>
+                        </div>
                         <label for="tipo_do_arquivo">Tipo do Arquivo</label>
                         <select name="tipo_do_arquivo">
                             <option value="pdf">PDF</option>
                             <option value="docx">DOCX</option>
                         </select>
+                        <button type="submit">BAIXAR DOCUMENTO</button>
                     </div>
 
-                    <button type="submit">BAIXAR DOCUMENTO</button>
             </form>
             {% else %}
             <form action="{% url 'formatador' %}" method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
                 <div class="container">
                     <!-- Menu à esquerda -->
                     <nav class="sidebar">
@@ -135,7 +135,6 @@
                             <li><a href="#" data-target="desenvolvimento">Desenvolvimento</a></li>
                             <li><a href="#" data-target="conclusao">Conclusão</a></li>
                             <li><a href="#" data-target="referencias">Referências Bibliográficas</a></li>
-                            <li><a href="#" data-target="salvar_modelo">Salvar modelo</a></li>
                             <li><a href="#" data-target="tipo_do_arquivo">Tipo do Arquivo</a></li>
                         </ul>
                     </nav>
@@ -145,94 +144,93 @@
                             <!-- Campos do formulário com IDs -->
                             <div id="nome_do_arquivo" class="form-group">
                                 <label for="nome_do_arquivo">Nome do Arquivo</label>
-                                <input name="nome_do_arquivo" type="text" placeholder="Nome do Arquivo">
+                                <input class="class_input" name="nome_do_arquivo" type="text" placeholder="Nome do Arquivo">
                             </div>
         
                             <div class="form-group" id="capa">
                                 <label for="img">Imagem da Capa:</label>
-                                <input type="file" name="img" id="img">
+                                <input class="class_input" type="url" name="img" id="img" placeholder="Digite aqui a url da imagem que você deseja colocar na capa">
         
                                 <label for="titulo">Título:</label>
-                                <input name="titulo" type="text" id="titulo" placeholder="Título">
+                                <input class="class_input" name="titulo" type="text" id="titulo" placeholder="Título">
         
                                 <label for="autor">Autor:</label>
-                                <input name="autor" type="text" id="autor" placeholder="Autor">
+                                <input class="class_input" name="autor" type="text" id="autor" placeholder="Autor">
         
                                 <label for="instituicao">Instituição:</label>
-                                <input name="instituicao" type="text" id="instituicao" placeholder="Instituição">
+                                <input class="class_input" name="instituicao" type="text" id="instituicao" placeholder="Instituição">
         
                                 <label for="ano">Ano:</label>
-                                <input name="ano" type="text" id="ano" placeholder="Ano">
+                                <input class="class_input" name="ano" type="text" id="ano" placeholder="Ano">
                             </div>
         
                             <div id="resumo" class="form-group">
                                 <label for="resumo">Resumo</label>
-                                <input name="resumo" type="text" placeholder="Resumo">
+                                <input class="class_input" name="resumo" type="text" placeholder="Resumo">
         
                                 <label for="palavras_chaves">Palavras-Chaves</label>
-                                <input name="palavras_chaves" type="text" placeholder="Palavras-Chaves">
+                                <input class="class_input" name="palavras_chaves" type="text" placeholder="Palavras-Chaves">
                                 
                                 <label for="abstract">Abstract</label>
-                                <input name="abstract" type="text" placeholder="Abstract">
+                                <input class="class_input" name="abstract" type="text" placeholder="Abstract">
         
                                 <label for="keywords">Keywords</label>
-                                <input name="keywords" type="text" placeholder="Keywords">
+                                <input class="class_input" name="keywords" type="text" placeholder="Keywords">
         
                             </div>
         
                             <div id="introducao" class="form-group">
                                 <label for="introducao">Introdução</label>
-                                <textarea name="introducao" placeholder="Introdução"></textarea>
+                                <textarea class="class_textarea" name="introducao" placeholder="Introdução"></textarea>
         
                                 <label for="problematizacao">Problematização</label>
-                                <textarea name="problematizacao" placeholder="Problematização"></textarea>
+                                <textarea class="class_textarea" name="problematizacao" placeholder="Problematização"></textarea>
         
                                 <label for="justificativa">Justificativa</label>
-                                <textarea name="justificativa" placeholder="Justificativa"></textarea>
+                                <textarea class="class_textarea" name="justificativa" placeholder="Justificativa"></textarea>
         
                                 <label for="questao_geral">Questão Geral</label>
-                                <textarea name="questao_geral" placeholder="Questão geral"></textarea>
+                                <textarea class="class_textarea" name="questao_geral" placeholder="Questão geral"></textarea>
         
                                 <label for="objetivo">Objetivo</label>
-                                <textarea name="objetivo" placeholder="Objetivo"></textarea>
+                                <textarea class="class_textarea" name="objetivo" placeholder="Objetivo"></textarea>
                                 
                                 <label for="metodologia">Metodologia</label>
-                                <textarea name="metodologia" placeholder="Metodologia"></textarea>
+                                <textarea class="class_textarea" name="metodologia" placeholder="Metodologia"></textarea>
         
                             </div>
         
                             <div id="desenvolvimento" class="form-group">
                                 <label for="desenvolvimento">Desenvolvimento</label>
-                                <textarea name="desenvolvimento" placeholder="Desenvolvimento"></textarea>
+                                <textarea class="class_textarea" name="desenvolvimento" placeholder="Desenvolvimento"></textarea>
         
                                 <label for="analise_discussao">Análise e Discussão</label>
-                                <textarea name="analise_discussao" placeholder="Análise e Discussão"></textarea>
+                                <textarea class="class_textarea" name="analise_discussao" placeholder="Análise e Discussão"></textarea>
                             </div>
         
                             <div id="conclusao" class="form-group">
                                 <label for="conclusao">Conclusão</label>
-                                <textarea name="conclusao" placeholder="Conclusão"></textarea>
+                                <textarea class="class_textarea" name="conclusao" placeholder="Conclusão"></textarea>
                             </div>
         
                             <div id="referencias" class="form-group">
                                 <label for="referencias">Referências Bibliográficas</label>
-                                <textarea name="referencias" placeholder="Referências Bibliográficas"></textarea>
+                                <textarea class="class_textarea" name="referencias" placeholder="Referências Bibliográficas"></textarea>
                             </div>
-        
-                            <div id="salvar_modelo" class="form-group">
-                                <label for="salvar_modelo">Salvar modelo</label>
-                                <input type="checkbox" name="salvar_modelo" id="">
-                            </div>
-        
+
                             <div id="tipo_do_arquivo" class="form-group">
+                                <div class="container_salvar">
+                                    <input type="checkbox" name="salvar_modelo" >
+                                    <p for="salvar_modelo">Salvar modelo</p>
+                                </div>
                                 <label for="tipo_do_arquivo">Tipo do Arquivo</label>
                                 <select name="tipo_do_arquivo">
                                     <option value="pdf">PDF</option>
                                     <option value="docx">DOCX</option>
                                 </select>
+                                <button type="submit">BAIXAR DOCUMENTO</button>
                             </div>
         
-                            <button type="submit">BAIXAR DOCUMENTO</button>
                     </form>
 
             {% endif %}
