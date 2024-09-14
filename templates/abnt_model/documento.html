@@ -24,60 +24,99 @@
         <h2 >{{local}}-{{ano}}</h2>
     </header>
     {% endif %}
-
+    {% if resumo %}
     <section class="capitulo page-break">
         <h2>Resumo</h2>
         <p>{{resumo}}</p>
         <p><strong>Palavras-chave:</strong> {{palavras_chaves}}</p>
     </section>
-
+    {% endif %}
+    {% if abstract %}
     <section class="capitulo page-break">
         <h2>Abstract</h2>
         <p>{{abstract}}</p>
         <p><strong>Keywords:</strong> {{keywords}} </p>
     </section>
-
+    {% endif %}
     <!-- <section class="capitulo page-break">
         <section id="sumario" class="capitulo page-break">
             <h2>Sumário</h2>
             <ul id="sumario-list"></ul>
         </section>
     </section> -->
-
+    
+    {% if introducao %}
     <section id="capitulo" class="capitulo page-break">
-        <h3>1. Introdução</h3>
+        <h3> Introdução</h3>
         <p>
             {{introducao}}
         </p>
     </section>
-
+    {% endif %}
+    {% if problematizacao %}
     <section id="capitulo" class="capitulo page-break">
-        <h3>2. Revisão da Literatura</h3>
-        <p>A revisão da literatura deve apresentar os principais estudos e teorias relacionadas ao tema do trabalho.</p>
+        <h3> Problematização</h3>
+        <p>
+            {{introduca}}
+        </p>
     </section>
-
+    {% endif %}
+    {% if justificativa %}
     <section id="capitulo" class="capitulo page-break">
-        <h3>3. Metodologia</h3>
+        <h3> Justificativa</h3>
+        <p>
+            {{justificativa}}
+        </p>
+    </section>
+    {% endif %}
+    {% if questao_geral %}
+    <section id="capitulo" class="capitulo page-break">
+        <h3> Questão geral</h3>
+        <p>
+            {{questao_geral}}
+        </p>
+    </section>
+    {% endif %}
+    {% if objetivo %}
+    <section id="capitulo" class="capitulo page-break">
+        <h3> Objetivo</h3>
+        <p>
+            {{objetivo}}
+        </p>
+    </section>
+    {% endif %}
+    {% if metodologia %}
+    <section id="capitulo" class="capitulo page-break">
+        <h3> Metodologia</h3>
         <p>{{metodologia}}</p>
     </section>
-
+    {% endif %}
+    {% if desenvolvimento %}
     <section id="capitulo" class="capitulo page-break">
-        <h3>4. Análises e Discussões</h3>
+        <h3> Desenvolvimento</h3>
+        <p>
+            {{desenvolvimento}}
+        </p>
+    </section>
+    {% endif %}
+    {% if analise_discussao %}
+    <section id="capitulo" class="capitulo page-break">
+        <h3> Análises e Discussões</h3>
         <p>{{analise_discussao}}</p>
     </section>
-
+    {% endif %}
+    {% if conclusao %}
     <section id="capitulo" class="capitulo page-break">
-        <h3>5. Conclusão</32>
+        <h3> Conclusão</32>
         <p>{{conclusao}}</p>
     </section>
-
+    {% endif %}
+    {% if referencias %}
     <section id="referencias" class="referencias page-break">
         <h3>Referências</h3>
         <p>{{referencias}}</p>
-        <!-- <p>Exemplo de referência:</p>
-        <p>AUTOR, Nome. <i>Título do Livro</i>. Editora, ano.</p> -->
     </section>
-
+    {% endif %}
 </body>
 <style>
     @page{

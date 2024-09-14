@@ -242,54 +242,8 @@ import io
 import tempfile
 import os
 
-def inserir_dados_Simple_TCC(
-        user, 
-        nome_do_arquivo,
-        titulo,
-        autor,
-        instituicao,
-        ano,
-        resumo,
-        palavras_chaves,
-        abstract,
-        keyword,
-        introducao,
-        problematizacao,
-        justificativa,
-        questao_geral,
-        metodologia,
-        desenvolvimento,
-        analise_discussao,
-        conclusao,
-        referencias):
-    
-    modelo_trabalho = Simple_TCC.objects.create(
-        user = user,
-        nome_do_arquivo = nome_do_arquivo,
-        titulo = titulo,
-        autor = autor,
-        instituicao = instituicao,
-        ano = ano,
-        resumo = resumo,
-        palavras_chaves = palavras_chaves,
-        abstract = abstract,
-        keyword = keyword,
-        introducao = introducao,
-        problematizacao = problematizacao,
-        justificativa = justificativa,
-        questao_geral = questao_geral,
-        metodologia = metodologia,
-        desenvolvimento = desenvolvimento,
-        analise_discussao = analise_discussao,
-        conclusao = conclusao,
-        referencias = referencias,
-    )
-    modelo_trabalho.save()
-
-
-
 @login_required
-def formatador(request):
+def formatador(request, pk=None):
     if request.method == "POST":
         nome_do_arquivo = request.POST.get("nome_do_arquivo", "")
         imagem = request.POST.get("img", "")
@@ -314,28 +268,30 @@ def formatador(request):
         checkbox = request.POST.get("salvar_modelo","")
         
         if checkbox == 'on':
-            modelo_trabalho = Simple_TCC.objects.create(
-            user = request.user,
+            defaults = {
+            'user' : request.user,
+            "titulo" : titulo,
+            "autor" : autor,
+            "instituicao" : instituicao,
+            "ano" : ano,
+            "resumo" : resumo,
+            "palavras_chaves" : palavras_chaves,
+            "abstract" : abstract,
+            "keywords" : keywords,
+            "introducao" : introducao,
+            "problematizacao" : problematizacao,
+            "justificativa" : justificativa,
+            "questao_geral" : questao_geral,
+            "metodologia" : metodologia,
+            "desenvolvimento" : desenvolvimento,
+            'analise_discussao' : analise_discussao,
+            'conclusao' : conclusao,
+            'referencias' : referencias,
+            }
+            modelo_trabalho = Simple_TCC.objects.update_or_create(
             nome_do_arquivo = nome_do_arquivo,
-            titulo = titulo,
-            autor = autor,
-            instituicao = instituicao,
-            ano = ano,
-            resumo = resumo,
-            palavras_chaves = palavras_chaves,
-            abstract = abstract,
-            keywords = keywords,
-            introducao = introducao,
-            problematizacao = problematizacao,
-            justificativa = justificativa,
-            questao_geral = questao_geral,
-            metodologia = metodologia,
-            desenvolvimento = desenvolvimento,
-            analise_discussao = analise_discussao,
-            conclusao = conclusao,
-            referencias = referencias,
+            defaults=defaults,
             )
-            modelo_trabalho.save()
 
         dados = {
             'imagem': imagem,
@@ -392,5 +348,33 @@ def formatador(request):
             response = HttpResponse(docx_stream.read(), content_type='application/vnd.openxmlformats-officedocument.wordprocessingml.document')
             response['Content-Disposition'] = f'attachment; filename="{nome_do_arquivo}.docx"'
             return response
+    else:
+        if pk:
+            consulta = Simple_TCC.objects.get(pk=pk)
+            dados = {
+                "documento": consulta,
+            }
+            return render(request, 'abnt_model/formatador.html', dados)
+        else:
+            return render(request, 'abnt_model/formatador.html')
 
-    return render(request, 'abnt_model/formatador.html')
+
+from django.http import HttpResponse
+from .models import Simple_TCC
+
+@login_required
+def documentos_salvos(request):
+    consulta = Simple_TCC.objects.filter(user=request.user)
+
+    if request.method == "POST":
+        selecionados = request.POST.getlist('documento_ids')
+        documentos_selecionados = Simple_TCC.objects.filter(pk__in=selecionados)
+        documentos_selecionados.delete()
+        
+        return redirect('documentos_salvos')
+    
+    context = {
+        'documentos': consulta
+    }
+    return render(request, 'abnt_model/documentos_salvos.html', context)
+

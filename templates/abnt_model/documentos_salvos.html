@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="shortcut icon" href="{% static 'img/ICONS_OO-removebg-preview.webp' %}" type="image/x-icon">
+    <link rel="stylesheet" href="{% static 'styles/perfil.css' %}" />
+    <link rel="stylesheet" href="{% static 'styles/documentos_salvos.css' %}">
+    <title>ABNT Model</title>
+
+</head>
+<body>
+    <div id="forma">
+        <div id="componentes">
+                <div id="componentes-sup">
+                      <a id="subtitulo-voltar" href="{% url 'index' %}" 
+                        ><img
+                          style="width: 30px"
+                          src="{% static 'img/icon-voltar.png' %}"
+                          alt="icone-voltar"/>
+                          <p>Voltar para o menu</p>
+                      </a>
+                </div>
+                <section class="componentes_documentos">
+                    {% if documentos %}
+                    <form action="{% url 'documentos_salvos' %}" method="POST">
+                        {% csrf_token %}
+                        <ul>
+                                {% for documento in documentos %}
+                                    <li>
+                                        <section class="cards">
+                                            <input type="checkbox" value="{{documento.pk}}" name="documento_ids">
+                                            <a href="{% url 'formatador' documento.pk %}" style="color: black;">{{ documento.nome_do_arquivo }} - {{documento.pk}} </a>
+                                        </section>
+                                    </li>
+                                {% endfor %}
+                        </ul>
+                        <button type="submit">deletar</button>
+                    </form>
+                    {% else %}
+                    <p>Você não possui nenhum documento salvo.</p>
+                    {% endif %}
+                </section>
+        </div>
+    </div>
+</body>
+</html>

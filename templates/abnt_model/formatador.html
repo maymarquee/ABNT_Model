@@ -9,28 +9,29 @@
     <title>ABNT Model</title>
 </head>
 <body>
-    <form action="{% url 'formatador' %}" method="POST" enctype="multipart/form-data">
+    {% if documento %}
+    <form action="{% url 'formatador' documento.pk %}" method="POST" enctype="multipart/form-data">
         {% csrf_token %}
-        <input name="nome_do_arquivo" type="text" placeholder="Nome do Arquivo">
-        <input type="url" name="img" id="">
-        <input name="titulo" type="text" placeholder="Título">
-        <input name="autor" type="text" placeholder="Autor">
-        <input name="instituicao" type="text" placeholder="Instituição">
-        <input name="ano" type="text" placeholder="Ano">
-        <input name="resumo" type="text" placeholder="Resumo">
-        <input name="palavras_chaves" type="text" placeholder="Palavras-Chaves">
-        <input name="abstract" type="text" placeholder="Abstract">
-        <input name="keywords" type="text" placeholder="Keywords">
-        <textarea name="introducao" placeholder="Introdução"></textarea>
-        <textarea name="problematizacao" placeholder="Problematização"></textarea>
-        <textarea name="justificativa" placeholder="Justificativa"></textarea>
-        <textarea name="questao_geral" placeholder="Questão geral"></textarea>
-        <textarea name="objetivo" placeholder="Objetivo"></textarea>
-        <textarea name="metodologia" placeholder="Metodologia"></textarea>
-        <textarea name="desenvolvimento" placeholder="Desenvolvimento"></textarea>
-        <textarea name="analise_discussao" placeholder="Análise e Discussão"></textarea>
-        <textarea name="conclusao" placeholder="Conclusão"></textarea>
-        <textarea name="referencias" placeholder="Referências Bibliográficas"></textarea>
+        <input name="nome_do_arquivo" type="text" placeholder="Nome do Arquivo" value="{{documento.nome_do_arquivo}}">
+        <input name="img" type="text" value="{{documento.url_imagem}}">
+        <input name="titulo" type="text" placeholder="Título" value="{{documento.titulo}}">
+        <input name="autor" type="text" placeholder="Autor" value="{{documento.autor}}">
+        <input name="instituicao" type="text" placeholder="Instituição" value="{{documento.instituicao}}">
+        <input name="ano" type="text" placeholder="Ano" value="{{documento.ano}}">
+        <input name="resumo" type="text" placeholder="Resumo" value="{{documento.resumo}}">
+        <input name="palavras_chaves" type="text" placeholder="Palavras-Chaves" value="{{documento.palavras_chaves}}">
+        <input name="abstract" type="text" placeholder="Abstract" value="{{documento.abstract}}">
+        <input name="keywords" type="text" placeholder="Keywords" value="{{documento.keywords}}">
+        <textarea name="introducao" placeholder="Introdução">{{documento.introducao}}</textarea>
+        <textarea name="problematizacao" placeholder="Problematização">{{documento.problematizacao}}</textarea>
+        <textarea name="justificativa" placeholder="Justificativa" >{{documento.justificativa}}</textarea>
+        <textarea name="questao_geral" placeholder="Questão geral" >{{documento.questao_geral}}</textarea>
+        <textarea name="objetivo" placeholder="Objetivo" >{{documento.objetivo}}</textarea>
+        <textarea name="metodologia" placeholder="Metodologia" >{{documento.metodologia}}</textarea>
+        <textarea name="desenvolvimento" placeholder="Desenvolvimento">{{documento.desenvolvimento}}</textarea>
+        <textarea name="analise_discussao" placeholder="Análise e Discussão">{{documento.analise_discussao}}</textarea>
+        <textarea name="conclusao" placeholder="Conclusão">{{documento.conclusao}}</textarea>
+        <textarea name="referencias" placeholder="Referências Bibliográficas">{{documento.referencias}}</textarea>
         <input type="checkbox" name="salvar_modelo" id="">
         <select name="tipo_do_arquivo" id="">
             <option value="pdf">PDF</option>
@@ -38,5 +39,36 @@
         </select>
         <button type="submit">BAIXAR DOCUMENTO</button>
     </form>
+    {% else %}
+    <form action="{% url 'formatador' %}" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <input name="nome_do_arquivo" type="text" placeholder="Nome do Arquivo">
+        <input name="img" type="url" id="" >
+        <input name="titulo" type="text" placeholder="Título" >
+        <input name="autor" type="text" placeholder="Autor" >
+        <input name="instituicao" type="text" placeholder="Instituição" >
+        <input name="ano" type="text" placeholder="Ano" >
+        <input name="resumo" type="text" placeholder="Resumo" >
+        <input name="palavras_chaves" type="text" placeholder="Palavras-Chaves" >
+        <input name="abstract" type="text" placeholder="Abstract" >
+        <input name="keywords" type="text" placeholder="Keywords" >
+        <textarea name="introducao" placeholder="Introdução" ></textarea>
+        <textarea name="problematizacao" placeholder="Problematização"></textarea>
+        <textarea name="justificativa" placeholder="Justificativa" ></textarea>
+        <textarea name="questao_geral" placeholder="Questão geral" ></textarea>
+        <textarea name="objetivo" placeholder="Objetivo" ></textarea>
+        <textarea name="metodologia" placeholder="Metodologia" ></textarea>
+        <textarea name="desenvolvimento" placeholder="Desenvolvimento"></textarea>
+        <textarea name="analise_discussao" placeholder="Análise e Discussão"></textarea>
+        <textarea name="conclusao" placeholder="Conclusão"></textarea>
+        <textarea name="referencias" placeholder="Referências Bibliográficas"></textarea>
+        <input type="checkbox" name="salvar_modelo" id=""> salvar texto
+        <select name="tipo_do_arquivo" id="">
+            <option value="pdf">PDF</option>
+            <option value="docx">DOCX</option>
+        </select>
+        <button type="submit">BAIXAR DOCUMENTO</button>
+    </form>
+    {% endif %}
 </body>
 </html>

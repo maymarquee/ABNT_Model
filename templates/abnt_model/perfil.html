@@ -4,8 +4,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="shortcut icon" href="{% static '../static/img/ICONS_OO-removebg-preview.webp' %}" type="image/x-icon">
-    <link rel="stylesheet" href="../../static/styles/perfil.css" />
+    <link rel="shortcut icon" href="{% static 'img/ICONS_OO-removebg-preview.webp' %}" type="image/x-icon">
+    <link rel="stylesheet" href="{% static 'styles/perfil.css' %}" />
     <title>ABNT Model</title>
   </head>
   <body>
@@ -15,7 +15,7 @@
               <a id="subtitulo-voltar" href="{% url 'index' %}" 
                 ><img
                   style="width: 30px"
-                  src="../../static/img/icon-voltar.png"
+                  src="{% static 'img/icon-voltar.png' %}"
                   alt="icone-voltar"/>
                   <p>Voltar para o menu</p>
               </a>
@@ -23,7 +23,7 @@
             <div id="edit-icon">
               <img
                 style="width: 30px"
-                src="../../static/img/edit-icon.png"
+                src="{% static 'img/edit-icon.png' %}"
                 alt="icone-edit"
               />
             </div>
@@ -58,6 +58,6 @@
         </div>
       </div>
     </div>
-    <script src="{% static '../static/script/index.js' %}"></script>
+    <script src="{% static 'script/index.js' %}"></script>
   </body>
 </html>

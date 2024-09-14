@@ -13,6 +13,8 @@ urlpatterns = [
     path("recuperar_conta/", views.recuperar_conta, name="recuperar_conta"),
     path("redefinir_senha/<str:username>/<str:token>", views.redefinir_senha, name="redefinir_senha"),
     path("deletar_conta/", views.deletar_conta, name="deletar_conta"),
+    path("formatador/<int:pk>", views.formatador, name="formatador"),
     path("formatador/", views.formatador, name="formatador"),
+    path("documentos_salvos/", views.documentos_salvos, name="documentos_salvos"),
 ]
 

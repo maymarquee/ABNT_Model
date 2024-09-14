@@ -10,7 +10,7 @@ class Image(models.Model): #associação com a classe User.
 
 class Documentos_Abstract(models.Model): #classe Abstrata, como modelo padrão
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    nome_do_arquivo= models.TextField()
+    nome_do_arquivo= models.TextField(unique=True)
     autor = models.TextField()
     titulo = models.TextField()
     introducao= models.TextField()
@@ -20,7 +20,7 @@ class Documentos_Abstract(models.Model): #classe Abstrata, como modelo padrão
         abstract=True
 
 class Simple_TCC(Documentos_Abstract): #classe que herda da abstrata
-    url_imagem = models.URLField(null=True, blank=True) 
+    url_imagem = models.URLField() 
     instituicao = models.TextField()
     ano = models.TextField()
     resumo = models.TextField()
