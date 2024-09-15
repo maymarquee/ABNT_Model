@@ -2,9 +2,9 @@ function toggleDarkMode(event) {
     event.preventDefault(); 
     
     const body = document.body;
-    body.classList.toggle('dark-mode'); // adiciona ou remove a classe 'dark-mode'
+    body.classList.toggle('dark-mode'); 
 
-    // se o modo escuro está ativado, salva a preferência no localStorage
+    
     if (body.classList.contains('dark-mode')) {
         localStorage.setItem('darkMode', 'enabled');
     } else {
@@ -12,17 +12,17 @@ function toggleDarkMode(event) {
     }
 }
 
-// carrega a preferência de dark mode ao carregar a página
+
 function loadDarkModePreference() {
     const darkMode = localStorage.getItem('darkMode');
 
-    // se a preferência for "enabled", ativa o modo escuro
+
     if (darkMode === 'enabled') {
         document.body.classList.add('dark-mode');
     }
 }
 
-// executa ao carregar a página
+
 loadDarkModePreference();
 
 document.getElementById('dark-mode-toggle').addEventListener('click', toggleDarkMode);

@@ -310,8 +310,8 @@ def formatador(request, pk=None):
         analise_discussao = request.POST.get("analise_discussao", "")
         conclusao = request.POST.get("conclusao", "")
         referencias = request.POST.get("referencias", "")
-        checkbox = request.POST.get("salvar_modelo","")
-
+        salvar_modelo = request.POST.get("salvar_modelo","")
+        incluir_sumario = request.POST.get("incluir_sumario","")
         dados = {
             'url_imagem': url_imagem,
             'titulo': titulo,
@@ -334,7 +334,7 @@ def formatador(request, pk=None):
             "conclusao": conclusao,
             "referencias": referencias,
         }
-        if checkbox == 'on':
+        if salvar_modelo == 'on':
             defaults = dados.copy()
             defaults["user"]= request.user
             modelo_trabalho = Simple_TCC.objects.update_or_create(
@@ -369,19 +369,20 @@ def formatador(request, pk=None):
         tipo_do_arquivo = request.POST.get("tipo_do_arquivo", "pdf")
         html_string = render_to_string('abnt_model/documento.html', dados)
         pdf_file = HTML(string=html_string).write_pdf()
+        
+        if incluir_sumario == 'on':
+            sumario, paginas, titulos, subtitulos = geradorDeSumario(pdf_file)
+            buscar =  ['#introducao','#problematizacao','#justificativa','#questao_geral','#objetivo', '#metodologia','#desenvolvimento','#analise_discussao','#conclusao','#referencias']
 
-        sumario, paginas, titulos, subtitulos = geradorDeSumario(pdf_file)
-        buscar =  ['#introducao','#problematizacao','#justificativa','#questao_geral','#objetivo', '#metodologia','#desenvolvimento','#analise_discussao','#conclusao','#referencias']
-
-        combina = zip(sumario, buscar, paginas)
-        dados['pontos'] = ' . '*70
-        dados['sumario'] = sumario
-        dados['paginas'] = paginas
-        dados['buscar'] = buscar
-        dados['combina'] = combina
-        dados['titulos'] = titulos
-        dados['subtitulos'] = subtitulos
-        pdf_file = adicionarSumario(dados)
+            combina = zip(sumario, buscar, paginas)
+            dados['pontos'] = ' . '*70
+            dados['sumario'] = sumario
+            dados['paginas'] = paginas
+            dados['buscar'] = buscar
+            dados['combina'] = combina
+            dados['titulos'] = titulos
+            dados['subtitulos'] = subtitulos
+            pdf_file = adicionarSumario(dados)
 
         if tipo_do_arquivo == 'pdf':
             response = HttpResponse(pdf_file, content_type='application/pdf')

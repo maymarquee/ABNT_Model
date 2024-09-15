@@ -27,7 +27,7 @@
                     <li><a href="#" data-target="tipo_do_arquivo">Tipo do Arquivo</a></li>
                 </ul>
             </nav>
-
+            
             <!-- Área de edição à direita -->
             <div class="form-section">     
                     <!-- Campos do formulário com IDs -->
@@ -111,9 +111,13 @@
                     </div>
 
                     <div id="tipo_do_arquivo" class="form-group">
-                        <div class="container_salvar">
+                        <div class="container_checkbox">
                             <input type="checkbox" name="salvar_modelo" >
-                            <p for="salvar_modelo">Salvar/Atualizar documento</p>
+                            <p for="salvar_modelo">Salvar/atualizar documento</p>
+                        </div>
+                        <div class="container_checkbox">
+                            <input type="checkbox" name="incluir_sumario" >
+                            <p for="salvar_modelo">Incluir sumário</p>
                         </div>
                         <label for="tipo_do_arquivo">Tipo do Arquivo</label>
                         <select name="tipo_do_arquivo">
@@ -225,9 +229,13 @@
                             </div>
 
                             <div id="tipo_do_arquivo" class="form-group">
-                                <div class="container_salvar">
+                                <div class="container_checkbox">
                                     <input type="checkbox" name="salvar_modelo" >
                                     <p for="salvar_modelo">Salvar/atualizar documento</p>
+                                </div>
+                                <div class="container_checkbox">
+                                    <input type="checkbox" name="incluir_sumario" >
+                                    <p for="salvar_modelo">Incluir sumário</p>
                                 </div>
                                 <label for="tipo_do_arquivo">Tipo do Arquivo</label>
                                 <select name="tipo_do_arquivo">

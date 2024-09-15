@@ -141,7 +141,7 @@ button {
 button:hover {
     background-color: var(--cor-hoover-formatador);
 }
-.container_salvar{
+.container_checkbox{
     display: flex;
     flex-direction: row;
     justify-content: start;
