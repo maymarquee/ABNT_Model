@@ -56,7 +56,13 @@
         <div class="texto-justificado">
                 {% for titulo, busca, pagina in combina %}
                     <div class="container-sumario">
+                        {% if titulo in titulos %}
+                        <div id="titulo-sumario"><a href="{{busca}}"><p><strong>{{titulo}}</strong></p></a></div>
+                        {% elif titulo in subtitulos %}
+                        <div id="titulo-sumario"><a href="{{busca}}"><p class="subtitulo">{{titulo}}</p></a></div>
+                        {% else %}
                         <div id="titulo-sumario"><a href="{{busca}}">{{titulo}}</a></div>
+                        {% endif%}
                             <div id="pontos-sumario"><span>{{pontos}}</span></div>
                             <div id="num-pagina-sumario">{{pagina}}</div>
                     </div>
@@ -67,7 +73,7 @@
     
     {% if introducao %}
     <section id="capitulo" class="capitulo page-break">
-        <h3 id="introducao"> INTRODUÇÃO </h3>
+        <h3 id="introducao">1. INTRODUÇÃO </h3>
         <div class="texto-justificado">
             {% for paragrafo in introducao %}
                 <p class="identar">{{paragrafo}}</p>
@@ -78,7 +84,7 @@
 
     {% if problematizacao %}
     <section id="capitulo" class="capitulo page-break">
-        <h3 id="problematizacao"> PROBLEMATIZAÇÃO </h3>
+        <h3 id="problematizacao">1.1 PROBLEMATIZAÇÃO </h3>
         <div class="texto-justificado">
             {% for paragrafo in problematizacao %}
                 <p class="identar">{{paragrafo}}</p>
@@ -89,7 +95,7 @@
 
     {% if justificativa %}
     <section id="capitulo" class="capitulo page-break">
-        <h3 id="justificativa" style="letter-spacing: 0.01cm;">JUSTIFICATIVA</h3> 
+        <h3 id="justificativa" style="letter-spacing: 0.01cm;">1.2 JUSTIFICATIVA</h3> 
         <div class="texto-justificado">
             {% for paragrafo in justificativa %}
                 <p class="identar">{{paragrafo}}</p>
@@ -100,7 +106,7 @@
 
     {% if questao_geral %}
     <section id="capitulo" class="capitulo page-break">
-        <h3 id="questao_geral"> QUESTÃO GERAL </h3>
+        <h3 id="questao_geral">1.3 QUESTÃO GERAL </h3>
         <div class="texto-justificado">
             {% for paragrafo in questao_geral %}
                 <p class="identar">{{paragrafo}}</p>
@@ -111,7 +117,7 @@
 
     {% if objetivo %}
     <section id="capitulo" class="capitulo page-break">
-        <h3 id="objetivo"> OBJETIVO </h3>
+        <h3 id="objetivo">2. OBJETIVO </h3>
         <div class="texto-justificado">
             {% for paragrafo in objetivo %}
                 <p class="identar">{{paragrafo}}</p>
@@ -122,7 +128,7 @@
 
     {% if metodologia %}
     <section id="capitulo" class="capitulo page-break">
-        <h3 id="metodologia"> METODOLOGIA </h3>
+        <h3 id="metodologia">3. METODOLOGIA </h3>
         <div class="texto-justificado">
             {% for paragrafo in metodologia %}
                 <p class="identar">{{paragrafo}}</p>
@@ -133,7 +139,7 @@
 
     {% if desenvolvimento %}
     <section id="capitulo" class="capitulo page-break">
-        <h3 id="desenvolvimento"> DESENVOLVIMENTO </h3>
+        <h3 id="desenvolvimento">4. DESENVOLVIMENTO </h3>
         <div class="texto-justificado">
             {% for paragrafo in desenvolvimento %}
                 <p class="identar">{{paragrafo}}</p>
@@ -144,7 +150,7 @@
 
     {% if analise_discussao %}
     <section id="capitulo" class="capitulo page-break">
-        <h3 id="analise_discussao"> ANÁLISES E DISCUSSÃO </h3>
+        <h3 id="analise_discussao">5. ANÁLISES E DISCUSSÃO </h3>
         <div class="texto-justificado">
             {% for paragrafo in analise_discussao %}
                 <p class="identar">{{paragrafo}}</p>
@@ -155,7 +161,7 @@
 
     {% if conclusao %}
     <section id="capitulo" class="capitulo page-break">
-        <h3 id="conclusao"> CONCLUSÃO </h3>
+        <h3 id="conclusao">6. CONCLUSÃO </h3>
         <div class="texto-justificado">
         <div class="texto-justificado">
             {% for paragrafo in introducao %}
@@ -240,12 +246,16 @@
         text-decoration: none;
         color: black;
     }
+    .subtitulo{
+        text-indent: 1cm;
+    }
     .container-sumario{
         display: flex;
         align-items: center;
         align-self: stretch;
         width: 100%;
         margin: 1.5pt;
+        height: 0.5cm;
     }
     #pontos-sumario{
         display: flex;

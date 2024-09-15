@@ -261,8 +261,9 @@ def geradorDeSumario(pdf_bytes):
         return []
 
     numero_de_paginas = len(reader.pages)
-    verificar = ['INTRODUÇÃO','PROBLEMATIZAÇÃO','JUSTIFICATIVA','QUESTÃO GERAL','OBJETIVO','METODOLOGIA','DESENVOLVIMENTO','ANÁLISES E DISCUSSÃO','CONCLUSÃO','REFERÊNCIAS']
-    
+    verificar = ['1. INTRODUÇÃO','1.1 PROBLEMATIZAÇÃO','1.2 JUSTIFICATIVA','1.3 QUESTÃO GERAL','2. OBJETIVO','3. METODOLOGIA','4. DESENVOLVIMENTO','5. ANÁLISES E DISCUSSÃO','6. CONCLUSÃO','REFERÊNCIAS']
+    titulos = ['1. INTRODUÇÃO','2. OBJETIVO','3. METODOLOGIA','4. DESENVOLVIMENTO','5. ANÁLISES E DISCUSSÃO','6. CONCLUSÃO','REFERÊNCIAS']
+    subtitulos = ['1.1 PROBLEMATIZAÇÃO','1.2 JUSTIFICATIVA','1.3 QUESTÃO GERAL']
     sumario = []
     pagina = []
     for i in range(numero_de_paginas):
@@ -274,7 +275,7 @@ def geradorDeSumario(pdf_bytes):
                 sumario.append(termo)
                 pagina.append(i+1)
     
-    return sumario, pagina
+    return sumario, pagina, titulos, subtitulos
 
 
 def adicionarSumario(novos_dados):
@@ -369,15 +370,17 @@ def formatador(request, pk=None):
         html_string = render_to_string('abnt_model/documento.html', dados)
         pdf_file = HTML(string=html_string).write_pdf()
 
-        sumario, paginas = geradorDeSumario(pdf_file)
+        sumario, paginas, titulos, subtitulos = geradorDeSumario(pdf_file)
         buscar =  ['#introducao','#problematizacao','#justificativa','#questao_geral','#objetivo', '#metodologia','#desenvolvimento','#analise_discussao','#conclusao','#referencias']
 
         combina = zip(sumario, buscar, paginas)
-        dados['pontos'] = ' . '*150
+        dados['pontos'] = ' . '*70
         dados['sumario'] = sumario
         dados['paginas'] = paginas
         dados['buscar'] = buscar
         dados['combina'] = combina
+        dados['titulos'] = titulos
+        dados['subtitulos'] = subtitulos
         pdf_file = adicionarSumario(dados)
 
         if tipo_do_arquivo == 'pdf':
