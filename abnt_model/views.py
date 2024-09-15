@@ -256,7 +256,7 @@ def pegarTexto(texto):
     
     return parágrafos_processados
 
-
+    
 @login_required
 def formatador(request, pk=None):
     if request.method == "POST":
@@ -270,20 +270,20 @@ def formatador(request, pk=None):
         local = request.POST.get("local","")
         local = local.upper()
         ano = request.POST.get("ano", "")
-        resumo = pegarTexto(request.POST.get("resumo", ""))
+        resumo = request.POST.get("resumo", "")
         palavras_chaves = request.POST.get("palavras_chaves", "")
-        abstract = pegarTexto(request.POST.get("abstract", ""))
+        abstract = request.POST.get("abstract", "")
         keywords = request.POST.get("keywords", "")
-        introducao = pegarTexto(request.POST.get("introducao", ""))
-        problematizacao = pegarTexto(request.POST.get("problematizacao", ""))
-        justificativa = pegarTexto(request.POST.get("justificativa", ""))
-        questao_geral = pegarTexto(request.POST.get("questao_geral", ""))
-        objetivo = pegarTexto(request.POST.get("objetivo", ""))
-        metodologia = pegarTexto(request.POST.get("metodologia", ""))
-        desenvolvimento = pegarTexto(request.POST.get("desenvolvimento", ""))
-        analise_discussao = pegarTexto(request.POST.get("analise_discussao", ""))
-        conclusao = pegarTexto(request.POST.get("conclusao", ""))
-        referencias = pegarTexto(request.POST.get("referencias", ""))
+        introducao = request.POST.get("introducao", "")
+        problematizacao = request.POST.get("problematizacao", "")
+        justificativa = request.POST.get("justificativa", "")
+        questao_geral = request.POST.get("questao_geral", "")
+        objetivo = request.POST.get("objetivo", "")
+        metodologia = request.POST.get("metodologia", "")
+        desenvolvimento = request.POST.get("desenvolvimento", "")
+        analise_discussao = request.POST.get("analise_discussao", "")
+        conclusao = request.POST.get("conclusao", "")
+        referencias = request.POST.get("referencias", "")
         checkbox = request.POST.get("salvar_modelo","")
 
         dados = {
@@ -315,7 +315,31 @@ def formatador(request, pk=None):
             nome_do_arquivo = nome_do_arquivo,
             defaults=defaults,
             )
-        dados["nome_do_arquivo"]= nome_do_arquivo
+        
+        dados = {
+            'nome_do_arquivo':nome_do_arquivo,
+            'url_imagem': url_imagem,
+            'titulo': titulo,
+            "autor": autor,
+            "instituicao": instituicao,
+            "local":local,
+            "ano": ano,
+            "resumo":pegarTexto(resumo),
+            "palavras_chaves": palavras_chaves,
+            "abstract": pegarTexto(abstract),
+            "keywords": keywords,
+            "introducao": pegarTexto(introducao),
+            "problematizacao": pegarTexto(problematizacao),
+            "justificativa": pegarTexto(justificativa),
+            "questao_geral": pegarTexto(questao_geral),
+            "objetivo": pegarTexto(objetivo),
+            "metodologia": pegarTexto(metodologia),
+            "desenvolvimento": pegarTexto(desenvolvimento),
+            "analise_discussao":pegarTexto(analise_discussao),
+            "conclusao": pegarTexto(conclusao),
+            "referencias": pegarTexto(referencias),
+        }
+
         tipo_do_arquivo = request.POST.get("tipo_do_arquivo", "pdf")
         html_string = render_to_string('abnt_model/documento.html', dados)
         pdf_file = HTML(string=html_string).write_pdf()
