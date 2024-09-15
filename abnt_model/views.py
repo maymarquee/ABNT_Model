@@ -12,8 +12,18 @@ from django.template.loader import render_to_string
 from weasyprint import HTML
 from django.conf import settings
 from PIL import Image
-import urllib.request
 from .models import Image, Simple_TCC
+from django.shortcuts import render
+from django.http import HttpResponse
+from django.contrib.auth.decorators import login_required
+from django.template.loader import render_to_string
+from weasyprint import HTML
+from pdf2docx import Converter
+import io
+import tempfile
+import os
+from PyPDF2 import PdfReader
+import urllib.request
 
 def index(request):
     autenticado = request.user.is_authenticated
@@ -221,7 +231,6 @@ def deletar_conta(request):
     if request.method == "POST":
         frase = request.POST.get("frase")
         frase = frase.lower()
-        print(frase)
         if  frase == "desejo excluir minha conta permanentemente":
             request.user.delete()
             return redirect('index')
@@ -230,18 +239,6 @@ def deletar_conta(request):
             return render(request, 'abnt_model/deletar_conta.html', {"mensagem": mensagem})
 
     return render(request, 'abnt_model/deletar_conta.html')
-
-    
-from django.shortcuts import render
-from django.http import HttpResponse
-from django.contrib.auth.decorators import login_required
-from django.template.loader import render_to_string
-from weasyprint import HTML
-from pdf2docx import Converter
-import io
-import tempfile
-import os
-
 
 def pegarTexto(texto):
     parágrafos = texto.split('\n')
@@ -256,7 +253,35 @@ def pegarTexto(texto):
     
     return parágrafos_processados
 
+def geradorDeSumario(pdf_bytes):
+    try: # * para ler um pdf como byte
+        reader = PdfReader(io.BytesIO(pdf_bytes))
+    except Exception as e:
+        print(f"Erro ao ler o PDF: {e}")
+        return []
+
+    numero_de_paginas = len(reader.pages)
+    verificar = ['INTRODUÇÃO','PROBLEMATIZAÇÃO','JUSTIFICATIVA','QUESTÃO GERAL','OBJETIVO','METODOLOGIA','DESENVOLVIMENTO','ANÁLISES E DISCUSSÃO','CONCLUSÃO','REFERÊNCIAS']
     
+    sumario = []
+    pagina = []
+    for i in range(numero_de_paginas):
+        pagina_atual = reader.pages[i]
+        texto = pagina_atual.extract_text() or ''
+        
+        for termo in verificar:
+            if termo in texto:
+                sumario.append(termo)
+                pagina.append(i+1)
+    
+    return sumario, pagina
+
+
+def adicionarSumario(novos_dados):
+    html_string = render_to_string('abnt_model/documento.html', novos_dados)
+    pdf_file = HTML(string=html_string).write_pdf()
+    return pdf_file
+
 @login_required
 def formatador(request, pk=None):
     if request.method == "POST":
@@ -343,6 +368,17 @@ def formatador(request, pk=None):
         tipo_do_arquivo = request.POST.get("tipo_do_arquivo", "pdf")
         html_string = render_to_string('abnt_model/documento.html', dados)
         pdf_file = HTML(string=html_string).write_pdf()
+
+        sumario, paginas = geradorDeSumario(pdf_file)
+        buscar =  ['#introducao','#problematizacao','#justificativa','#questao_geral','#objetivo', '#metodologia','#desenvolvimento','#analise_discussao','#conclusao','#referencias']
+
+        combina = zip(sumario, buscar, paginas)
+        dados['pontos'] = ' . '*150
+        dados['sumario'] = sumario
+        dados['paginas'] = paginas
+        dados['buscar'] = buscar
+        dados['combina'] = combina
+        pdf_file = adicionarSumario(dados)
 
         if tipo_do_arquivo == 'pdf':
             response = HttpResponse(pdf_file, content_type='application/pdf')

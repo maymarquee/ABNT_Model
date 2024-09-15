@@ -24,6 +24,8 @@
         <h2 style="position: absolute; top:22.5cm; left: 50%; transform: translate(-50%);">{{local}} <br> {{ano}}</h2>
     </header>
     {% endif %}
+
+    
     {% if resumo %}
     <section class="capitulo page-break">
         <h2><strong>Resumo</strong></h2>
@@ -35,22 +37,37 @@
         <div class="texto-justificado"><strong>Palavras-chave:</strong> {{palavras_chaves}}</div>
     </section>
     {% endif %}
-
+    
     {% if abstract %}
     <section class="capitulo page-break">
         <h2><strong>Abstract</strong></h2>
         <div class="texto-justificado">
             {% for paragrafo in abstract %}
-                <p class="identar">{{paragrafo}}</p>
+            <p class="identar">{{paragrafo}}</p>
             {% endfor%}
         </div>
         <div class="texto-justificado"><strong>Keywords:</strong> {{keywords}}</div>
     </section>
     {% endif %}
 
+    {% if sumario %}
+    <section class="capitulo page-break">
+        <h2><strong>SUMÁRIO</strong></h2>
+        <div class="texto-justificado">
+                {% for titulo, busca, pagina in combina %}
+                    <div class="container-sumario">
+                        <div id="titulo-sumario"><a href="{{busca}}">{{titulo}}</a></div>
+                            <div id="pontos-sumario"><span>{{pontos}}</span></div>
+                            <div id="num-pagina-sumario">{{pagina}}</div>
+                    </div>
+                {% endfor%}
+        </div>
+    </section>
+    {% endif %}
+    
     {% if introducao %}
     <section id="capitulo" class="capitulo page-break">
-        <h3> Introdução</h3>
+        <h3 id="introducao"> INTRODUÇÃO </h3>
         <div class="texto-justificado">
             {% for paragrafo in introducao %}
                 <p class="identar">{{paragrafo}}</p>
@@ -61,7 +78,7 @@
 
     {% if problematizacao %}
     <section id="capitulo" class="capitulo page-break">
-        <h3> Problematização</h3>
+        <h3 id="problematizacao"> PROBLEMATIZAÇÃO </h3>
         <div class="texto-justificado">
             {% for paragrafo in problematizacao %}
                 <p class="identar">{{paragrafo}}</p>
@@ -72,7 +89,7 @@
 
     {% if justificativa %}
     <section id="capitulo" class="capitulo page-break">
-        <h3> Justificativa</h3>
+        <h3 id="justificativa" style="letter-spacing: 0.01cm;">JUSTIFICATIVA</h3> 
         <div class="texto-justificado">
             {% for paragrafo in justificativa %}
                 <p class="identar">{{paragrafo}}</p>
@@ -83,7 +100,7 @@
 
     {% if questao_geral %}
     <section id="capitulo" class="capitulo page-break">
-        <h3> Questão geral</h3>
+        <h3 id="questao_geral"> QUESTÃO GERAL </h3>
         <div class="texto-justificado">
             {% for paragrafo in questao_geral %}
                 <p class="identar">{{paragrafo}}</p>
@@ -94,7 +111,7 @@
 
     {% if objetivo %}
     <section id="capitulo" class="capitulo page-break">
-        <h3> Objetivo</h3>
+        <h3 id="objetivo"> OBJETIVO </h3>
         <div class="texto-justificado">
             {% for paragrafo in objetivo %}
                 <p class="identar">{{paragrafo}}</p>
@@ -105,7 +122,7 @@
 
     {% if metodologia %}
     <section id="capitulo" class="capitulo page-break">
-        <h3> Metodologia</h3>
+        <h3 id="metodologia"> METODOLOGIA </h3>
         <div class="texto-justificado">
             {% for paragrafo in metodologia %}
                 <p class="identar">{{paragrafo}}</p>
@@ -116,7 +133,7 @@
 
     {% if desenvolvimento %}
     <section id="capitulo" class="capitulo page-break">
-        <h3> Desenvolvimento</h3>
+        <h3 id="desenvolvimento"> DESENVOLVIMENTO </h3>
         <div class="texto-justificado">
             {% for paragrafo in desenvolvimento %}
                 <p class="identar">{{paragrafo}}</p>
@@ -127,7 +144,7 @@
 
     {% if analise_discussao %}
     <section id="capitulo" class="capitulo page-break">
-        <h3> Análises e Discussões</h3>
+        <h3 id="analise_discussao"> ANÁLISES E DISCUSSÃO </h3>
         <div class="texto-justificado">
             {% for paragrafo in analise_discussao %}
                 <p class="identar">{{paragrafo}}</p>
@@ -138,7 +155,7 @@
 
     {% if conclusao %}
     <section id="capitulo" class="capitulo page-break">
-        <h3> Conclusão</h3>
+        <h3 id="conclusao"> CONCLUSÃO </h3>
         <div class="texto-justificado">
         <div class="texto-justificado">
             {% for paragrafo in introducao %}
@@ -151,7 +168,7 @@
 
     {% if referencias %}
     <section id="referencias" class="referencias page-break">
-        <h3>Referências</h3>
+        <h3 id="referencias"> REFERÊNCIAS </h3>
         <div class="texto-justificado">
             {% for paragrafo in referencias %}
             <p>{{paragrafo}}</p>
@@ -200,6 +217,7 @@
     }
     .identar{
         text-indent: 1.5cm;
+        height: 1.5;
     }
     
     .capa {
@@ -217,6 +235,23 @@
         object-fit: cover; /* Ajusta a imagem para cobrir o contêiner, cortando se necessário */
         display: block; /* Garante que a margem automática funcione */
         margin: 0 auto; /* Centraliza a imagem horizontalmente */
+    }
+    a{
+        text-decoration: none;
+        color: black;
+    }
+    .container-sumario{
+        display: flex;
+        align-items: center;
+        align-self: stretch;
+        width: 100%;
+        margin: 1.5pt;
+    }
+    #pontos-sumario{
+        display: flex;
+        align-items: center;
+        flex: 1 0 0;
+        overflow: hidden;
     }
 
     /* CSS para impressão */
