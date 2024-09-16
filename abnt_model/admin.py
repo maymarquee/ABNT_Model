@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Image, Simple_TCC
+from .models import Image, Ensaio
 class ListImage(admin.ModelAdmin):
     list_display = ("user",) #
     list_per_page = 10 #qtd de objetos por pagina
@@ -11,4 +11,4 @@ class ListDocumentsForUser(admin.ModelAdmin):
     list_per_page = 10
 
 admin.site.register(Image,ListImage)
-admin.site.register(Simple_TCC,ListDocumentsForUser)
+admin.site.register(Ensaio,ListDocumentsForUser)

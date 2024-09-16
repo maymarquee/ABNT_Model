@@ -19,7 +19,7 @@ class Documentos_Abstract(models.Model): #classe Abstrata, como modelo padrão
     class Meta:
         abstract=True
 
-class Simple_TCC(Documentos_Abstract): #classe que herda da abstrata
+class Ensaio(Documentos_Abstract): #classe que herda da abstrata
     url_imagem = models.URLField() 
     instituicao = models.TextField()
     local = models.TextField()

@@ -10,7 +10,7 @@ from django.template.loader import render_to_string
 from weasyprint import HTML
 from django.conf import settings
 from PIL import Image
-from .models import Image, Simple_TCC
+from .models import Image, Ensaio
 from pdf2docx import Converter
 from PyPDF2 import PdfReader
 import io
@@ -327,7 +327,7 @@ def formatador(request, pk=None):
         if salvar_modelo == 'on':
             defaults = dados.copy()
             defaults["user"]= request.user
-            modelo_trabalho = Simple_TCC.objects.update_or_create(
+            modelo_trabalho = Ensaio.objects.update_or_create(
             nome_do_arquivo = nome_do_arquivo,
             defaults=defaults,
             )
@@ -386,7 +386,7 @@ def formatador(request, pk=None):
     else:
         #carregar dados salvos do banco por meio de uma primary key do usuario
         if pk:
-            consulta = Simple_TCC.objects.get(pk=pk)
+            consulta = Ensaio.objects.get(pk=pk)
             dados = {
                 "documento": consulta,
             }
@@ -396,11 +396,11 @@ def formatador(request, pk=None):
 
 @login_required
 def documentos_salvos(request):
-    consulta = Simple_TCC.objects.filter(user=request.user)
+    consulta = Ensaio.objects.filter(user=request.user)
 
     if request.method == "POST":
         selecionados = request.POST.getlist('documento_ids')
-        documentos_selecionados = Simple_TCC.objects.filter(pk__in=selecionados)
+        documentos_selecionados = Ensaio.objects.filter(pk__in=selecionados)
         documentos_selecionados.delete()
         
         return redirect('documentos_salvos')
