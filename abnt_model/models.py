@@ -6,7 +6,7 @@ class Image(models.Model): #associação com a classe User.
     image = models.URLField(null=False, blank=False)
 
     def __str__(self):
-        return self.user.username  # or self.user.email, or another string attribute of User
+        return self.user.username 
 
 class Documentos_Abstract(models.Model): #classe Abstrata, como modelo padrão
     user = models.ForeignKey(User, on_delete=models.CASCADE)
@@ -35,9 +35,3 @@ class Ensaio(Documentos_Abstract): #classe que herda da abstrata
     metodologia = models.TextField()
     analise_discussao = models.TextField()
     referencias = models.TextField()
-
-
-
-    # [...]
-
-#models é um arquivo que modela dados.
