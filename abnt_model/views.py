@@ -3,9 +3,7 @@ from django.http import HttpResponse
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login,logout, update_session_auth_hash
 from django.contrib.auth.decorators import login_required
-from django.contrib import messages
 from django.core.mail import send_mail
-from django.urls import reverse
 from setup import settings
 from django.contrib.auth.tokens import PasswordResetTokenGenerator
 from django.template.loader import render_to_string
@@ -13,17 +11,11 @@ from weasyprint import HTML
 from django.conf import settings
 from PIL import Image
 from .models import Image, Simple_TCC
-from django.shortcuts import render
-from django.http import HttpResponse
-from django.contrib.auth.decorators import login_required
-from django.template.loader import render_to_string
-from weasyprint import HTML
 from pdf2docx import Converter
+from PyPDF2 import PdfReader
 import io
 import tempfile
 import os
-from PyPDF2 import PdfReader
-import urllib.request
 
 def index(request):
     autenticado = request.user.is_authenticated
@@ -299,7 +291,6 @@ def obterDados(texto, maiuscula=False):
     else:
         return texto
 
-
 @login_required
 def formatador(request, pk=None):
     if request.method == "POST":
@@ -402,10 +393,6 @@ def formatador(request, pk=None):
             return render(request, 'abnt_model/formatador.html', dados)
         else:
             return render(request, 'abnt_model/formatador.html')
-
-
-from django.http import HttpResponse
-from .models import Simple_TCC
 
 @login_required
 def documentos_salvos(request):
