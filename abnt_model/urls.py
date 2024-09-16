@@ -1,6 +1,6 @@
 # urls.py
 from django.urls import path
-from . import views  # Importa as views onde tem os controladores
+from . import views  # Importa a views onde tem os controladores
 
 
 urlpatterns = [
