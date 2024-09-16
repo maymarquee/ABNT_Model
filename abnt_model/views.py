@@ -240,6 +240,7 @@ def deletar_conta(request):
 
     return render(request, 'abnt_model/deletar_conta.html')
 
+#método criado para auxiliar na formatação do texto, todo junto sem formatação e retorna em paragrafos, justificado no front.
 def pegarTexto(texto):
     parágrafos = texto.split('\n')
     
@@ -253,6 +254,7 @@ def pegarTexto(texto):
     
     return parágrafos_processados
 
+#método criado para auxiliar na criação do sumário.
 def geradorDeSumario(pdf_bytes):
     try: # * para ler um pdf como byte
         reader = PdfReader(io.BytesIO(pdf_bytes))
@@ -261,11 +263,18 @@ def geradorDeSumario(pdf_bytes):
         return []
 
     numero_de_paginas = len(reader.pages)
+    #vetor para caçar palavras chaves no pdf
     verificar = ['1. INTRODUÇÃO','1.1 PROBLEMATIZAÇÃO','1.2 JUSTIFICATIVA','1.3 QUESTÃO GERAL','2. OBJETIVO','3. METODOLOGIA','4. DESENVOLVIMENTO','5. ANÁLISES E DISCUSSÃO','6. CONCLUSÃO','REFERÊNCIAS']
+    #vetor para ajudar na criação do sumario no front
     titulos = ['1. INTRODUÇÃO','2. OBJETIVO','3. METODOLOGIA','4. DESENVOLVIMENTO','5. ANÁLISES E DISCUSSÃO','6. CONCLUSÃO','REFERÊNCIAS']
+    #vetor para ajudar na criação do sumario no front
     subtitulos = ['1.1 PROBLEMATIZAÇÃO','1.2 JUSTIFICATIVA','1.3 QUESTÃO GERAL']
+    #vetor para armazenar os titulos/subtitulos achados no texto
     sumario = []
+    #vetor para achar as paginas de onde foi encontrada cada titulo/subtitulo
     pagina = []
+
+
     for i in range(numero_de_paginas):
         pagina_atual = reader.pages[i]
         texto = pagina_atual.extract_text() or ''
@@ -277,63 +286,53 @@ def geradorDeSumario(pdf_bytes):
     
     return sumario, pagina, titulos, subtitulos
 
-
-def adicionarSumario(novos_dados):
+#método criado para adicionar dados/informações/textos do html no pdf.
+def adicionarDadosEmPDF(novos_dados):
     html_string = render_to_string('abnt_model/documento.html', novos_dados)
     pdf_file = HTML(string=html_string).write_pdf()
     return pdf_file
 
+#obtem os dados de determinado campo e formata-o de forma que auxilia na construção da capa.
+def obterDados(texto, maiuscula=False):
+    if maiuscula == True:
+        return texto.upper()
+    else:
+        return texto
+
+
 @login_required
 def formatador(request, pk=None):
     if request.method == "POST":
+        #captura de informações preenchidas pelo usuario
         nome_do_arquivo = request.POST.get("nome_do_arquivo", "")
-        url_imagem = request.POST.get("url_imagem", "")
-        titulo = request.POST.get("titulo","")
-        autor = request.POST.get("autor", "")
-        autor = autor.upper()
-        instituicao = request.POST.get("instituicao", "")
-        instituicao = instituicao.upper()
-        local = request.POST.get("local","")
-        local = local.upper()
-        ano = request.POST.get("ano", "")
-        resumo = request.POST.get("resumo", "")
-        palavras_chaves = request.POST.get("palavras_chaves", "")
-        abstract = request.POST.get("abstract", "")
-        keywords = request.POST.get("keywords", "")
-        introducao = request.POST.get("introducao", "")
-        problematizacao = request.POST.get("problematizacao", "")
-        justificativa = request.POST.get("justificativa", "")
-        questao_geral = request.POST.get("questao_geral", "")
-        objetivo = request.POST.get("objetivo", "")
-        metodologia = request.POST.get("metodologia", "")
-        desenvolvimento = request.POST.get("desenvolvimento", "")
-        analise_discussao = request.POST.get("analise_discussao", "")
-        conclusao = request.POST.get("conclusao", "")
-        referencias = request.POST.get("referencias", "")
         salvar_modelo = request.POST.get("salvar_modelo","")
         incluir_sumario = request.POST.get("incluir_sumario","")
+        tipo_do_arquivo = request.POST.get("tipo_do_arquivo", "pdf")
+
         dados = {
-            'url_imagem': url_imagem,
-            'titulo': titulo,
-            "autor": autor,
-            "instituicao": instituicao,
-            "local":local,
-            "ano": ano,
-            "resumo": resumo,
-            "palavras_chaves": palavras_chaves,
-            "abstract": abstract,
-            "keywords": keywords,
-            "introducao": introducao,
-            "problematizacao": problematizacao,
-            "justificativa": justificativa,
-            "questao_geral": questao_geral,
-            "objetivo": objetivo,
-            "metodologia": metodologia,
-            "desenvolvimento": desenvolvimento,
-            "analise_discussao": analise_discussao,
-            "conclusao": conclusao,
-            "referencias": referencias,
+            'url_imagem': request.POST.get("url_imagem", ""),
+            'titulo': request.POST.get("titulo",""),
+            "autor": obterDados(request.POST.get("autor", ""),True),
+            "instituicao": obterDados(request.POST.get("instituicao", ""),True),
+            "local":obterDados(request.POST.get("local",""), True),
+            "ano": request.POST.get("ano", ""),
+            "resumo": request.POST.get("resumo", ""),
+            "palavras_chaves": request.POST.get("palavras_chaves", ""),
+            "abstract": request.POST.get("abstract", ""),
+            "keywords": request.POST.get("keywords", ""),
+            "introducao": request.POST.get("introducao", ""),
+            "problematizacao": request.POST.get("problematizacao", ""),
+            "justificativa": request.POST.get("justificativa", ""),
+            "questao_geral": request.POST.get("questao_geral", ""),
+            "objetivo": request.POST.get("objetivo", ""),
+            "metodologia": request.POST.get("metodologia", ""),
+            "desenvolvimento": request.POST.get("desenvolvimento", ""),
+            "analise_discussao": request.POST.get("analise_discussao", ""),
+            "conclusao": request.POST.get("conclusao", ""),
+            "referencias": request.POST.get("referencias", ""),
         }
+
+        #salvar/atualizar a informação no banco de dados.
         if salvar_modelo == 'on':
             defaults = dados.copy()
             defaults["user"]= request.user
@@ -342,47 +341,34 @@ def formatador(request, pk=None):
             defaults=defaults,
             )
         
-        dados = {
-            'nome_do_arquivo':nome_do_arquivo,
-            'url_imagem': url_imagem,
-            'titulo': titulo,
-            "autor": autor,
-            "instituicao": instituicao,
-            "local":local,
-            "ano": ano,
-            "resumo":pegarTexto(resumo),
-            "palavras_chaves": palavras_chaves,
-            "abstract": pegarTexto(abstract),
-            "keywords": keywords,
-            "introducao": pegarTexto(introducao),
-            "problematizacao": pegarTexto(problematizacao),
-            "justificativa": pegarTexto(justificativa),
-            "questao_geral": pegarTexto(questao_geral),
-            "objetivo": pegarTexto(objetivo),
-            "metodologia": pegarTexto(metodologia),
-            "desenvolvimento": pegarTexto(desenvolvimento),
-            "analise_discussao":pegarTexto(analise_discussao),
-            "conclusao": pegarTexto(conclusao),
-            "referencias": pegarTexto(referencias),
-        }
+        #tratamento para formatar o texto para aparecer no front:
+        dados_atualizados = {}
 
-        tipo_do_arquivo = request.POST.get("tipo_do_arquivo", "pdf")
-        html_string = render_to_string('abnt_model/documento.html', dados)
-        pdf_file = HTML(string=html_string).write_pdf()
-        
+        for chave, valor in dados.items():
+            if chave in ['nome_do_arquivo', 'url_imagem', 'titulo', 'autor', 'instituicao', 'local', 'ano', 'palavras_chaves', 'keywords']:
+                dados_atualizados[chave] = valor
+            else:
+                dados_atualizados[chave] = pegarTexto(valor)
+
+        dados = dados_atualizados
+
+
+        pdf_file = adicionarDadosEmPDF(dados)
+
         if incluir_sumario == 'on':
             sumario, paginas, titulos, subtitulos = geradorDeSumario(pdf_file)
-            buscar =  ['#introducao','#problematizacao','#justificativa','#questao_geral','#objetivo', '#metodologia','#desenvolvimento','#analise_discussao','#conclusao','#referencias']
+            buscar = ['#introducao','#problematizacao','#justificativa','#questao_geral','#objetivo', '#metodologia','#desenvolvimento','#analise_discussao','#conclusao','#referencias']
+            dados.update({
+                'pontos' : ' . '*70,
+                'sumario': sumario,
+                'paginas': paginas,
+                'buscar':  buscar,
+                'combina': zip(sumario, buscar, paginas),
+                'titulos':titulos,
+                'subtitulos':subtitulos,
+            })
 
-            combina = zip(sumario, buscar, paginas)
-            dados['pontos'] = ' . '*70
-            dados['sumario'] = sumario
-            dados['paginas'] = paginas
-            dados['buscar'] = buscar
-            dados['combina'] = combina
-            dados['titulos'] = titulos
-            dados['subtitulos'] = subtitulos
-            pdf_file = adicionarSumario(dados)
+            pdf_file = adicionarDadosEmPDF(dados)
 
         if tipo_do_arquivo == 'pdf':
             response = HttpResponse(pdf_file, content_type='application/pdf')
@@ -407,6 +393,7 @@ def formatador(request, pk=None):
             response['Content-Disposition'] = f'attachment; filename="{nome_do_arquivo}.docx"'
             return response
     else:
+        #carregar dados salvos do banco por meio de uma primary key do usuario
         if pk:
             consulta = Simple_TCC.objects.get(pk=pk)
             dados = {
