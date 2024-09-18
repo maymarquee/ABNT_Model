@@ -3,6 +3,7 @@ O ABNT Model é um projeto desenvolvido durante a matéria de **Orientação a O
 
 O site tem como objetivo a formatação de textos acadêmicos nas normas ABNT, e foi criado para ajudar pessoas que não possuem familiaridade com as normas e com plataformas de formatação de texto.
 
+
 <div align="center">
 
 ![Badge1](https://img.shields.io/static/v1?label=python&message=3.12.3&color=blue)
@@ -20,7 +21,7 @@ Para clonar o repositório, você pode dar o seguinte comando no terminal:
 git clone https://github.com/maymarquee/ABNT_Model.git
 ```
 ### 🔩 Dependências
-Para baixar as depenências, rode no terminal após clonar o repositório: 
+Para instalar as dependências, rode no terminal após clonar o repositório: 
 ```
 pip install django
 ```
